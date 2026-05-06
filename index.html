@@ -21,10 +21,10 @@
   --border:   rgba(26,26,64,0.12);
   --card:     rgba(255,255,255,0.75);
 }
-
+ 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
+ 
 body {
   background: var(--cream);
   color: var(--text);
@@ -32,7 +32,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-
+ 
 /* ── SIDE SUNRAYS ── */
 .side-rays {
   position: fixed;
@@ -42,18 +42,18 @@ body {
   z-index: 0;
   overflow: hidden;
 }
-
+ 
 .side-rays svg {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
 }
-
+ 
 @keyframes sideRayPulse {
   0%,100% { opacity: var(--op); }
   50%      { opacity: calc(var(--op) * 0.4); }
 }
-
+ 
 .sray { animation: sideRayPulse 6s ease-in-out infinite; }
 .sray:nth-child(1)  { --op: .07; animation-delay: 0s; }
 .sray:nth-child(2)  { --op: .06; animation-delay: .5s; }
@@ -65,10 +65,10 @@ body {
 .sray:nth-child(8)  { --op: .05; animation-delay: 1.2s; }
 .sray:nth-child(9)  { --op: .04; animation-delay: 1.7s; }
 .sray:nth-child(10) { --op: .03; animation-delay: 2.2s; }
-
+ 
 /* ── LAYOUT ── */
 .wrap {max-width:700px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
-
+ 
 /* ── COUNTDOWN ── */
 .countdown-bar {
   display:flex;justify-content:center;gap:0;
@@ -90,12 +90,12 @@ body {
   text-transform:uppercase;color:var(--muted);
   font-weight:600;margin-top:3px;display:block;
 }
-
+ 
 /* ── HERO ── */
 .hero{text-align:center;padding-top:28px;}
 .sunrise-wrap{position:relative;height:145px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:-2px;}
 .sunrise-wrap svg{width:440px;max-width:100%;overflow:visible;}
-
+ 
 @keyframes rayPulse{0%,100%{opacity:var(--op);}50%{opacity:calc(var(--op)*.5);}}
 .ray{animation:rayPulse 4s ease-in-out infinite;}
 .ray:nth-child(1){--op:.55;animation-delay:0s;}
@@ -111,18 +111,18 @@ body {
 .ray:nth-child(11){--op:.18;animation-delay:1.5s;}
 .ray:nth-child(12){--op:.12;animation-delay:1.8s;}
 .ray:nth-child(13){--op:.12;animation-delay:1.8s;}
-
+ 
 .eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500;}
 .brand-title{font-family:'Playfair Display',serif;font-size:clamp(48px,12vw,80px);font-weight:900;letter-spacing:6px;text-transform:uppercase;color:var(--navy);line-height:1;margin-bottom:6px;}
 .brand-sub{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:16px;}
-
+ 
 .live-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(26,26,64,.06);border:1px solid rgba(26,26,64,.14);color:var(--navy);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
 .live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:blink 1.4s ease infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
 .last-updated{font-size:11px;color:var(--muted);margin-bottom:28px;}
-
+ 
 .horizon{height:2px;background:linear-gradient(90deg,transparent 0%,var(--salmon) 20%,var(--gold) 50%,var(--salmon) 80%,transparent 100%);margin-bottom:28px;border-radius:2px;}
-
+ 
 /* ── TABS ── */
 .tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--border);}
 .tab-btn{flex:1;background:none;border:none;padding:11px 10px 13px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;transition:color .25s;}
@@ -131,11 +131,11 @@ body {
 .tab-btn.active::after{transform:scaleX(1);}
 .tab-pane{display:none;}
 .tab-pane.active{display:block;}
-
+ 
 /* ── PODIUM ── */
 .podium{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-bottom:28px;}
 .pod-col{flex:1;max-width:196px;text-align:center;cursor:pointer;}
-
+ 
 /* Avatar shared styles */
 .pod-avatar, .p-avatar {
   overflow: hidden;
@@ -151,7 +151,7 @@ body {
 .pod-avatar span, .p-avatar span {
   position: relative; z-index: 1;
 }
-
+ 
 .pod-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;margin:0 auto 7px;color:#fff;letter-spacing:1px;transition:transform .2s;}
 .pod-col:hover .pod-avatar{transform:scale(1.08);}
 .pod-gold .pod-avatar{width:64px;height:64px;font-size:22px;background:linear-gradient(135deg,var(--gold),var(--salmon));box-shadow:0 6px 24px rgba(255,160,50,.35);}
@@ -166,18 +166,18 @@ body {
 .pod-gold .pod-block{height:72px;background:linear-gradient(180deg,rgba(255,215,0,.18),rgba(255,215,0,.05));border:1px solid rgba(255,215,0,.28);border-bottom:none;}
 .pod-silver .pod-block{height:48px;background:linear-gradient(180deg,rgba(180,180,180,.12),rgba(180,180,180,.03));border:1px solid rgba(180,180,180,.2);border-bottom:none;}
 .pod-bronze .pod-block{height:32px;background:linear-gradient(180deg,rgba(200,137,90,.1),rgba(200,137,90,.02));border:1px solid rgba(200,137,90,.15);border-bottom:none;}
-
+ 
 /* ── LEADERBOARD ── */
 .section-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;}
 .refresh-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:6px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
 .refresh-btn:hover{border-color:var(--salmon);color:var(--salmon);}
-
+ 
 .leaderboard{display:flex;flex-direction:column;gap:5px;}
 .player-row{display:flex;align-items:center;gap:13px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:13px;padding:13px 16px;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;animation:fadeUp .4s ease both;}
 .player-row:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(255,160,122,.15);border-color:rgba(255,160,122,.35);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
+ 
 .rank{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--muted);width:28px;text-align:center;flex-shrink:0;}
 .p-avatar{
   width:37px;height:37px;border-radius:50%;
@@ -204,7 +204,7 @@ body {
   pointer-events: none;
 }
 .p-avatar:hover::after { opacity: 1; }
-
+ 
 .p-info{flex:1;min-width:0;}
 .p-name{font-size:15px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .p-acts{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -213,12 +213,12 @@ body {
 .p-score{text-align:right;flex-shrink:0;}
 .p-pts{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;line-height:1;color:var(--navy);}
 .p-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-weight:500;}
-
+ 
 /* ── GRAFIEK ── */
 .chart-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;margin-top:28px;}
 .chart-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px;}
 .chart-wrap{position:relative;height:220px;}
-
+ 
 /* ── BAKTREK ── */
 .bak-list{display:flex;flex-direction:column;gap:5px;}
 .bak-row{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:13px;padding:12px 16px;animation:fadeUp .4s ease both;}
@@ -238,7 +238,7 @@ body {
 .bak-upload-btn:hover{opacity:.85;}
 .bak-upload-btn:disabled{opacity:.45;cursor:not-allowed;}
 .bak-upload-status{font-size:11px;color:var(--muted);width:100%;text-align:center;}
-
+ 
 /* ── PROFILE PICTURE MODAL ── */
 .pfp-modal-overlay{position:fixed;inset:0;background:rgba(26,26,64,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
 .pfp-modal-overlay.open{display:flex;}
@@ -277,14 +277,14 @@ body {
 .pfp-save-btn:hover{opacity:.88;}
 .pfp-save-btn:disabled{opacity:.45;cursor:not-allowed;}
 .pfp-status{font-size:12px;color:var(--muted);margin-top:10px;min-height:18px;}
-
+ 
 /* ── FOTO MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(26,26,64,.7);z-index:100;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--cream);border-radius:20px;padding:28px;width:min(500px,94vw);max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s ease;}
 @keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:none;}}
 .modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
-
+ 
 /* Modal header with profile pic */
 .modal-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
 .modal-pfp{
@@ -312,17 +312,165 @@ body {
 .foto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px;}
 .foto-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border);}
 .foto-empty{font-size:12px;color:var(--muted);text-align:center;padding:12px 0;}
-
+ 
+/* ── PROGRAMMA ── */
+.prog-day { margin-bottom: 28px; }
+.prog-day-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.prog-day-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--salmon));
+}
+.prog-day-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 900; color: var(--navy);
+}
+.prog-day-date {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+}
+.prog-items { display: flex; flex-direction: column; gap: 6px; }
+.prog-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 16px; animation: fadeUp .4s ease both;
+  position: relative; overflow: hidden;
+}
+.prog-item.now {
+  border-color: rgba(255,160,122,.5);
+  background: rgba(255,215,0,.06);
+}
+.prog-item.now::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--salmon));
+}
+.prog-time {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  width: 48px; flex-shrink: 0; text-align: right;
+}
+.prog-dot-line {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 3px; flex-shrink: 0;
+}
+.prog-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--salmon); }
+.prog-item.now .prog-dot { background: var(--gold); box-shadow: 0 0 6px rgba(255,215,0,.6); }
+.prog-info { flex: 1; min-width: 0; }
+.prog-title { font-size: 14px; font-weight: 600; color: var(--navy); }
+.prog-loc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.prog-now-badge {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 700; color: var(--gold);
+  background: rgba(255,215,0,.12); border: 1px solid rgba(255,215,0,.3);
+  padding: 2px 8px; border-radius: 100px; flex-shrink: 0;
+}
+.prog-edit-note {
+  text-align: center; font-size: 11px; color: var(--muted);
+  margin-top: 20px; padding: 12px;
+  border: 1px dashed var(--border); border-radius: 10px;
+}
+ 
+/* ── WIEL ── */
+.wheel-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 20px; padding: 8px 0;
+}
+.wheel-canvas-wrap {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+.wheel-pointer {
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 24px solid var(--navy);
+  z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+}
+#wheelCanvas {
+  border-radius: 50%;
+  box-shadow: 0 8px 40px rgba(26,26,64,.18), 0 0 0 4px white, 0 0 0 6px var(--border);
+  display: block;
+}
+.wheel-spin-btn {
+  background: linear-gradient(135deg, var(--navy), var(--lavender));
+  color: #fff; border: none;
+  padding: 14px 40px; border-radius: 100px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 900; letter-spacing: 1px;
+  cursor: pointer; transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 20px rgba(26,26,64,.25);
+}
+.wheel-spin-btn:hover { transform: scale(1.04); box-shadow: 0 6px 28px rgba(26,26,64,.3); }
+.wheel-spin-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+ 
+.wheel-result {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 900; color: var(--navy);
+  text-align: center; min-height: 40px;
+  animation: fadeUp .4s ease;
+}
+.wheel-result span { color: var(--salmon); }
+ 
+/* Leden selector */
+.wheel-members-card {
+  width: 100%; background: var(--card); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 16px; padding: 18px;
+}
+.wheel-members-title {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); font-weight: 500; margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.wheel-toggle-all {
+  background: none; border: 1px solid var(--border);
+  color: var(--muted); font-family: 'Jost', sans-serif;
+  font-size: 11px; padding: 4px 10px; border-radius: 6px;
+  cursor: pointer; transition: all .2s;
+}
+.wheel-toggle-all:hover { border-color: var(--salmon); color: var(--salmon); }
+.wheel-members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 6px;
+}
+.wheel-member-chip {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 10px; border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.6);
+  cursor: pointer; transition: all .18s;
+  font-size: 12px; font-weight: 500; color: var(--navy);
+  user-select: none;
+}
+.wheel-member-chip.active {
+  background: linear-gradient(90deg, rgba(255,160,122,.15), rgba(255,215,0,.1));
+  border-color: rgba(255,160,122,.5);
+}
+.wheel-member-chip .chip-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border); flex-shrink: 0; transition: background .18s;
+}
+.wheel-member-chip.active .chip-dot { background: var(--salmon); }
+.wheel-count {
+  font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px;
+}
+ 
 /* ── STATES ── */
 .state-msg{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px;}
 .spinner{width:30px;height:30px;border:2px solid rgba(26,26,64,.1);border-top-color:var(--salmon);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg);}}
-
+ 
 footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;opacity:.5;}
 </style>
 </head>
 <body>
-
+ 
 <!-- SIDE SUNRAYS -->
 <div class="side-rays">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -366,7 +514,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <polygon class="sray" points="1440,420 1060,210 1060,130" fill="url(#rayR2)"/>
   </svg>
 </div>
-
+ 
 <div class="wrap">
   <!-- COUNTDOWN -->
   <div class="countdown-bar">
@@ -375,7 +523,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">min</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">sec</span></div>
   </div>
-
+ 
   <!-- HERO -->
   <div class="hero">
     <div class="sunrise-wrap">
@@ -419,25 +567,29 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="live-pill"><div class="live-dot"></div>Live</div>
     <div class="last-updated" id="lastUpdated">Laden…</div>
   </div>
-
+ 
   <div class="horizon"></div>
-
+ 
   <!-- TABS -->
   <div class="tabs">
     <button class="tab-btn active"  data-tab="lustrumweek">Lustrumweek</button>
     <button class="tab-btn"        data-tab="jachtseizoen">Jachtseizoen</button>
     <button class="tab-btn"        data-tab="bakrecord">🏋️ Baktrek</button>
     <button class="tab-btn"        data-tab="grafiek">📈 Grafiek</button>
+    <button class="tab-btn"        data-tab="programma">📅 Programma</button>
+    <button class="tab-btn"        data-tab="wiel">🎰 Wiel</button>
   </div>
-
+ 
   <div class="tab-pane active" id="tab-lustrumweek"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane"        id="tab-jachtseizoen"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane"        id="tab-bakrecord">   <div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane"        id="tab-grafiek">     <div class="state-msg"><div class="spinner"></div>Laden…</div></div>
-
+  <div class="tab-pane"        id="tab-programma"></div>
+  <div class="tab-pane"        id="tab-wiel"></div>
+ 
   <footer>✦ Automatisch bijgewerkt elke 30 seconden ✦</footer>
 </div>
-
+ 
 <!-- PROFIELFOTO MODAL -->
 <div class="pfp-modal-overlay" id="pfp-modal">
   <div class="pfp-modal">
@@ -458,7 +610,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="pfp-status" id="pfp-status"></div>
   </div>
 </div>
-
+ 
 <!-- ACTIVITEITEN / FOTO MODAL -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
@@ -486,24 +638,25 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div id="modal-fotos" class="foto-grid"></div>
   </div>
 </div>
-
+ 
 <script>
 // ── CONFIG ───────────────────────────────────────────────────
 const APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxZzJcu01bo0ykZ_uaYnO2z2N7CPffNchGTgtuTyGbgMVfBQwDcnybpKcWd-gRTghH7/exec';
 const EINDE_LUSTRUMWEEK = new Date('2025-05-30T23:59:59+02:00');
-
+ 
 // ── STATE ────────────────────────────────────────────────────
 let cachedData   = null;
 let activeTab    = 'lustrumweek';
 let modalPersoon = null;
 let pfpPersoon   = null;
-let pfpFileData  = null; // { base64, mimetype, naam }
+let pfpFileData  = null;
 let grafiekChart = null;
-
-// Profile pictures: stored locally in memory (loaded from server on fetch)
-// Key: naam, value: data URL or drive URL
+let wheelSpinning = false;
+let wheelSelected = new Set(); // namen die meedoen
+let wheelAngle    = 0;
+ 
 const pfpCache = {};
-
+ 
 // ── COUNTDOWN ────────────────────────────────────────────────
 function tickCountdown() {
   const diff = EINDE_LUSTRUMWEEK - Date.now();
@@ -523,12 +676,12 @@ function tickCountdown() {
 }
 setInterval(tickCountdown, 1000);
 tickCountdown();
-
+ 
 // ── HELPERS ──────────────────────────────────────────────────
 const initials = n => n.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
 const fmtTime  = iso => iso ? new Date(iso).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
 const medals   = {0:'🥇',1:'🥈',2:'🥉'};
-
+ 
 // Build an avatar element: img if pfp available, else initials
 function avatarHtml(naam, classes, style='') {
   const url = pfpCache[naam];
@@ -536,7 +689,7 @@ function avatarHtml(naam, classes, style='') {
   const imgTag = url ? `<img src="${url}" alt="${naam}">` : '';
   return `<div class="${classes}" style="${style}" data-naam="${naam}">${imgTag}<span${url ? ' style="display:none"' : ''}>${inits}</span></div>`;
 }
-
+ 
 // ── TABS ─────────────────────────────────────────────────────
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -545,26 +698,32 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-' + activeTab).classList.add('active');
+    // Programma doesn't need server data
+    if (activeTab === 'programma') { renderProgramma(); return; }
+    // Wiel can render with or without data
+    if (activeTab === 'wiel') { if (cachedData) renderWiel(); else renderProgramma(); return; }
     if (cachedData) renderActiveTab();
   });
 });
-
+ 
 function renderActiveTab() {
   if (activeTab === 'lustrumweek')  renderStand('lustrumweek',  cachedData.lustrumweek);
   if (activeTab === 'jachtseizoen') renderStand('jachtseizoen', cachedData.jachtseizoen);
   if (activeTab === 'bakrecord')    renderBaktrek(cachedData.bakrecord);
   if (activeTab === 'grafiek')      renderGrafiek(cachedData.geschiedenis, cachedData.lustrumweek);
+  if (activeTab === 'programma')    renderProgramma();
+  if (activeTab === 'wiel')         renderWiel();
 }
-
+ 
 // ── STAND ────────────────────────────────────────────────────
 function renderStand(tabId, data) {
   const el = document.getElementById('tab-' + tabId);
   if (!data?.scores?.length) { el.innerHTML = '<div class="state-msg">Geen data.</div>'; return; }
-
+ 
   const scores = data.scores;
   const maxPts = scores[0].total || 1;
   const [g, s, b] = scores;
-
+ 
   const podCols = [
     s ? `<div class="pod-col pod-silver" onclick="openModal('${s.name}')">
            ${avatarHtml(s.name,'pod-avatar')}
@@ -582,7 +741,7 @@ function renderStand(tabId, data) {
            <div class="pod-pts">${b.total}</div>
            <div class="pod-block"></div></div>` : '',
   ].join('');
-
+ 
   const rows = scores.map((p, i) => {
     const pct  = (p.total / maxPts * 100).toFixed(1);
     const rank = medals[i] ?? (i+1);
@@ -603,7 +762,7 @@ function renderStand(tabId, data) {
         </div>
       </div>`;
   }).join('');
-
+ 
   el.innerHTML = `
     <div class="podium">${podCols}</div>
     <div class="section-bar">
@@ -611,7 +770,7 @@ function renderStand(tabId, data) {
       <button class="refresh-btn" onclick="fetchData()">↻ Vernieuwen</button>
     </div>
     <div class="leaderboard">${rows}</div>`;
-
+ 
   // Attach avatar click → pfp modal (stop propagation so row modal doesn't also open)
   el.querySelectorAll('.p-avatar').forEach(av => {
     av.addEventListener('click', e => {
@@ -620,7 +779,7 @@ function renderStand(tabId, data) {
     });
   });
 }
-
+ 
 // ── BAKTREK ──────────────────────────────────────────────────
 function renderBaktrek(data) {
   const el = document.getElementById('tab-bakrecord');
@@ -628,11 +787,11 @@ function renderBaktrek(data) {
     el.innerHTML = '<div class="state-msg">Nog geen baktrek records.<br><small>Maak een tabblad "bak record" aan met naam in kolom B en tijd in kolom C.</small></div>';
     return;
   }
-
+ 
   const record = data.records[0];
   const video  = data.video;
   const directUrl = video?.fileId ? `https://drive.google.com/uc?export=download&id=${video.fileId}` : null;
-
+ 
   const videoHtml = directUrl ? `
     <div class="bak-video-hero">
       <div class="bak-video-label">🏆 Huidig record — ${record.naam} — ${record.tijd}s</div>
@@ -659,7 +818,7 @@ function renderBaktrek(data) {
         <div class="bak-upload-status" id="bak-upload-status"></div>
       </div>
     </div>`;
-
+ 
   const rows = data.records.map((r, i) => {
     const rank  = medals[i] ?? (i+1);
     const badge = i === 0 ? '<span class="bak-record-badge">Record</span>' : '';
@@ -669,14 +828,14 @@ function renderBaktrek(data) {
       <div class="bak-time">${r.tijd}s</div>
     </div>`;
   }).join('');
-
+ 
   el.innerHTML = `${videoHtml}
     <div class="section-bar" style="margin-bottom:12px">
       <div class="section-label">Alle tijden</div>
     </div>
     <div class="bak-list">${rows}</div>`;
 }
-
+ 
 // ── GRAFIEK ──────────────────────────────────────────────────
 function renderGrafiek(geschiedenis, lustrumData) {
   const el = document.getElementById('tab-grafiek');
@@ -705,7 +864,291 @@ function renderGrafiek(geschiedenis, lustrumData) {
     }
   });
 }
-
+ 
+// ── PROGRAMMA ────────────────────────────────────────────────
+// ✏️ Pas de dagen en activiteiten hieronder aan
+const PROGRAMMA = [
+  {
+    dag: 'Maandag', datum: '26 mei',
+    items: [
+      { tijd: '10:00', titel: 'Opening lustrumweek', locatie: 'Clubhuis' },
+      { tijd: '13:00', titel: 'Lunch + eerste activiteiten', locatie: 'Binnenstad' },
+      { tijd: '16:00', titel: 'Vrij programma', locatie: '' },
+      { tijd: '20:00', titel: 'Borrel', locatie: 'Clubhuis' },
+    ]
+  },
+  {
+    dag: 'Dinsdag', datum: '27 mei',
+    items: [
+      { tijd: '11:00', titel: 'Baktrek toernooi', locatie: 'Sporthal' },
+      { tijd: '14:00', titel: 'Activiteiten ronde 2', locatie: 'TBA' },
+      { tijd: '19:00', titel: 'Diner', locatie: 'Restaurant X' },
+      { tijd: '22:00', titel: 'Feest', locatie: 'Clubhuis' },
+    ]
+  },
+  {
+    dag: 'Woensdag', datum: '28 mei',
+    items: [
+      { tijd: '10:00', titel: 'Ochtendduik 🌅', locatie: 'Paterswoldsemeer' },
+      { tijd: '14:00', titel: 'Middag activiteiten', locatie: 'TBA' },
+      { tijd: '20:00', titel: 'Cantus', locatie: 'Clubhuis' },
+    ]
+  },
+  {
+    dag: 'Donderdag', datum: '29 mei',
+    items: [
+      { tijd: '12:00', titel: 'Lunch + activiteiten', locatie: 'TBA' },
+      { tijd: '18:00', titel: 'BBQ', locatie: 'Clubhuis tuin' },
+      { tijd: '22:00', titel: 'Nachtprogramma', locatie: 'TBA' },
+    ]
+  },
+  {
+    dag: 'Vrijdag', datum: '30 mei',
+    items: [
+      { tijd: '12:00', titel: 'Laatste activiteiten', locatie: 'TBA' },
+      { tijd: '16:00', titel: 'Afsluiting & prijsuitreiking 🏆', locatie: 'Clubhuis' },
+      { tijd: '20:00', titel: 'Gala', locatie: 'TBA' },
+    ]
+  },
+];
+ 
+function renderProgramma() {
+  const el = document.getElementById('tab-programma');
+  const now = new Date();
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const todayDate = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })
+    .replace(' ', ' '); // normalize
+ 
+  const html = PROGRAMMA.map((dag, di) => {
+    const items = dag.items.map((item, ii) => {
+      // Check if this is roughly "now" (same day, within the timeslot)
+      const [h, m] = item.tijd.split(':').map(Number);
+      const itemMins = h * 60 + m;
+      const nextItem = dag.items[ii + 1];
+      const nextMins = nextItem
+        ? nextItem.tijd.split(':').map((v,i) => i===0 ? Number(v)*60 : Number(v)).reduce((a,b)=>a+b)
+        : itemMins + 120;
+      const isNow = dag.datum === todayDate && nowMins >= itemMins && nowMins < nextMins;
+ 
+      return `<div class="prog-item${isNow ? ' now' : ''}" style="animation-delay:${(ii*.05).toFixed(2)}s">
+        <div class="prog-time">${item.tijd}</div>
+        <div class="prog-dot-line"><div class="prog-dot"></div></div>
+        <div class="prog-info">
+          <div class="prog-title">${item.titel}</div>
+          ${item.locatie ? `<div class="prog-loc">📍 ${item.locatie}</div>` : ''}
+        </div>
+        ${isNow ? '<div class="prog-now-badge">Nu bezig</div>' : ''}
+      </div>`;
+    }).join('');
+ 
+    return `<div class="prog-day">
+      <div class="prog-day-header">
+        <div class="prog-day-dot"></div>
+        <div>
+          <div class="prog-day-label">${dag.dag}</div>
+          <div class="prog-day-date">${dag.datum}</div>
+        </div>
+      </div>
+      <div class="prog-items">${items}</div>
+    </div>`;
+  }).join('');
+ 
+  el.innerHTML = html + `
+    <div class="prog-edit-note">
+      ✏️ Programma aanpassen? Zoek <code>const PROGRAMMA</code> in de HTML
+    </div>`;
+}
+ 
+// ── WIEL ─────────────────────────────────────────────────────
+const WIEL_KLEUREN = [
+  '#ffd700','#ffa07a','#f7aeb9','#7d5ba6',
+  '#f12509','#1a1a40','#c8895a','#88c0d0',
+  '#a3be8c','#ebcb8b','#bf616a','#d08770',
+];
+ 
+function renderWiel() {
+  const el = document.getElementById('tab-wiel');
+ 
+  // Get all names from cached data
+  const namen = [
+    ...(cachedData?.lustrumweek?.scores || []),
+    ...(cachedData?.jachtseizoen?.scores || []),
+  ].map(p => p.name);
+  const uniqueNamen = [...new Set(namen)];
+ 
+  // Init selection: all active if first time
+  if (wheelSelected.size === 0) uniqueNamen.forEach(n => wheelSelected.add(n));
+ 
+  el.innerHTML = `
+    <div class="wheel-wrap">
+      <div class="wheel-result" id="wheel-result"></div>
+      <div class="wheel-canvas-wrap">
+        <div class="wheel-pointer"></div>
+        <canvas id="wheelCanvas" width="300" height="300"></canvas>
+      </div>
+      <button class="wheel-spin-btn" id="wheel-spin-btn" onclick="spinWiel()">🎰 Draaien!</button>
+      <div class="wheel-members-card">
+        <div class="wheel-members-title">
+          <span>Deelnemers</span>
+          <button class="wheel-toggle-all" onclick="toggleAllWiel()">Alles aan/uit</button>
+        </div>
+        <div class="wheel-members-grid" id="wheel-grid"></div>
+        <div class="wheel-count" id="wheel-count"></div>
+      </div>
+    </div>`;
+ 
+  buildWielGrid(uniqueNamen);
+  drawWiel();
+}
+ 
+function buildWielGrid(namen) {
+  const grid = document.getElementById('wheel-grid');
+  if (!grid) return;
+  grid.innerHTML = namen.map(naam => `
+    <div class="wheel-member-chip ${wheelSelected.has(naam) ? 'active' : ''}"
+         onclick="toggleWielLid('${naam}')" data-naam="${naam}">
+      <div class="chip-dot"></div>
+      ${naam.split(' ')[0]}
+    </div>`).join('');
+  updateWielCount();
+}
+ 
+function toggleWielLid(naam) {
+  if (wheelSelected.has(naam)) {
+    if (wheelSelected.size <= 2) return; // minimum 2
+    wheelSelected.delete(naam);
+  } else {
+    wheelSelected.add(naam);
+  }
+  const chip = document.querySelector(`.wheel-member-chip[data-naam="${naam}"]`);
+  if (chip) chip.classList.toggle('active', wheelSelected.has(naam));
+  updateWielCount();
+  drawWiel();
+}
+ 
+function toggleAllWiel() {
+  const namen = [...document.querySelectorAll('.wheel-member-chip')].map(c => c.dataset.naam);
+  const allActive = namen.every(n => wheelSelected.has(n));
+  namen.forEach(n => allActive ? wheelSelected.delete(n) : wheelSelected.add(n));
+  // Ensure minimum 2
+  if (wheelSelected.size < 2) namen.slice(0,2).forEach(n => wheelSelected.add(n));
+  namen.forEach(naam => {
+    const chip = document.querySelector(`.wheel-member-chip[data-naam="${naam}"]`);
+    if (chip) chip.classList.toggle('active', wheelSelected.has(naam));
+  });
+  updateWielCount();
+  drawWiel();
+}
+ 
+function updateWielCount() {
+  const el = document.getElementById('wheel-count');
+  if (el) el.textContent = `${wheelSelected.size} deelnemers actief`;
+}
+ 
+function drawWiel(highlightIndex = -1) {
+  const canvas = document.getElementById('wheelCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const deelnemers = [...wheelSelected];
+  const n = deelnemers.length;
+  if (n === 0) return;
+ 
+  const cx = 150, cy = 150, r = 144;
+  const sliceAngle = (2 * Math.PI) / n;
+ 
+  ctx.clearRect(0, 0, 300, 300);
+ 
+  deelnemers.forEach((naam, i) => {
+    const start = wheelAngle + i * sliceAngle - Math.PI / 2;
+    const end   = start + sliceAngle;
+    const isHighlight = i === highlightIndex;
+ 
+    // Slice
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, isHighlight ? r + 6 : r, start, end);
+    ctx.closePath();
+    ctx.fillStyle = WIEL_KLEUREN[i % WIEL_KLEUREN.length];
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.6)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+ 
+    // Label
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(start + sliceAngle / 2);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#fff';
+    ctx.font = `bold ${n > 16 ? 9 : n > 10 ? 11 : 13}px Jost, sans-serif`;
+    ctx.shadowColor = 'rgba(0,0,0,.4)';
+    ctx.shadowBlur = 3;
+    ctx.fillText(naam.split(' ')[0], r - 10, 4);
+    ctx.restore();
+  });
+ 
+  // Center circle
+  ctx.beginPath();
+  ctx.arc(cx, cy, 28, 0, 2 * Math.PI);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(26,26,64,.12)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+ 
+  // Center logo
+  ctx.fillStyle = '#1a1a40';
+  ctx.font = 'bold 11px Jost, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('✦', cx, cy + 4);
+}
+ 
+function spinWiel() {
+  if (wheelSpinning) return;
+  const deelnemers = [...wheelSelected];
+  if (deelnemers.length < 2) return;
+ 
+  wheelSpinning = true;
+  document.getElementById('wheel-result').innerHTML = '';
+  document.getElementById('wheel-spin-btn').disabled = true;
+ 
+  const totalRotation = (8 + Math.random() * 8) * Math.PI * 2; // 8-16 rondjes
+  const duration      = 4000 + Math.random() * 1500;
+  const start         = performance.now();
+  const startAngle    = wheelAngle;
+ 
+  function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+ 
+  function frame(now) {
+    const elapsed  = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased    = easeOut(progress);
+    wheelAngle = startAngle + totalRotation * eased;
+    drawWiel();
+ 
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      // Find winner: pointer is at top (angle 0 from top = -π/2)
+      // The slice that contains angle 0 (top) wins
+      const n = deelnemers.length;
+      const sliceAngle = (2 * Math.PI) / n;
+      const norm = (((-wheelAngle) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+      const winnerIdx = Math.floor(norm / sliceAngle) % n;
+      const winner = deelnemers[winnerIdx];
+ 
+      drawWiel(winnerIdx);
+ 
+      document.getElementById('wheel-result').innerHTML =
+        `🎉 <span>${winner}</span>`;
+      document.getElementById('wheel-spin-btn').disabled = false;
+      wheelSpinning = false;
+    }
+  }
+ 
+  requestAnimationFrame(frame);
+}
+ 
 // ── PROFIELFOTO MODAL ─────────────────────────────────────────
 function openPfpModal(naam) {
   pfpPersoon  = naam;
@@ -714,24 +1157,24 @@ function openPfpModal(naam) {
   document.getElementById('pfp-preview-initials').textContent = initials(naam);
   document.getElementById('pfp-status').textContent = '';
   document.getElementById('pfp-file-input').value = '';
-
+ 
   // Show existing pfp if available
   const circle = document.getElementById('pfp-preview-circle');
   const existing = pfpCache[naam];
   circle.innerHTML = existing
     ? `<img src="${existing}" alt="${naam}"><span style="display:none">${initials(naam)}</span>`
     : `<span>${initials(naam)}</span>`;
-
+ 
   document.getElementById('pfp-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
+ 
 function closePfpModal() {
   document.getElementById('pfp-modal').classList.remove('open');
   document.body.style.overflow = '';
   pfpPersoon = null; pfpFileData = null;
 }
-
+ 
 function previewPfp(input) {
   if (!input.files[0]) return;
   const file = input.files[0];
@@ -741,7 +1184,7 @@ function previewPfp(input) {
     circle.innerHTML = `<img src="${e.target.result}" alt="preview"><span style="display:none">${initials(pfpPersoon)}</span>`;
   };
   reader.readAsDataURL(file);
-
+ 
   // Store for upload
   const fr = new FileReader();
   fr.onload = e => {
@@ -749,14 +1192,14 @@ function previewPfp(input) {
   };
   fr.readAsDataURL(file);
 }
-
+ 
 async function savePfp() {
   if (!pfpFileData) { document.getElementById('pfp-status').textContent = 'Kies eerst een foto.'; return; }
   const btn = document.getElementById('pfp-save-btn');
   const statusEl = document.getElementById('pfp-status');
   btn.disabled = true;
   statusEl.textContent = 'Uploaden…';
-
+ 
   try {
     const res = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
@@ -787,13 +1230,13 @@ async function savePfp() {
     btn.disabled = false;
   }
 }
-
+ 
 // ── ACTIVITEITEN MODAL ────────────────────────────────────────
 function openModal(naam) {
   modalPersoon = naam;
   document.getElementById('modal-name').textContent = naam;
   document.getElementById('modal-pfp-initials').textContent = initials(naam);
-
+ 
   // Set pfp in modal header
   const pfpCircle = document.getElementById('modal-pfp-circle');
   pfpCircle.dataset.naam = naam;
@@ -801,40 +1244,40 @@ function openModal(naam) {
   pfpCircle.innerHTML = pfpUrl
     ? `<img src="${pfpUrl}" alt="${naam}"><span style="display:none">${initials(naam)}</span>`
     : `<span>${initials(naam)}</span>`;
-
+ 
   const lw = cachedData?.lustrumweek?.scores?.find(s => s.name === naam);
   const js = cachedData?.jachtseizoen?.scores?.find(s => s.name === naam);
   document.getElementById('modal-score').textContent =
     `Lustrumweek: ${lw?.total||0} pts  ·  Jachtseizoen: ${js?.total||0} pts`;
-
+ 
   const acts = [...(lw?.completedActivities||[]),...(js?.completedActivities||[])];
   document.getElementById('modal-acts').innerHTML = acts.length
     ? acts.map(a=>`<div class="act-chip">${a}</div>`).join('')
     : '<div style="font-size:12px;color:var(--muted)">Nog geen activiteiten</div>';
-
+ 
   const allActs = [...(cachedData?.lustrumweek?.activities||[]),...(cachedData?.jachtseizoen?.activities||[])];
   const sel = document.getElementById('upload-act');
   sel.innerHTML = '<option value="">— Kies activiteit —</option>'
     + allActs.map(a=>`<option value="${a.name}">${a.name}</option>`).join('');
-
+ 
   loadFotos(naam);
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
+ 
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
   modalPersoon = null;
 }
-
+ 
 document.getElementById('modal').addEventListener('click', e => {
   if (e.target === document.getElementById('modal')) closeModal();
 });
 document.getElementById('pfp-modal').addEventListener('click', e => {
   if (e.target === document.getElementById('pfp-modal')) closePfpModal();
 });
-
+ 
 // ── FOTO UPLOAD ───────────────────────────────────────────────
 async function uploadFoto() {
   const activiteit = document.getElementById('upload-act').value;
@@ -857,7 +1300,7 @@ async function uploadFoto() {
   } catch(e) { statusEl.textContent = 'Upload mislukt.'; }
   finally { btn.disabled = false; }
 }
-
+ 
 // ── BAKTREK VIDEO UPLOAD ──────────────────────────────────────
 async function uploadBakVideo(naam) {
   const input    = document.getElementById('bak-video-input');
@@ -879,7 +1322,7 @@ async function uploadBakVideo(naam) {
   } catch(e) { statusEl.textContent = 'Upload mislukt.'; }
   finally { btn.disabled = false; }
 }
-
+ 
 function toBase64(file) {
   return new Promise((res,rej) => {
     const r = new FileReader();
@@ -888,7 +1331,7 @@ function toBase64(file) {
     r.readAsDataURL(file);
   });
 }
-
+ 
 async function loadFotos(naam) {
   const container = document.getElementById('modal-fotos');
   container.innerHTML = '<div class="foto-empty">Foto\'s laden…</div>';
@@ -900,23 +1343,23 @@ async function loadFotos(naam) {
       : '<div class="foto-empty">Nog geen foto\'s.</div>';
   } catch { container.innerHTML = '<div class="foto-empty">Kan foto\'s niet laden.</div>'; }
 }
-
+ 
 // ── FETCH ────────────────────────────────────────────────────
 async function fetchData() {
   try {
     const res = await fetch(APPS_SCRIPT_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const raw = await res.json();
-
+ 
     if (raw.scores && !raw.lustrumweek) {
       cachedData = { lastUpdated:raw.lastUpdated, lustrumweek:{scores:raw.scores,activities:raw.activities||[]}, jachtseizoen:{scores:[],activities:[]}, bakrecord:{records:[]}, geschiedenis:[] };
     } else {
       cachedData = raw;
     }
-
+ 
     // Load profile pictures if not yet cached
     await loadAllPfps();
-
+ 
     document.getElementById('lastUpdated').textContent = 'Bijgewerkt om ' + fmtTime(cachedData.lastUpdated);
     renderActiveTab();
   } catch(e) {
@@ -925,7 +1368,7 @@ async function fetchData() {
     });
   }
 }
-
+ 
 // Load all profile pictures for all known players
 async function loadAllPfps() {
   const allNames = new Set([
@@ -934,7 +1377,7 @@ async function loadAllPfps() {
   ]);
   const toLoad = [...allNames].filter(n => !pfpCache[n]);
   if (!toLoad.length) return;
-
+ 
   await Promise.allSettled(toLoad.map(async naam => {
     try {
       const res  = await fetch(`${APPS_SCRIPT_URL}?action=profielfoto&naam=${encodeURIComponent(naam)}`);
@@ -943,9 +1386,10 @@ async function loadAllPfps() {
     } catch {}
   }));
 }
-
+ 
 setInterval(fetchData, 30000);
 fetchData();
 </script>
 </body>
 </html>
+ 
