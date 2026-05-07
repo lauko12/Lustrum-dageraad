@@ -8,203 +8,101 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root {
-  --cream:    #fffbf4;
-  --cream2:   #fff5e1;
-  --gold:     #ffd700;
-  --salmon:   #ffa07a;
-  --pink:     #f7aeb9;
-  --red:      #f12509;
-  --lavender: #7d5ba6;
-  --navy:     #1a1a40;
-  --text:     #1a1a40;
-  --muted:    #8a7a6a;
-  --border:   rgba(26,26,64,0.12);
-  --card:     rgba(255,255,255,0.75);
+  --cream:#fffbf4; --gold:#ffd700; --salmon:#ffa07a; --pink:#f7aeb9;
+  --red:#f12509; --lavender:#7d5ba6; --navy:#1a1a40; --muted:#8a7a6a;
+  --border:rgba(26,26,64,0.12); --card:rgba(255,255,255,0.75);
 }
- 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min-height:100vh;overflow-x:hidden;}
  
-body {
-  background: var(--cream);
-  color: var(--text);
-  font-family: 'Jost', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* SIDE RAYS */
+.side-rays{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.side-rays svg{position:absolute;inset:0;width:100%;height:100%;}
+@keyframes sRay{0%,100%{opacity:var(--op)}50%{opacity:calc(var(--op)*.35)}}
+.sray{animation:sRay 6s ease-in-out infinite;}
+.sray:nth-child(1){--op:.07;animation-delay:0s}.sray:nth-child(2){--op:.055;animation-delay:.6s}
+.sray:nth-child(3){--op:.045;animation-delay:1.2s}.sray:nth-child(4){--op:.035;animation-delay:1.8s}
+.sray:nth-child(5){--op:.025;animation-delay:2.4s}.sray:nth-child(6){--op:.07;animation-delay:.3s}
+.sray:nth-child(7){--op:.055;animation-delay:.9s}.sray:nth-child(8){--op:.045;animation-delay:1.5s}
+.sray:nth-child(9){--op:.035;animation-delay:2.1s}.sray:nth-child(10){--op:.025;animation-delay:2.7s}
  
-/* ── SIDE SUNRAYS ── */
-.side-rays {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
  
-.side-rays svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
- 
-@keyframes sideRayPulse {
-  0%,100% { opacity: var(--op); }
-  50%      { opacity: calc(var(--op) * 0.4); }
-}
- 
-.sray { animation: sideRayPulse 6s ease-in-out infinite; }
-.sray:nth-child(1)  { --op: .07; animation-delay: 0s; }
-.sray:nth-child(2)  { --op: .06; animation-delay: .5s; }
-.sray:nth-child(3)  { --op: .05; animation-delay: 1s; }
-.sray:nth-child(4)  { --op: .04; animation-delay: 1.5s; }
-.sray:nth-child(5)  { --op: .03; animation-delay: 2s; }
-.sray:nth-child(6)  { --op: .07; animation-delay: .2s; }
-.sray:nth-child(7)  { --op: .06; animation-delay: .7s; }
-.sray:nth-child(8)  { --op: .05; animation-delay: 1.2s; }
-.sray:nth-child(9)  { --op: .04; animation-delay: 1.7s; }
-.sray:nth-child(10) { --op: .03; animation-delay: 2.2s; }
- 
-/* ── LAYOUT ── */
-.wrap {max-width:700px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
- 
-/* ── COUNTDOWN ── */
-.countdown-bar {
-  display:flex;justify-content:center;gap:0;
-  padding:10px 0 0;margin-bottom:4px;
-}
-.cd-block {
-  text-align:center;padding:10px 18px;
-  border-right:1px solid var(--border);
-}
+/* COUNTDOWN */
+.countdown-bar{display:flex;justify-content:center;padding:10px 0 0;margin-bottom:4px;}
+.cd-block{text-align:center;padding:10px 18px;border-right:1px solid var(--border);}
 .cd-block:last-child{border-right:none;}
-.cd-num {
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:900;
-  color:var(--navy);line-height:1;
-  display:block;
-}
-.cd-lbl {
-  font-size:9px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--muted);
-  font-weight:600;margin-top:3px;display:block;
-}
+.cd-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1;display:block;}
+.cd-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:3px;display:block;}
  
-/* ── HERO ── */
+/* HERO */
 .hero{text-align:center;padding-top:28px;}
 .sunrise-wrap{position:relative;height:145px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:-2px;}
 .sunrise-wrap svg{width:440px;max-width:100%;overflow:visible;}
- 
-@keyframes rayPulse{0%,100%{opacity:var(--op);}50%{opacity:calc(var(--op)*.5);}}
+@keyframes rayPulse{0%,100%{opacity:var(--op)}50%{opacity:calc(var(--op)*.5)}}
 .ray{animation:rayPulse 4s ease-in-out infinite;}
-.ray:nth-child(1){--op:.55;animation-delay:0s;}
-.ray:nth-child(2){--op:.48;animation-delay:.3s;}
-.ray:nth-child(3){--op:.48;animation-delay:.3s;}
-.ray:nth-child(4){--op:.40;animation-delay:.6s;}
-.ray:nth-child(5){--op:.40;animation-delay:.6s;}
-.ray:nth-child(6){--op:.32;animation-delay:.9s;}
-.ray:nth-child(7){--op:.32;animation-delay:.9s;}
-.ray:nth-child(8){--op:.24;animation-delay:1.2s;}
-.ray:nth-child(9){--op:.24;animation-delay:1.2s;}
-.ray:nth-child(10){--op:.18;animation-delay:1.5s;}
-.ray:nth-child(11){--op:.18;animation-delay:1.5s;}
-.ray:nth-child(12){--op:.12;animation-delay:1.8s;}
-.ray:nth-child(13){--op:.12;animation-delay:1.8s;}
- 
+.ray:nth-child(1){--op:.55;animation-delay:0s}.ray:nth-child(2){--op:.48;animation-delay:.3s}
+.ray:nth-child(3){--op:.48;animation-delay:.3s}.ray:nth-child(4){--op:.40;animation-delay:.6s}
+.ray:nth-child(5){--op:.40;animation-delay:.6s}.ray:nth-child(6){--op:.32;animation-delay:.9s}
+.ray:nth-child(7){--op:.32;animation-delay:.9s}.ray:nth-child(8){--op:.24;animation-delay:1.2s}
+.ray:nth-child(9){--op:.24;animation-delay:1.2s}.ray:nth-child(10){--op:.18;animation-delay:1.5s}
+.ray:nth-child(11){--op:.18;animation-delay:1.5s}.ray:nth-child(12){--op:.12;animation-delay:1.8s}
+.ray:nth-child(13){--op:.12;animation-delay:1.8s}
 .eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500;}
 .brand-title{font-family:'Playfair Display',serif;font-size:clamp(48px,12vw,80px);font-weight:900;letter-spacing:6px;text-transform:uppercase;color:var(--navy);line-height:1;margin-bottom:6px;}
 .brand-sub{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:16px;}
- 
 .live-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(26,26,64,.06);border:1px solid rgba(26,26,64,.14);color:var(--navy);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
 .live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:blink 1.4s ease infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .last-updated{font-size:11px;color:var(--muted);margin-bottom:28px;}
+.horizon{height:2px;background:linear-gradient(90deg,transparent,var(--salmon) 20%,var(--gold) 50%,var(--salmon) 80%,transparent);margin-bottom:28px;border-radius:2px;}
  
-.horizon{height:2px;background:linear-gradient(90deg,transparent 0%,var(--salmon) 20%,var(--gold) 50%,var(--salmon) 80%,transparent 100%);margin-bottom:28px;border-radius:2px;}
- 
-/* ── TABS ── */
-.tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--border);}
-.tab-btn{flex:1;background:none;border:none;padding:11px 10px 13px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;transition:color .25s;}
+/* TABS */
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-bottom:24px;border-bottom:2px solid var(--border);}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;background:none;border:none;padding:11px 14px 13px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;transition:color .25s;white-space:nowrap;}
 .tab-btn::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--salmon),var(--gold));transform:scaleX(0);transition:transform .3s ease;}
 .tab-btn.active{color:var(--navy);}
 .tab-btn.active::after{transform:scaleX(1);}
-.tab-pane{display:none;}
-.tab-pane.active{display:block;}
+.tab-pane{display:none;}.tab-pane.active{display:block;}
  
-/* ── PODIUM ── */
+/* AVATAR */
+.avatar{border-radius:50%;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;color:#fff;flex-shrink:0;}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.avatar span{position:relative;z-index:1;}
+.avatar-click{cursor:pointer;transition:transform .2s,box-shadow .2s;border:2px solid transparent;}
+.avatar-click:hover{transform:scale(1.12);box-shadow:0 0 0 3px rgba(255,160,122,.5);border-color:var(--salmon);}
+.avatar-click::before{content:'📷';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-size:13px;background:rgba(26,26,64,.45);border-radius:50%;opacity:0;transition:opacity .2s;}
+.avatar-click:hover::before{opacity:1;}
+ 
+/* PODIUM */
 .podium{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-bottom:28px;}
 .pod-col{flex:1;max-width:196px;text-align:center;cursor:pointer;}
- 
-/* Avatar shared styles */
-.pod-avatar, .p-avatar {
-  overflow: hidden;
-  position: relative;
-}
-.pod-avatar img, .p-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: absolute;
-  inset: 0;
-}
-.pod-avatar span, .p-avatar span {
-  position: relative; z-index: 1;
-}
- 
-.pod-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;margin:0 auto 7px;color:#fff;letter-spacing:1px;transition:transform .2s;}
-.pod-col:hover .pod-avatar{transform:scale(1.08);}
+.pod-col:hover .avatar{transform:scale(1.08);}
+.pod-avatar{margin:0 auto 7px;transition:transform .2s;}
 .pod-gold .pod-avatar{width:64px;height:64px;font-size:22px;background:linear-gradient(135deg,var(--gold),var(--salmon));box-shadow:0 6px 24px rgba(255,160,50,.35);}
-.pod-silver .pod-avatar{background:linear-gradient(135deg,#bbb,#888);box-shadow:0 4px 14px rgba(0,0,0,.12);}
-.pod-bronze .pod-avatar{background:linear-gradient(135deg,#c8895a,#9a5c30);box-shadow:0 4px 14px rgba(0,0,0,.1);}
+.pod-silver .pod-avatar{width:52px;height:52px;font-size:18px;background:linear-gradient(135deg,#bbb,#888);box-shadow:0 4px 14px rgba(0,0,0,.12);}
+.pod-bronze .pod-avatar{width:52px;height:52px;font-size:18px;background:linear-gradient(135deg,#c8895a,#9a5c30);box-shadow:0 4px 14px rgba(0,0,0,.1);}
 .pod-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .pod-pts{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;line-height:1;margin-bottom:10px;}
-.pod-gold .pod-pts{color:var(--gold);}
-.pod-silver .pod-pts{color:#999;}
-.pod-bronze .pod-pts{color:#c8895a;}
+.pod-gold .pod-pts{color:var(--gold);}.pod-silver .pod-pts{color:#999;}.pod-bronze .pod-pts{color:#c8895a;}
 .pod-block{border-radius:6px 6px 0 0;}
 .pod-gold .pod-block{height:72px;background:linear-gradient(180deg,rgba(255,215,0,.18),rgba(255,215,0,.05));border:1px solid rgba(255,215,0,.28);border-bottom:none;}
 .pod-silver .pod-block{height:48px;background:linear-gradient(180deg,rgba(180,180,180,.12),rgba(180,180,180,.03));border:1px solid rgba(180,180,180,.2);border-bottom:none;}
 .pod-bronze .pod-block{height:32px;background:linear-gradient(180deg,rgba(200,137,90,.1),rgba(200,137,90,.02));border:1px solid rgba(200,137,90,.15);border-bottom:none;}
  
-/* ── LEADERBOARD ── */
+/* LEADERBOARD */
 .section-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;}
-.refresh-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:6px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
+.refresh-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:6px;font-family:'Jost',sans-serif;font-size:11px;cursor:pointer;transition:all .2s;}
 .refresh-btn:hover{border-color:var(--salmon);color:var(--salmon);}
- 
 .leaderboard{display:flex;flex-direction:column;gap:5px;}
 .player-row{display:flex;align-items:center;gap:13px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:13px;padding:13px 16px;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;animation:fadeUp .4s ease both;}
 .player-row:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(255,160,122,.15);border-color:rgba(255,160,122,.35);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
- 
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .rank{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--muted);width:28px;text-align:center;flex-shrink:0;}
-.p-avatar{
-  width:37px;height:37px;border-radius:50%;
-  background:linear-gradient(135deg,var(--lavender),var(--salmon));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:14px;font-weight:700;
-  color:#fff;flex-shrink:0;
-  cursor:pointer;
-  transition:transform .2s, box-shadow .2s;
-  border: 2px solid transparent;
-}
-.p-avatar:hover{
-  transform: scale(1.15);
-  box-shadow: 0 0 0 3px rgba(255,160,122,.4);
-  border-color: var(--salmon);
-}
-/* Camera overlay on hover */
-.p-avatar::after {
-  content: '📷';
-  position: absolute;
-  font-size: 10px;
-  opacity: 0;
-  transition: opacity .2s;
-  pointer-events: none;
-}
-.p-avatar:hover::after { opacity: 1; }
- 
+.row-avatar{width:40px;height:40px;font-size:14px;background:linear-gradient(135deg,var(--lavender),var(--salmon));}
 .p-info{flex:1;min-width:0;}
 .p-name{font-size:15px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .p-acts{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -214,309 +112,154 @@ body {
 .p-pts{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;line-height:1;color:var(--navy);}
 .p-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-weight:500;}
  
-/* ── GRAFIEK ── */
-.chart-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;margin-top:28px;}
+/* STATISTIEKEN MODAL */
+.overlay{position:fixed;inset:0;background:rgba(26,26,64,.7);z-index:150;display:none;align-items:center;justify-content:center;backdrop-filter:blur(5px);}
+.overlay.open{display:flex;}
+.stat-modal{background:var(--cream);border-radius:22px;padding:28px;width:min(520px,94vw);max-height:92vh;overflow-y:auto;position:relative;animation:mIn .3s ease;}
+@keyframes mIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.modal-x{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
+.stat-header{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+.stat-big-av{width:72px;height:72px;font-size:24px;background:linear-gradient(135deg,var(--lavender),var(--salmon));border:3px solid var(--gold);box-shadow:0 4px 20px rgba(255,215,0,.25);}
+.stat-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px;}
+.stat-sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.stat-card{background:rgba(255,255,255,.8);border:1px solid var(--border);border-radius:14px;padding:14px 16px;text-align:center;}
+.stat-card.hi{background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(255,160,122,.08));border-color:rgba(255,215,0,.3);}
+.stat-val{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--navy);line-height:1;}
+.stat-card.hi .stat-val{color:var(--gold);}
+.stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;font-weight:500;}
+.stat-sec{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px;}
+.stat-prog-bar{height:8px;background:rgba(26,26,64,.07);border-radius:8px;overflow:hidden;margin-bottom:6px;}
+.stat-prog-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--salmon),var(--gold));transition:width 1s ease;}
+.stat-prog-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:20px;}
+.acts-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.act-chip{font-size:11px;padding:4px 10px;border-radius:100px;font-weight:500;}
+.act-chip.done{background:rgba(255,160,122,.12);border:1px solid rgba(255,160,122,.3);color:var(--navy);}
+.act-chip.miss{background:rgba(26,26,64,.04);border:1px solid var(--border);color:var(--muted);text-decoration:line-through;}
+.pfp-section{border-top:1px solid var(--border);padding-top:18px;}
+.pfp-upload-area{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.6);border:1.5px dashed rgba(255,160,122,.4);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s;margin-bottom:10px;}
+.pfp-upload-area:hover{border-color:var(--salmon);background:rgba(255,160,122,.04);}
+.pfp-upload-area input{display:none;}
+.pfp-txt{font-size:13px;font-weight:500;color:var(--navy);}
+.pfp-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.pfp-save{width:100%;background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:11px;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.pfp-save:hover{opacity:.88;}.pfp-save:disabled{opacity:.45;cursor:not-allowed;}
+.pfp-status{font-size:11px;color:var(--muted);text-align:center;margin-top:8px;min-height:16px;}
+ 
+/* GRAFIEK */
+.chart-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;}
 .chart-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px;}
 .chart-wrap{position:relative;height:220px;}
  
-/* ── BAKTREK ── */
+/* BAKTREK */
 .bak-list{display:flex;flex-direction:column;gap:5px;}
 .bak-row{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:13px;padding:12px 16px;animation:fadeUp .4s ease both;}
 .bak-rank{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--muted);width:28px;text-align:center;flex-shrink:0;}
 .bak-name{flex:1;font-size:15px;font-weight:600;color:var(--navy);}
 .bak-time{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--navy);}
-.bak-record-badge{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--salmon));color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:100px;margin-left:8px;vertical-align:middle;}
+.bak-badge{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--salmon));color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:100px;margin-left:8px;vertical-align:middle;}
 .bak-video-hero{margin-bottom:24px;}
-.bak-video-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px;}
-.bak-video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000;}
-.bak-video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
-.bak-video-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:180px;background:rgba(26,26,64,.04);border:2px dashed var(--border);border-radius:16px;color:var(--muted);font-size:13px;gap:8px;}
-.bak-video-placeholder .upload-icon{font-size:32px;}
+.bak-vid-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px;}
+.bak-vid-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000;}
+.bak-vid-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
+.bak-vid-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;height:180px;background:rgba(26,26,64,.04);border:2px dashed var(--border);border-radius:16px;color:var(--muted);font-size:13px;gap:8px;}
 .bak-upload-bar{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
 .bak-upload-input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Jost',sans-serif;font-size:12px;background:rgba(255,255,255,.8);color:var(--navy);outline:none;}
 .bak-upload-btn{background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:9px 16px;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
-.bak-upload-btn:hover{opacity:.85;}
-.bak-upload-btn:disabled{opacity:.45;cursor:not-allowed;}
+.bak-upload-btn:hover{opacity:.85;}.bak-upload-btn:disabled{opacity:.45;cursor:not-allowed;}
 .bak-upload-status{font-size:11px;color:var(--muted);width:100%;text-align:center;}
  
-/* ── PROFILE PICTURE MODAL ── */
-.pfp-modal-overlay{position:fixed;inset:0;background:rgba(26,26,64,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
-.pfp-modal-overlay.open{display:flex;}
-.pfp-modal{background:var(--cream);border-radius:24px;padding:32px 28px;width:min(360px,92vw);position:relative;animation:modalIn .3s ease;text-align:center;}
-.pfp-modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
-.pfp-preview-wrap{position:relative;width:100px;height:100px;margin:0 auto 20px;}
-.pfp-preview{
-  width:100px;height:100px;border-radius:50%;
-  background:linear-gradient(135deg,var(--lavender),var(--salmon));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;
-  overflow:hidden;
-  border:3px solid var(--gold);
-  box-shadow:0 4px 20px rgba(255,215,0,.3);
-}
-.pfp-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-.pfp-name-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--navy);margin-bottom:4px;}
-.pfp-subtitle{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
-.pfp-upload-area{
-  border:2px dashed rgba(255,160,122,.4);
-  border-radius:14px;padding:20px;
-  cursor:pointer;transition:all .2s;
-  margin-bottom:14px;
-}
-.pfp-upload-area:hover{border-color:var(--salmon);background:rgba(255,160,122,.04);}
-.pfp-upload-area input{display:none;}
-.pfp-upload-icon{font-size:28px;margin-bottom:8px;}
-.pfp-upload-text{font-size:12px;color:var(--muted);}
-.pfp-save-btn{
-  width:100%;background:linear-gradient(90deg,var(--salmon),var(--gold));
-  color:#fff;border:none;padding:13px;border-radius:12px;
-  font-family:'Jost',sans-serif;font-size:12px;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;cursor:pointer;
-  transition:opacity .2s;
-}
-.pfp-save-btn:hover{opacity:.88;}
-.pfp-save-btn:disabled{opacity:.45;cursor:not-allowed;}
-.pfp-status{font-size:12px;color:var(--muted);margin-top:10px;min-height:18px;}
+/* FOTOMUUR */
+.foto-muur-grid{columns:2;gap:8px;}
+@media(min-width:480px){.foto-muur-grid{columns:3;}}
+.fmuur-item{break-inside:avoid;margin-bottom:8px;position:relative;border-radius:12px;overflow:hidden;cursor:pointer;}
+.fmuur-item img{width:100%;display:block;border-radius:12px;transition:transform .3s ease;}
+.fmuur-item:hover img{transform:scale(1.04);}
+.fmuur-cap{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;background:linear-gradient(0deg,rgba(26,26,64,.75),transparent);color:#fff;font-size:11px;font-weight:500;opacity:0;transition:opacity .2s;}
+.fmuur-item:hover .fmuur-cap{opacity:1;}
+.fmuur-empty{text-align:center;padding:60px 20px;color:var(--muted);}
+.fmuur-empty-icon{font-size:40px;margin-bottom:12px;}
  
-/* ── FOTO MODAL ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(26,26,64,.7);z-index:100;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
-.modal-overlay.open{display:flex;}
-.modal{background:var(--cream);border-radius:20px;padding:28px;width:min(500px,94vw);max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s ease;}
-@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:none;}}
-.modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(10,10,20,.92);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;object-fit:contain;}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;opacity:.7;transition:opacity .2s;}
+.lb-close:hover{opacity:1;}
+.lb-cap{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:12px;letter-spacing:1px;white-space:nowrap;}
  
-/* Modal header with profile pic */
-.modal-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.modal-pfp{
-  width:60px;height:60px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--lavender),var(--salmon));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#fff;
-  overflow:hidden;border:2px solid var(--gold);
-}
-.modal-pfp img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-.modal-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--navy);margin-bottom:2px;}
-.modal-score{font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
-.modal-acts-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px;}
-.acts-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
-.act-chip{background:rgba(255,160,122,.12);border:1px solid rgba(255,160,122,.3);color:var(--navy);font-size:12px;padding:5px 10px;border-radius:100px;font-weight:500;}
-.upload-section{border-top:1px solid var(--border);padding-top:20px;margin-top:4px;}
-.upload-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px;}
-.upload-form{display:flex;flex-direction:column;gap:10px;}
-.upload-select,.upload-input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-family:'Jost',sans-serif;font-size:13px;background:rgba(255,255,255,.8);color:var(--navy);outline:none;}
-.upload-select:focus,.upload-input:focus{border-color:var(--salmon);}
-.upload-btn{background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:11px;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
-.upload-btn:hover{opacity:.88;}
-.upload-btn:disabled{opacity:.5;cursor:not-allowed;}
-.upload-status{font-size:12px;color:var(--muted);text-align:center;}
-.foto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px;}
-.foto-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border);}
-.foto-empty{font-size:12px;color:var(--muted);text-align:center;padding:12px 0;}
+/* PROGRAMMA */
+.prog-day{margin-bottom:28px;}
+.prog-day-hdr{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.prog-day-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--salmon));}
+.prog-day-lbl{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--navy);}
+.prog-day-date{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+.prog-items{display:flex;flex-direction:column;gap:6px;}
+.prog-item{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:12px 16px;animation:fadeUp .4s ease both;position:relative;overflow:hidden;}
+.prog-item.now{border-color:rgba(255,160,122,.5);background:rgba(255,215,0,.06);}
+.prog-item.now::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--salmon));}
+.prog-time{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);width:48px;flex-shrink:0;text-align:right;}
+.prog-dot{width:8px;height:8px;border-radius:50%;background:var(--salmon);flex-shrink:0;}
+.prog-item.now .prog-dot{background:var(--gold);box-shadow:0 0 6px rgba(255,215,0,.6);}
+.prog-info{flex:1;min-width:0;}
+.prog-ttl{font-size:14px;font-weight:600;color:var(--navy);}
+.prog-loc{font-size:11px;color:var(--muted);margin-top:2px;}
+.prog-now-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gold);background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.3);padding:2px 8px;border-radius:100px;flex-shrink:0;}
  
-/* ── PROGRAMMA ── */
-.prog-day { margin-bottom: 28px; }
-.prog-day-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 12px;
-}
-.prog-day-dot {
-  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--gold), var(--salmon));
-}
-.prog-day-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 900; color: var(--navy);
-}
-.prog-day-date {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); font-weight: 500;
-}
-.prog-items { display: flex; flex-direction: column; gap: 6px; }
-.prog-item {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--card); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); border-radius: 12px;
-  padding: 12px 16px; animation: fadeUp .4s ease both;
-  position: relative; overflow: hidden;
-}
-.prog-item.now {
-  border-color: rgba(255,160,122,.5);
-  background: rgba(255,215,0,.06);
-}
-.prog-item.now::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-  background: linear-gradient(180deg, var(--gold), var(--salmon));
-}
-.prog-time {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px; font-weight: 700; color: var(--navy);
-  width: 48px; flex-shrink: 0; text-align: right;
-}
-.prog-dot-line {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 3px; flex-shrink: 0;
-}
-.prog-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--salmon); }
-.prog-item.now .prog-dot { background: var(--gold); box-shadow: 0 0 6px rgba(255,215,0,.6); }
-.prog-info { flex: 1; min-width: 0; }
-.prog-title { font-size: 14px; font-weight: 600; color: var(--navy); }
-.prog-loc { font-size: 11px; color: var(--muted); margin-top: 2px; }
-.prog-now-badge {
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  font-weight: 700; color: var(--gold);
-  background: rgba(255,215,0,.12); border: 1px solid rgba(255,215,0,.3);
-  padding: 2px 8px; border-radius: 100px; flex-shrink: 0;
-}
-.prog-edit-note {
-  text-align: center; font-size: 11px; color: var(--muted);
-  margin-top: 20px; padding: 12px;
-  border: 1px dashed var(--border); border-radius: 10px;
-}
+/* WIEL */
+.wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:8px 0;}
+.wheel-canvas-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+.wheel-pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid var(--navy);z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+#wheelCanvas{border-radius:50%;box-shadow:0 8px 40px rgba(26,26,64,.18),0 0 0 4px white,0 0 0 6px var(--border);display:block;}
+.wheel-spin-btn{background:linear-gradient(135deg,var(--navy),var(--lavender));color:#fff;border:none;padding:14px 40px;border-radius:100px;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;letter-spacing:1px;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 20px rgba(26,26,64,.25);}
+.wheel-spin-btn:hover{transform:scale(1.04);box-shadow:0 6px 28px rgba(26,26,64,.3);}
+.wheel-spin-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.wheel-result{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--navy);text-align:center;min-height:40px;}
+.wheel-result span{color:var(--salmon);}
+.wheel-members-card{width:100%;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:18px;}
+.wheel-members-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;}
+.wheel-toggle-all{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Jost',sans-serif;font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;transition:all .2s;}
+.wheel-toggle-all:hover{border-color:var(--salmon);color:var(--salmon);}
+.wheel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;}
+.wheel-chip{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,.6);cursor:pointer;transition:all .18s;font-size:12px;font-weight:500;color:var(--navy);user-select:none;}
+.wheel-chip.active{background:linear-gradient(90deg,rgba(255,160,122,.15),rgba(255,215,0,.1));border-color:rgba(255,160,122,.5);}
+.wheel-chip .chip-dot{width:7px;height:7px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .18s;}
+.wheel-chip.active .chip-dot{background:var(--salmon);}
+.wheel-count{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
  
-/* ── WIEL ── */
-.wheel-wrap {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 20px; padding: 8px 0;
-}
-.wheel-canvas-wrap {
-  position: relative; display: flex;
-  align-items: center; justify-content: center;
-}
-.wheel-pointer {
-  position: absolute; top: -10px; left: 50%;
-  transform: translateX(-50%);
-  width: 0; height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 24px solid var(--navy);
-  z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
-}
-#wheelCanvas {
-  border-radius: 50%;
-  box-shadow: 0 8px 40px rgba(26,26,64,.18), 0 0 0 4px white, 0 0 0 6px var(--border);
-  display: block;
-}
-.wheel-spin-btn {
-  background: linear-gradient(135deg, var(--navy), var(--lavender));
-  color: #fff; border: none;
-  padding: 14px 40px; border-radius: 100px;
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 900; letter-spacing: 1px;
-  cursor: pointer; transition: transform .15s, box-shadow .15s;
-  box-shadow: 0 4px 20px rgba(26,26,64,.25);
-}
-.wheel-spin-btn:hover { transform: scale(1.04); box-shadow: 0 6px 28px rgba(26,26,64,.3); }
-.wheel-spin-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
- 
-.wheel-result {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px; font-weight: 900; color: var(--navy);
-  text-align: center; min-height: 40px;
-  animation: fadeUp .4s ease;
-}
-.wheel-result span { color: var(--salmon); }
- 
-/* Leden selector */
-.wheel-members-card {
-  width: 100%; background: var(--card); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); border-radius: 16px; padding: 18px;
-}
-.wheel-members-title {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--muted); font-weight: 500; margin-bottom: 14px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.wheel-toggle-all {
-  background: none; border: 1px solid var(--border);
-  color: var(--muted); font-family: 'Jost', sans-serif;
-  font-size: 11px; padding: 4px 10px; border-radius: 6px;
-  cursor: pointer; transition: all .2s;
-}
-.wheel-toggle-all:hover { border-color: var(--salmon); color: var(--salmon); }
-.wheel-members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 6px;
-}
-.wheel-member-chip {
-  display: flex; align-items: center; gap: 7px;
-  padding: 7px 10px; border-radius: 100px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.6);
-  cursor: pointer; transition: all .18s;
-  font-size: 12px; font-weight: 500; color: var(--navy);
-  user-select: none;
-}
-.wheel-member-chip.active {
-  background: linear-gradient(90deg, rgba(255,160,122,.15), rgba(255,215,0,.1));
-  border-color: rgba(255,160,122,.5);
-}
-.wheel-member-chip .chip-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--border); flex-shrink: 0; transition: background .18s;
-}
-.wheel-member-chip.active .chip-dot { background: var(--salmon); }
-.wheel-count {
-  font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px;
-}
- 
-/* ── STATES ── */
+/* STATES */
 .state-msg{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px;}
 .spinner{width:30px;height:30px;border:2px solid rgba(26,26,64,.1);border-top-color:var(--salmon);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
-@keyframes spin{to{transform:rotate(360deg);}}
- 
+@keyframes spin{to{transform:rotate(360deg)}}
 footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;opacity:.5;}
 </style>
 </head>
 <body>
  
-<!-- SIDE SUNRAYS -->
 <div class="side-rays">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="rayL" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="rayL2" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#ffa07a" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#ffa07a" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="rayL3" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#f7aeb9" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#f7aeb9" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="rayR" x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="rayR2" x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0%" stop-color="#ffa07a" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#ffa07a" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="rayR3" x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0%" stop-color="#f7aeb9" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#f7aeb9" stop-opacity="0"/>
-      </linearGradient>
+      <linearGradient id="rL"  x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#ffd700" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rL2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffa07a"/><stop offset="100%" stop-color="#ffa07a" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rL3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f7aeb9"/><stop offset="100%" stop-color="#f7aeb9" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rR"  x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#ffd700" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rR2" x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#ffa07a"/><stop offset="100%" stop-color="#ffa07a" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rR3" x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#f7aeb9"/><stop offset="100%" stop-color="#f7aeb9" stop-opacity="0"/></linearGradient>
     </defs>
-    <!-- Left rays fanning from left edge -->
-    <polygon class="sray" points="0,420 260,-60 0,-60"   fill="url(#rayL)"/>
-    <polygon class="sray" points="0,420 320,0   260,-60" fill="url(#rayL2)"/>
-    <polygon class="sray" points="0,420 360,60  320,0"   fill="url(#rayL3)"/>
-    <polygon class="sray" points="0,420 380,130 360,60"  fill="url(#rayL)"/>
-    <polygon class="sray" points="0,420 380,210 380,130" fill="url(#rayL2)"/>
-    <!-- Right rays fanning from right edge -->
-    <polygon class="sray" points="1440,420 1180,-60 1440,-60" fill="url(#rayR)"/>
-    <polygon class="sray" points="1440,420 1120,0  1180,-60"  fill="url(#rayR2)"/>
-    <polygon class="sray" points="1440,420 1080,60 1120,0"    fill="url(#rayR3)"/>
-    <polygon class="sray" points="1440,420 1060,130 1080,60"  fill="url(#rayR)"/>
-    <polygon class="sray" points="1440,420 1060,210 1060,130" fill="url(#rayR2)"/>
+    <polygon class="sray" points="0,420 260,-60 0,-60"   fill="url(#rL)"/>
+    <polygon class="sray" points="0,420 320,0   260,-60" fill="url(#rL2)"/>
+    <polygon class="sray" points="0,420 360,60  320,0"   fill="url(#rL3)"/>
+    <polygon class="sray" points="0,420 380,130 360,60"  fill="url(#rL)"/>
+    <polygon class="sray" points="0,420 380,210 380,130" fill="url(#rL2)"/>
+    <polygon class="sray" points="1440,420 1180,-60 1440,-60" fill="url(#rR)"/>
+    <polygon class="sray" points="1440,420 1120,0  1180,-60"  fill="url(#rR2)"/>
+    <polygon class="sray" points="1440,420 1080,60 1120,0"    fill="url(#rR3)"/>
+    <polygon class="sray" points="1440,420 1060,130 1080,60"  fill="url(#rR)"/>
+    <polygon class="sray" points="1440,420 1060,210 1060,130" fill="url(#rR2)"/>
   </svg>
 </div>
  
 <div class="wrap">
-  <!-- COUNTDOWN -->
   <div class="countdown-bar">
     <div class="cd-block"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">dagen</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">uur</span></div>
@@ -524,40 +267,27 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">sec</span></div>
   </div>
  
-  <!-- HERO -->
   <div class="hero">
     <div class="sunrise-wrap">
       <svg viewBox="0 0 440 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <polygon class="ray" points="220,128 204,0  236,0"  fill="#ffd700"/>
-          <polygon class="ray" points="220,128 182,5  206,0"  fill="#ffb347"/>
-          <polygon class="ray" points="220,128 234,0  258,5"  fill="#ffb347"/>
-          <polygon class="ray" points="220,128 160,16 184,4"  fill="#ffa07a"/>
-          <polygon class="ray" points="220,128 256,4  280,16" fill="#ffa07a"/>
-          <polygon class="ray" points="220,128 134,34 160,14" fill="#f7aeb9"/>
-          <polygon class="ray" points="220,128 280,14 306,34" fill="#f7aeb9"/>
-          <polygon class="ray" points="220,128 106,58 132,36" fill="#f7aeb9"/>
-          <polygon class="ray" points="220,128 308,36 334,58" fill="#f7aeb9"/>
-          <polygon class="ray" points="220,128  78,84 104,60" fill="#ffd700"/>
-          <polygon class="ray" points="220,128 336,60 362,84" fill="#ffd700"/>
-          <polygon class="ray" points="220,128  50,112  76,86" fill="#ffa07a"/>
-          <polygon class="ray" points="220,128 364,86 390,112" fill="#ffa07a"/>
-        </g>
+        <polygon class="ray" points="220,128 204,0  236,0"  fill="#ffd700"/>
+        <polygon class="ray" points="220,128 182,5  206,0"  fill="#ffb347"/>
+        <polygon class="ray" points="220,128 234,0  258,5"  fill="#ffb347"/>
+        <polygon class="ray" points="220,128 160,16 184,4"  fill="#ffa07a"/>
+        <polygon class="ray" points="220,128 256,4  280,16" fill="#ffa07a"/>
+        <polygon class="ray" points="220,128 134,34 160,14" fill="#f7aeb9"/>
+        <polygon class="ray" points="220,128 280,14 306,34" fill="#f7aeb9"/>
+        <polygon class="ray" points="220,128 106,58 132,36" fill="#f7aeb9"/>
+        <polygon class="ray" points="220,128 308,36 334,58" fill="#f7aeb9"/>
+        <polygon class="ray" points="220,128  78,84 104,60" fill="#ffd700"/>
+        <polygon class="ray" points="220,128 336,60 362,84" fill="#ffd700"/>
+        <polygon class="ray" points="220,128  50,112  76,86" fill="#ffa07a"/>
+        <polygon class="ray" points="220,128 364,86 390,112" fill="#ffa07a"/>
         <path d="M 116 128 A 104 104 0 0 1 324 128 Z" fill="url(#sg)" opacity=".9"/>
         <line x1="0" y1="128" x2="440" y2="128" stroke="url(#hg)" stroke-width="2"/>
         <defs>
-          <radialGradient id="sg" cx="50%" cy="100%" r="50%">
-            <stop offset="0%"   stop-color="#ffd700"/>
-            <stop offset="55%"  stop-color="#ffa07a"/>
-            <stop offset="100%" stop-color="#f7aeb9" stop-opacity=".5"/>
-          </radialGradient>
-          <linearGradient id="hg" x1="0" y1="0" x2="440" y2="0">
-            <stop offset="0%"   stop-color="transparent"/>
-            <stop offset="25%"  stop-color="#ffa07a"/>
-            <stop offset="50%"  stop-color="#ffd700"/>
-            <stop offset="75%"  stop-color="#ffa07a"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </linearGradient>
+          <radialGradient id="sg" cx="50%" cy="100%" r="50%"><stop offset="0%" stop-color="#ffd700"/><stop offset="55%" stop-color="#ffa07a"/><stop offset="100%" stop-color="#f7aeb9" stop-opacity=".5"/></radialGradient>
+          <linearGradient id="hg" x1="0" y1="0" x2="440" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="25%" stop-color="#ffa07a"/><stop offset="50%" stop-color="#ffd700"/><stop offset="75%" stop-color="#ffa07a"/><stop offset="100%" stop-color="transparent"/></linearGradient>
         </defs>
       </svg>
     </div>
@@ -570,842 +300,465 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
  
   <div class="horizon"></div>
  
-  <!-- TABS -->
   <div class="tabs">
-    <button class="tab-btn active"  data-tab="lustrumweek">Lustrumweek</button>
-    <button class="tab-btn"        data-tab="jachtseizoen">Jachtseizoen</button>
-    <button class="tab-btn"        data-tab="bakrecord">🏋️ Baktrek</button>
-    <button class="tab-btn"        data-tab="grafiek">📈 Grafiek</button>
-    <button class="tab-btn"        data-tab="programma">📅 Programma</button>
-    <button class="tab-btn"        data-tab="wiel">🎰 Wiel</button>
+    <button class="tab-btn active" data-tab="lustrumweek">Lustrumweek</button>
+    <button class="tab-btn" data-tab="jachtseizoen">Jachtseizoen</button>
+    <button class="tab-btn" data-tab="bakrecord">🏋️ Baktrek</button>
+    <button class="tab-btn" data-tab="grafiek">📈 Grafiek</button>
+    <button class="tab-btn" data-tab="fotomuur">📸 Foto's</button>
+    <button class="tab-btn" data-tab="programma">📅 Programma</button>
+    <button class="tab-btn" data-tab="wiel">🌅 Dageraad</button>
   </div>
  
   <div class="tab-pane active" id="tab-lustrumweek"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
-  <div class="tab-pane"        id="tab-jachtseizoen"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
-  <div class="tab-pane"        id="tab-bakrecord">   <div class="state-msg"><div class="spinner"></div>Laden…</div></div>
-  <div class="tab-pane"        id="tab-grafiek">     <div class="state-msg"><div class="spinner"></div>Laden…</div></div>
-  <div class="tab-pane"        id="tab-programma"></div>
-  <div class="tab-pane"        id="tab-wiel"></div>
+  <div class="tab-pane" id="tab-jachtseizoen"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
+  <div class="tab-pane" id="tab-bakrecord"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
+  <div class="tab-pane" id="tab-grafiek"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
+  <div class="tab-pane" id="tab-fotomuur"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
+  <div class="tab-pane" id="tab-programma"></div>
+  <div class="tab-pane" id="tab-wiel"></div>
  
   <footer>✦ Automatisch bijgewerkt elke 30 seconden ✦</footer>
 </div>
  
-<!-- PROFIELFOTO MODAL -->
-<div class="pfp-modal-overlay" id="pfp-modal">
-  <div class="pfp-modal">
-    <button class="pfp-modal-close" onclick="closePfpModal()">✕</button>
-    <div class="pfp-preview-wrap">
-      <div class="pfp-preview" id="pfp-preview-circle">
-        <span id="pfp-preview-initials"></span>
+<!-- STATISTIEKEN + PROFIELFOTO MODAL -->
+<div class="overlay" id="stat-overlay">
+  <div class="stat-modal">
+    <button class="modal-x" onclick="closeStatModal()">✕</button>
+    <div class="stat-header">
+      <div class="avatar stat-big-av avatar-click" id="stat-av" data-naam="" onclick="document.getElementById('pfp-input').click()">
+        <span id="stat-av-init"></span>
+      </div>
+      <div>
+        <div class="stat-name" id="stat-name"></div>
+        <div class="stat-sub" id="stat-sub"></div>
       </div>
     </div>
-    <div class="pfp-name-label" id="pfp-modal-name"></div>
-    <div class="pfp-subtitle">Profielfoto</div>
-    <div class="pfp-upload-area" onclick="document.getElementById('pfp-file-input').click()">
-      <input type="file" id="pfp-file-input" accept="image/*" onchange="previewPfp(this)">
-      <div class="pfp-upload-icon">🖼️</div>
-      <div class="pfp-upload-text">Klik om een foto te kiezen</div>
+    <div class="stat-cards" id="stat-cards"></div>
+    <div class="stat-sec" style="margin-bottom:10px">Voortgang naar #1</div>
+    <div class="stat-prog-bar"><div class="stat-prog-fill" id="stat-prog" style="width:0%"></div></div>
+    <div class="stat-prog-labels"><span id="stat-prog-l"></span><span id="stat-prog-r"></span></div>
+    <div class="stat-sec">Activiteiten</div>
+    <div class="acts-wrap" id="stat-acts"></div>
+    <div class="pfp-section">
+      <div class="stat-sec" style="margin-bottom:10px">📷 Profielfoto</div>
+      <div class="pfp-upload-area" onclick="document.getElementById('pfp-input').click()">
+        <input type="file" id="pfp-input" accept="image/*" onchange="previewPfp(this)">
+        <div style="font-size:28px">🖼️</div>
+        <div><div class="pfp-txt">Klik om foto te kiezen</div><div class="pfp-sub">Je gezicht vervangt het rondje in de ranglijst</div></div>
+      </div>
+      <button class="pfp-save" id="pfp-save-btn" onclick="savePfp()" disabled>Opslaan</button>
+      <div class="pfp-status" id="pfp-status"></div>
     </div>
-    <button class="pfp-save-btn" id="pfp-save-btn" onclick="savePfp()">Opslaan</button>
-    <div class="pfp-status" id="pfp-status"></div>
   </div>
 </div>
  
-<!-- ACTIVITEITEN / FOTO MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-header">
-      <div class="modal-pfp" id="modal-pfp-circle">
-        <span id="modal-pfp-initials"></span>
-      </div>
-      <div>
-        <div class="modal-name" id="modal-name"></div>
-        <div class="modal-score" id="modal-score"></div>
-      </div>
-    </div>
-    <div class="modal-acts-title">Voltooide activiteiten</div>
-    <div class="acts-grid" id="modal-acts"></div>
-    <div class="upload-section">
-      <div class="upload-title">📸 Foto toevoegen</div>
-      <div class="upload-form">
-        <select class="upload-select" id="upload-act"><option value="">— Kies activiteit —</option></select>
-        <input class="upload-input" type="file" id="upload-file" accept="image/*">
-        <button class="upload-btn" id="upload-btn" onclick="uploadFoto()">Uploaden</button>
-        <div class="upload-status" id="upload-status"></div>
-      </div>
-    </div>
-    <div id="modal-fotos" class="foto-grid"></div>
-  </div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cap" id="lb-cap"></div>
 </div>
  
 <script>
-// ── CONFIG ───────────────────────────────────────────────────
 const APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxZzJcu01bo0ykZ_uaYnO2z2N7CPffNchGTgtuTyGbgMVfBQwDcnybpKcWd-gRTghH7/exec';
 const EINDE_LUSTRUMWEEK = new Date('2025-05-30T23:59:59+02:00');
  
-// ── STATE ────────────────────────────────────────────────────
-let cachedData   = null;
-let activeTab    = 'lustrumweek';
-let modalPersoon = null;
-let pfpPersoon   = null;
-let pfpFileData  = null;
-let grafiekChart = null;
+let cachedData    = null;
+let activeTab     = 'lustrumweek';
+let statPersoon   = null;
+let pfpData       = null;
+let grafiekChart  = null;
 let wheelSpinning = false;
-let wheelSelected = new Set(); // namen die meedoen
+let wheelSelected = new Set();
 let wheelAngle    = 0;
+const pfpCache    = {};
  
-const pfpCache = {};
- 
-// ── COUNTDOWN ────────────────────────────────────────────────
-function tickCountdown() {
-  const diff = EINDE_LUSTRUMWEEK - Date.now();
-  if (diff <= 0) {
-    document.querySelector('.countdown-bar').innerHTML =
-      '<div style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:900;color:var(--navy);padding:12px 0;">🌅 Lustrumweek is voorbij!</div>';
-    return;
-  }
-  const d = Math.floor(diff / 864e5);
-  const h = Math.floor((diff % 864e5) / 36e5);
-  const m = Math.floor((diff % 36e5) / 6e4);
-  const s = Math.floor((diff % 6e4) / 1e3);
-  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
-  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+// COUNTDOWN
+function tickCD() {
+  const d = EINDE_LUSTRUMWEEK - Date.now();
+  if (d <= 0) { document.querySelector('.countdown-bar').innerHTML='<div style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:900;padding:12px 0">🌅 Lustrumweek is voorbij!</div>'; return; }
+  document.getElementById('cd-d').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(Math.floor((d%864e5)/36e5)).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(Math.floor((d%36e5)/6e4)).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(Math.floor((d%6e4)/1e3)).padStart(2,'0');
 }
-setInterval(tickCountdown, 1000);
-tickCountdown();
+setInterval(tickCD,1000); tickCD();
  
-// ── HELPERS ──────────────────────────────────────────────────
-const initials = n => n.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-const fmtTime  = iso => iso ? new Date(iso).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
-const medals   = {0:'🥇',1:'🥈',2:'🥉'};
+// HELPERS
+const ini  = n => n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+const fmt  = iso => iso?new Date(iso).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}):'';
+const meds = {0:'🥇',1:'🥈',2:'🥉'};
  
-// Build an avatar element: img if pfp available, else initials
-function avatarHtml(naam, classes, style='') {
-  const url = pfpCache[naam];
-  const inits = initials(naam);
-  const imgTag = url ? `<img src="${url}" alt="${naam}">` : '';
-  return `<div class="${classes}" style="${style}" data-naam="${naam}">${imgTag}<span${url ? ' style="display:none"' : ''}>${inits}</span></div>`;
+function avEl(naam, extraCls='', w=40, fs=14) {
+  const url=pfpCache[naam];
+  return `<div class="avatar ${extraCls}" data-naam="${naam}" style="width:${w}px;height:${w}px;font-size:${fs}px">
+    ${url?`<img src="${url}" alt="${naam}">`:''}
+    <span${url?' style="display:none"':''}>${ini(naam)}</span>
+  </div>`;
 }
  
-// ── TABS ─────────────────────────────────────────────────────
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    activeTab = btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+// TABS
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeTab=btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById('tab-' + activeTab).classList.add('active');
-    // Programma doesn't need server data
-    if (activeTab === 'programma') { renderProgramma(); return; }
-    // Wiel can render with or without data
-    if (activeTab === 'wiel') { if (cachedData) renderWiel(); else renderProgramma(); return; }
-    if (cachedData) renderActiveTab();
+    document.getElementById('tab-'+activeTab).classList.add('active');
+    if(activeTab==='programma'){renderProgramma();return;}
+    if(activeTab==='fotomuur'){renderFotomuur();return;}
+    if(activeTab==='wiel'&&cachedData){renderWiel();return;}
+    if(cachedData) renderActiveTab();
   });
 });
  
-function renderActiveTab() {
-  if (activeTab === 'lustrumweek')  renderStand('lustrumweek',  cachedData.lustrumweek);
-  if (activeTab === 'jachtseizoen') renderStand('jachtseizoen', cachedData.jachtseizoen);
-  if (activeTab === 'bakrecord')    renderBaktrek(cachedData.bakrecord);
-  if (activeTab === 'grafiek')      renderGrafiek(cachedData.geschiedenis, cachedData.lustrumweek);
-  if (activeTab === 'programma')    renderProgramma();
-  if (activeTab === 'wiel')         renderWiel();
+function renderActiveTab(){
+  if(activeTab==='lustrumweek') renderStand('lustrumweek',cachedData.lustrumweek);
+  if(activeTab==='jachtseizoen') renderStand('jachtseizoen',cachedData.jachtseizoen);
+  if(activeTab==='bakrecord') renderBaktrek(cachedData.bakrecord);
+  if(activeTab==='grafiek') renderGrafiek(cachedData.geschiedenis,cachedData.lustrumweek);
+  if(activeTab==='fotomuur') renderFotomuur();
+  if(activeTab==='programma') renderProgramma();
+  if(activeTab==='wiel') renderWiel();
 }
  
-// ── STAND ────────────────────────────────────────────────────
-function renderStand(tabId, data) {
-  const el = document.getElementById('tab-' + tabId);
-  if (!data?.scores?.length) { el.innerHTML = '<div class="state-msg">Geen data.</div>'; return; }
- 
-  const scores = data.scores;
-  const maxPts = scores[0].total || 1;
-  const [g, s, b] = scores;
- 
-  const podCols = [
-    s ? `<div class="pod-col pod-silver" onclick="openModal('${s.name}')">
-           ${avatarHtml(s.name,'pod-avatar')}
-           <div class="pod-name">${s.name.split(' ')[0]}</div>
-           <div class="pod-pts">${s.total}</div>
-           <div class="pod-block"></div></div>` : '',
-    g ? `<div class="pod-col pod-gold" onclick="openModal('${g.name}')">
-           ${avatarHtml(g.name,'pod-avatar')}
-           <div class="pod-name">${g.name.split(' ')[0]}</div>
-           <div class="pod-pts">${g.total}</div>
-           <div class="pod-block"></div></div>` : '',
-    b ? `<div class="pod-col pod-bronze" onclick="openModal('${b.name}')">
-           ${avatarHtml(b.name,'pod-avatar')}
-           <div class="pod-name">${b.name.split(' ')[0]}</div>
-           <div class="pod-pts">${b.total}</div>
-           <div class="pod-block"></div></div>` : '',
-  ].join('');
- 
-  const rows = scores.map((p, i) => {
-    const pct  = (p.total / maxPts * 100).toFixed(1);
-    const rank = medals[i] ?? (i+1);
-    const acts = p.completedActivities?.length ? p.completedActivities.join(' · ') : 'Nog geen activiteiten';
-    // Avatar click → pfp modal; row click → activiteiten modal
-    return `
-      <div class="player-row" style="animation-delay:${(i*.04).toFixed(2)}s" onclick="openModal('${p.name}')">
-        <div class="rank">${rank}</div>
-        ${avatarHtml(p.name, 'p-avatar', '')}
-        <div class="p-info">
-          <div class="p-name">${p.name}</div>
-          <div class="p-acts">${acts}</div>
-          <div class="p-bar"><div class="p-fill" style="width:${pct}%"></div></div>
-        </div>
-        <div class="p-score">
-          <div class="p-pts">${p.total}</div>
-          <div class="p-lbl">pts</div>
-        </div>
-      </div>`;
+// STAND
+function renderStand(tabId, data){
+  const el=document.getElementById('tab-'+tabId);
+  if(!data?.scores?.length){el.innerHTML='<div class="state-msg">Geen data.</div>';return;}
+  const scores=data.scores, maxPts=scores[0].total||1;
+  const [g,s,b]=scores;
+  const pod=(p,cls,w,fs)=>!p?'':
+    `<div class="pod-col ${cls}" onclick="openStatModal('${p.name}')">
+      ${avEl(p.name,'pod-avatar avatar-click',w,fs)}
+      <div class="pod-name">${p.name.split(' ')[0]}</div>
+      <div class="pod-pts">${p.total}</div>
+      <div class="pod-block"></div>
+    </div>`;
+  const podHtml=[pod(s,'pod-silver',52,18),pod(g,'pod-gold',64,22),pod(b,'pod-bronze',52,18)].join('');
+  const rows=scores.map((p,i)=>{
+    const pct=(p.total/maxPts*100).toFixed(1);
+    const acts=p.completedActivities?.length?p.completedActivities.join(' · '):'Nog geen activiteiten';
+    return `<div class="player-row" style="animation-delay:${(i*.04).toFixed(2)}s" onclick="openStatModal('${p.name}')">
+      <div class="rank">${meds[i]??i+1}</div>
+      ${avEl(p.name,'row-avatar avatar-click',40,14)}
+      <div class="p-info">
+        <div class="p-name">${p.name}</div>
+        <div class="p-acts">${acts}</div>
+        <div class="p-bar"><div class="p-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="p-score"><div class="p-pts">${p.total}</div><div class="p-lbl">pts</div></div>
+    </div>`;
   }).join('');
- 
-  el.innerHTML = `
-    <div class="podium">${podCols}</div>
-    <div class="section-bar">
-      <div class="section-label">Alle deelnemers</div>
-      <button class="refresh-btn" onclick="fetchData()">↻ Vernieuwen</button>
-    </div>
+  el.innerHTML=`<div class="podium">${podHtml}</div>
+    <div class="section-bar"><div class="section-label">Alle deelnemers</div><button class="refresh-btn" onclick="fetchData()">↻ Vernieuwen</button></div>
     <div class="leaderboard">${rows}</div>`;
- 
-  // Attach avatar click → pfp modal (stop propagation so row modal doesn't also open)
-  el.querySelectorAll('.p-avatar').forEach(av => {
-    av.addEventListener('click', e => {
-      e.stopPropagation();
-      openPfpModal(av.dataset.naam);
-    });
+  el.querySelectorAll('.avatar-click').forEach(av=>{
+    av.addEventListener('click',e=>{e.stopPropagation();openStatModal(av.dataset.naam,true);});
   });
 }
  
-// ── BAKTREK ──────────────────────────────────────────────────
-function renderBaktrek(data) {
-  const el = document.getElementById('tab-bakrecord');
-  if (!data?.records?.length) {
-    el.innerHTML = '<div class="state-msg">Nog geen baktrek records.<br><small>Maak een tabblad "bak record" aan met naam in kolom B en tijd in kolom C.</small></div>';
-    return;
-  }
+// STAT MODAL
+function openStatModal(naam, scrollPfp=false){
+  statPersoon=naam; pfpData=null;
+  document.getElementById('pfp-input').value='';
+  document.getElementById('pfp-status').textContent='';
+  document.getElementById('pfp-save-btn').disabled=true;
+  const av=document.getElementById('stat-av');
+  av.dataset.naam=naam;
+  const pfpUrl=pfpCache[naam];
+  av.innerHTML=pfpUrl?`<img src="${pfpUrl}" alt="${naam}"><span style="display:none">${ini(naam)}</span>`:`<span>${ini(naam)}</span>`;
+  document.getElementById('stat-av-init').textContent=ini(naam);
+  document.getElementById('stat-name').textContent=naam;
+  const lw=cachedData?.lustrumweek?.scores||[];
+  const js=cachedData?.jachtseizoen?.scores||[];
+  const lwP=lw.find(p=>p.name===naam)||{total:0,completedActivities:[]};
+  const jsP=js.find(p=>p.name===naam)||{total:0,completedActivities:[]};
+  const lwR=lw.findIndex(p=>p.name===naam)+1||'—';
+  const jsR=js.findIndex(p=>p.name===naam)+1||'—';
+  const lwL=lw[0]?.total||1;
+  const allActs=cachedData?.lustrumweek?.activities||[];
+  document.getElementById('stat-sub').textContent=`#${lwR} Lustrumweek  ·  #${jsR} Jachtseizoen`;
+  document.getElementById('stat-cards').innerHTML=`
+    <div class="stat-card hi"><div class="stat-val">${lwP.total}</div><div class="stat-lbl">Lustrumweek pts</div></div>
+    <div class="stat-card"><div class="stat-val">${jsP.total}</div><div class="stat-lbl">Jachtseizoen pts</div></div>
+    <div class="stat-card"><div class="stat-val">#${lwR}</div><div class="stat-lbl">Positie</div></div>
+    <div class="stat-card"><div class="stat-val">${lwP.completedActivities.length}/${allActs.length}</div><div class="stat-lbl">Activiteiten</div></div>`;
+  const pct=Math.round((lwP.total/lwL)*100);
+  document.getElementById('stat-prog').style.width=pct+'%';
+  document.getElementById('stat-prog-l').textContent=lwP.total+' pts';
+  document.getElementById('stat-prog-r').textContent=lwL+' pts (#1)';
+  const done=new Set(lwP.completedActivities);
+  document.getElementById('stat-acts').innerHTML=allActs.map(a=>
+    `<div class="act-chip ${done.has(a.name)?'done':'miss'}">${done.has(a.name)?'✓ ':''}${a.name}</div>`
+  ).join('')||'<span style="font-size:12px;color:var(--muted)">Geen activiteiten</span>';
+  document.getElementById('stat-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  if(scrollPfp) setTimeout(()=>document.querySelector('.pfp-section')?.scrollIntoView({behavior:'smooth',block:'center'}),350);
+}
+function closeStatModal(){document.getElementById('stat-overlay').classList.remove('open');document.body.style.overflow='';statPersoon=null;pfpData=null;}
+document.getElementById('stat-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('stat-overlay'))closeStatModal();});
  
-  const record = data.records[0];
-  const video  = data.video;
-  const directUrl = video?.fileId ? `https://drive.google.com/uc?export=download&id=${video.fileId}` : null;
- 
-  const videoHtml = directUrl ? `
-    <div class="bak-video-hero">
-      <div class="bak-video-label">🏆 Huidig record — ${record.naam} — ${record.tijd}s</div>
-      <div class="bak-video-wrap">
-        <video controls playsinline preload="metadata">
-          <source src="${directUrl}">
-        </video>
-      </div>
-      <div class="bak-upload-bar">
-        <input class="bak-upload-input" type="file" id="bak-video-input" accept="video/*">
-        <button class="bak-upload-btn" onclick="uploadBakVideo('${record.naam}')">↑ Nieuw filmpje</button>
-        <div class="bak-upload-status" id="bak-upload-status"></div>
-      </div>
-    </div>` : `
-    <div class="bak-video-hero">
-      <div class="bak-video-label">🏆 Huidig record — ${record.naam} — ${record.tijd}s</div>
-      <div class="bak-video-placeholder">
-        <div class="upload-icon">🎬</div>
-        Nog geen filmpje — upload er een!
-      </div>
-      <div class="bak-upload-bar">
-        <input class="bak-upload-input" type="file" id="bak-video-input" accept="video/*">
-        <button class="bak-upload-btn" onclick="uploadBakVideo('${record.naam}')">↑ Upload filmpje</button>
-        <div class="bak-upload-status" id="bak-upload-status"></div>
-      </div>
-    </div>`;
- 
-  const rows = data.records.map((r, i) => {
-    const rank  = medals[i] ?? (i+1);
-    const badge = i === 0 ? '<span class="bak-record-badge">Record</span>' : '';
-    return `<div class="bak-row" style="animation-delay:${(i*.04).toFixed(2)}s">
-      <div class="bak-rank">${rank}</div>
-      <div class="bak-name">${r.naam}${badge}</div>
-      <div class="bak-time">${r.tijd}s</div>
-    </div>`;
-  }).join('');
- 
-  el.innerHTML = `${videoHtml}
-    <div class="section-bar" style="margin-bottom:12px">
-      <div class="section-label">Alle tijden</div>
-    </div>
-    <div class="bak-list">${rows}</div>`;
+// PROFIELFOTO
+function previewPfp(input){
+  if(!input.files[0]) return;
+  const file=input.files[0];
+  const fr=new FileReader();
+  fr.onload=e=>{
+    const av=document.getElementById('stat-av');
+    av.innerHTML=`<img src="${e.target.result}" alt="preview"><span style="display:none">${ini(statPersoon)}</span>`;
+    document.getElementById('pfp-save-btn').disabled=false;
+  };
+  fr.readAsDataURL(file);
+  const fr2=new FileReader();
+  fr2.onload=e=>{pfpData={base64full:e.target.result,mimetype:file.type,bestandsnaam:file.name};};
+  fr2.readAsDataURL(file);
+}
+async function savePfp(){
+  if(!pfpData) return;
+  const btn=document.getElementById('pfp-save-btn');
+  const st=document.getElementById('pfp-status');
+  btn.disabled=true; st.textContent='Uploaden…';
+  try{
+    const res=await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({type:'profielfoto',naam:statPersoon,bestandsnaam:pfpData.bestandsnaam,base64data:pfpData.base64full.split(',')[1],mimetype:pfpData.mimetype})});
+    const d=await res.json();
+    if(d.success){
+      pfpCache[statPersoon]=`https://drive.google.com/uc?export=view&id=${d.fileId}`;
+      st.textContent='✓ Foto opgeslagen!';
+      document.querySelectorAll(`[data-naam="${statPersoon}"]`).forEach(el=>{
+        el.innerHTML=`<img src="${pfpCache[statPersoon]}" alt="${statPersoon}"><span style="display:none">${ini(statPersoon)}</span>`;
+      });
+      setTimeout(closeStatModal,900);
+    } else {st.textContent='Fout: '+d.error;btn.disabled=false;}
+  }catch(e){st.textContent='Upload mislukt.';btn.disabled=false;}
 }
  
-// ── GRAFIEK ──────────────────────────────────────────────────
-function renderGrafiek(geschiedenis, lustrumData) {
-  const el = document.getElementById('tab-grafiek');
-  if (!geschiedenis?.length) {
-    el.innerHTML = '<div class="state-msg">Nog geen historische data.<br><small>Komt automatisch na de eerste dag.</small></div>';
-    return;
-  }
-  el.innerHTML = `<div class="chart-card"><div class="chart-title">Punten per dag — Lustrumweek</div><div class="chart-wrap"><canvas id="chartCanvas"></canvas></div></div>`;
-  const labels   = geschiedenis.map(d => d.datum);
-  const namen    = lustrumData?.scores?.slice(0,8).map(p => p.name) || [];
-  const palette  = ['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40','#c8895a','#aaa'];
-  const datasets = namen.map((naam,i) => ({
-    label: naam, data: geschiedenis.map(d => d[naam]??0),
-    borderColor: palette[i%palette.length], backgroundColor: palette[i%palette.length]+'22',
-    borderWidth:2, pointRadius:3, tension:.35, fill:false,
-  }));
-  if (grafiekChart) grafiekChart.destroy();
-  grafiekChart = new Chart(document.getElementById('chartCanvas'),{
-    type:'line', data:{labels,datasets},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{labels:{font:{family:'Jost',size:11},color:'#8a7a6a',boxWidth:12}}},
-      scales:{
-        x:{ticks:{font:{family:'Jost',size:11},color:'#8a7a6a'},grid:{color:'rgba(26,26,64,.06)'}},
-        y:{ticks:{font:{family:'Jost',size:11},color:'#8a7a6a'},grid:{color:'rgba(26,26,64,.06)'},beginAtZero:true}
-      }
+// BAKTREK
+function renderBaktrek(data){
+  const el=document.getElementById('tab-bakrecord');
+  if(!data?.records?.length){el.innerHTML='<div class="state-msg">Nog geen baktrek records.</div>';return;}
+  const rec=data.records[0];
+  const du=data.video?.fileId?`https://drive.google.com/uc?export=download&id=${data.video.fileId}`:null;
+  const vidHtml=du
+    ?`<div class="bak-video-hero"><div class="bak-vid-lbl">🏆 Huidig record — ${rec.naam} — ${rec.tijd}s</div>
+       <div class="bak-vid-wrap"><video controls playsinline preload="metadata"><source src="${du}"></video></div>
+       <div class="bak-upload-bar"><input class="bak-upload-input" type="file" id="bak-vid-in" accept="video/*">
+       <button class="bak-upload-btn" onclick="uploadBakVid('${rec.naam}')">↑ Nieuw filmpje</button>
+       <div class="bak-upload-status" id="bak-st"></div></div></div>`
+    :`<div class="bak-video-hero"><div class="bak-vid-lbl">🏆 Huidig record — ${rec.naam} — ${rec.tijd}s</div>
+       <div class="bak-vid-ph"><div style="font-size:32px">🎬</div>Nog geen filmpje</div>
+       <div class="bak-upload-bar"><input class="bak-upload-input" type="file" id="bak-vid-in" accept="video/*">
+       <button class="bak-upload-btn" onclick="uploadBakVid('${rec.naam}')">↑ Upload filmpje</button>
+       <div class="bak-upload-status" id="bak-st"></div></div></div>`;
+  const rows=data.records.map((r,i)=>`<div class="bak-row" style="animation-delay:${(i*.04).toFixed(2)}s">
+    <div class="bak-rank">${meds[i]??i+1}</div>
+    <div class="bak-name">${r.naam}${i===0?'<span class="bak-badge">Record</span>':''}</div>
+    <div class="bak-time">${r.tijd}s</div></div>`).join('');
+  el.innerHTML=`${vidHtml}<div class="section-bar" style="margin-bottom:12px"><div class="section-label">Alle tijden</div></div><div class="bak-list">${rows}</div>`;
+}
+ 
+// GRAFIEK
+function renderGrafiek(gesch,lwData){
+  const el=document.getElementById('tab-grafiek');
+  if(!gesch?.length){el.innerHTML='<div class="state-msg">Nog geen historische data.<br><small>Komt automatisch na de eerste dag.</small></div>';return;}
+  el.innerHTML=`<div class="chart-card"><div class="chart-title">Punten per dag — Lustrumweek</div><div class="chart-wrap"><canvas id="chartCanvas"></canvas></div></div>`;
+  const labels=gesch.map(d=>d.datum);
+  const namen=lwData?.scores?.slice(0,8).map(p=>p.name)||[];
+  const pal=['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40','#c8895a','#aaa'];
+  const datasets=namen.map((n,i)=>({label:n,data:gesch.map(d=>d[n]??0),borderColor:pal[i%pal.length],backgroundColor:pal[i%pal.length]+'22',borderWidth:2,pointRadius:3,tension:.35,fill:false}));
+  if(grafiekChart) grafiekChart.destroy();
+  grafiekChart=new Chart(document.getElementById('chartCanvas'),{type:'line',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{family:'Jost',size:11},color:'#8a7a6a',boxWidth:12}}},scales:{x:{ticks:{font:{family:'Jost',size:11},color:'#8a7a6a'},grid:{color:'rgba(26,26,64,.06)'}},y:{ticks:{font:{family:'Jost',size:11},color:'#8a7a6a'},grid:{color:'rgba(26,26,64,.06)'},beginAtZero:true}}}});
+}
+ 
+// FOTOMUUR
+async function renderFotomuur(){
+  const el=document.getElementById('tab-fotomuur');
+  el.innerHTML='<div class="state-msg"><div class="spinner"></div>Foto\'s laden…</div>';
+  try{
+    const res=await fetch(`${APPS_SCRIPT_URL}?action=allfotos`);
+    const data=await res.json();
+    if(!data.fotos?.length){
+      el.innerHTML=`<div class="fmuur-empty"><div class="fmuur-empty-icon">📷</div>Nog geen foto's.<br><small style="color:var(--muted)">Klik op een naam in de stand om foto's te uploaden.</small></div>`;
+      return;
     }
-  });
+    const items=data.fotos.map(f=>`<div class="fmuur-item" onclick="openLb('${f.url}','${f.naam} · ${f.activiteit}')">
+      <img src="${f.url}" alt="${f.naam}" loading="lazy">
+      <div class="fmuur-cap">${f.naam} · ${f.activiteit}</div>
+    </div>`).join('');
+    el.innerHTML=`<div class="section-bar" style="margin-bottom:16px"><div class="section-label">${data.fotos.length} foto's</div><button class="refresh-btn" onclick="renderFotomuur()">↻</button></div><div class="foto-muur-grid">${items}</div>`;
+  }catch(e){el.innerHTML='<div class="state-msg">❌ Kan foto\'s niet laden.</div>';}
 }
+function openLb(url,cap){document.getElementById('lb-img').src=url;document.getElementById('lb-cap').textContent=cap;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
  
-// ── PROGRAMMA ────────────────────────────────────────────────
-// ✏️ Pas de dagen en activiteiten hieronder aan
-const PROGRAMMA = [
-  {
-    dag: 'Donderdag', datum: '21 mei',
-    items: [
-      { tijd: '', titel: 'Lustrum-HV', locatie: '' },
-    ]
-  },
-  {
-    dag: 'Vrijdag', datum: '22 mei',
-    items: [
-      { tijd: '', titel: 'DAGERAAD Borrel', locatie: '' },
-    ]
-  },
-  {
-    dag: 'Zaterdag', datum: '23 mei',
-    items: [
-      { tijd: '', titel: 'PITSTOP', locatie: '' },
-    ]
-  },
-  {
-    dag: 'Maandag', datum: '25 mei',
-    items: [
-      { tijd: '', titel: 'GLOW IN DE DAGERAAD', locatie: '' },
-    ]
-  },
-    {
-    dag: 'Dinsdag', datum: '26 mei',
-    items: [
-      { tijd: '', titel: 'BRALLEN TOT DE ZON OPKOMT', locatie: '' },
-    ]
-  },
-  {
-    dag: 'Woensdag', datum: '27 mei',
-    items: [
-      { tijd: '', titel: 'LUSTRUMRECEPTIE', locatie: '' },
-      
-    ]
-  },
-   {
-    dag: 'Donderdag', datum: '28 mei',
-    items: [
-      { tijd: '', titel: 'GLOREND BRALLEN', locatie: '' },
-      { tijd: '', titel: 'AURORA OPEN AIR', locatie: '' },
-      
-    ]
-  },
-  {
-    dag: 'Vrijdag', datum: '29 mei',
-    items: [
-      { tijd: '', titel: 'LUSTRUMGALA', locatie: '' },
-      
-    ]
-  },
-  {
-    dag: 'Zaterdag', datum: '20 mei',
-    items: [
-      { tijd: '', titel: 'ALS DE MORGEN IS GEKOMEN', locatie: '' },
-      
-    ]
-  },
+// PROGRAMMA
+const PROGRAMMA=[
+  {dag:'Donderdag',datum:'21 mei',items:[{tijd:'',titel:'Lustrum-HV',locatie:''}]},
+  {dag:'Vrijdag',datum:'22 mei',items:[{tijd:'',titel:'DAGERAAD Borrel',locatie:''}]},
+  {dag:'Zaterdag',datum:'23 mei',items:[{tijd:'',titel:'PITSTOP',locatie:''}]},
+  {dag:'Maandag',datum:'25 mei',items:[{tijd:'',titel:'GLOW IN DE DAGERAAD',locatie:''}]},
+  {dag:'Dinsdag',datum:'26 mei',items:[{tijd:'',titel:'BRALLEN TOT DE ZON OPKOMT',locatie:''}]},
+  {dag:'Woensdag',datum:'27 mei',items:[{tijd:'',titel:'LUSTRUMRECEPTIE',locatie:''}]},
+  {dag:'Donderdag',datum:'28 mei',items:[{tijd:'',titel:'GLOREND BRALLEN',locatie:''},{tijd:'',titel:'AURORA OPEN AIR',locatie:''}]},
+  {dag:'Vrijdag',datum:'29 mei',items:[{tijd:'',titel:'LUSTRUMGALA',locatie:''}]},
+  {dag:'Zaterdag',datum:'30 mei',items:[{tijd:'',titel:'ALS DE MORGEN IS GEKOMEN',locatie:''}]},
 ];
- 
-function renderProgramma() {
-  const el = document.getElementById('tab-programma');
-  const now = new Date();
-  const nowMins = now.getHours() * 60 + now.getMinutes();
-  const todayDate = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })
-    .replace(' ', ' '); // normalize
- 
-  const html = PROGRAMMA.map((dag, di) => {
-    const items = dag.items.map((item, ii) => {
-      // Check if this is roughly "now" (same day, within the timeslot)
-      const [h, m] = item.tijd.split(':').map(Number);
-      const itemMins = h * 60 + m;
-      const nextItem = dag.items[ii + 1];
-      const nextMins = nextItem
-        ? nextItem.tijd.split(':').map((v,i) => i===0 ? Number(v)*60 : Number(v)).reduce((a,b)=>a+b)
-        : itemMins + 120;
-      const isNow = dag.datum === todayDate && nowMins >= itemMins && nowMins < nextMins;
- 
-      return `<div class="prog-item${isNow ? ' now' : ''}" style="animation-delay:${(ii*.05).toFixed(2)}s">
-        <div class="prog-time">${item.tijd}</div>
-        <div class="prog-dot-line"><div class="prog-dot"></div></div>
-        <div class="prog-info">
-          <div class="prog-title">${item.titel}</div>
-          ${item.locatie ? `<div class="prog-loc">📍 ${item.locatie}</div>` : ''}
-        </div>
-        ${isNow ? '<div class="prog-now-badge">Nu bezig</div>' : ''}
+function renderProgramma(){
+  const el=document.getElementById('tab-programma');
+  const now=new Date();
+  const todayFmt=now.toLocaleDateString('nl-NL',{day:'numeric',month:'long'});
+  el.innerHTML=PROGRAMMA.map(dag=>{
+    const items=dag.items.map((item,ii)=>{
+      const [h=0,m=0]=item.tijd?item.tijd.split(':').map(Number):[0,0];
+      const iM=h*60+m, ni=dag.items[ii+1];
+      const nM=ni?ni.tijd.split(':').map((v,j)=>j===0?Number(v)*60:Number(v)).reduce((a,b)=>a+b,0):iM+180;
+      const nM2=now.getHours()*60+now.getMinutes();
+      const isNow=dag.datum===todayFmt&&item.tijd&&nM2>=iM&&nM2<nM;
+      return `<div class="prog-item${isNow?' now':''}" style="animation-delay:${(ii*.05).toFixed(2)}s">
+        ${item.tijd?`<div class="prog-time">${item.tijd}</div>`:'<div class="prog-time" style="opacity:.3">—</div>'}
+        <div class="prog-dot"></div>
+        <div class="prog-info"><div class="prog-ttl">${item.titel}</div>${item.locatie?`<div class="prog-loc">📍 ${item.locatie}</div>`:''}</div>
+        ${isNow?'<div class="prog-now-badge">Nu bezig</div>':''}
       </div>`;
     }).join('');
- 
-    return `<div class="prog-day">
-      <div class="prog-day-header">
-        <div class="prog-day-dot"></div>
-        <div>
-          <div class="prog-day-label">${dag.dag}</div>
-          <div class="prog-day-date">${dag.datum}</div>
-        </div>
-      </div>
-      <div class="prog-items">${items}</div>
-    </div>`;
+    return `<div class="prog-day"><div class="prog-day-hdr"><div class="prog-day-dot"></div><div><div class="prog-day-lbl">${dag.dag}</div><div class="prog-day-date">${dag.datum}</div></div></div><div class="prog-items">${items}</div></div>`;
   }).join('');
- 
-  el.innerHTML = html + `
-    <div class="prog-edit-note">
-      ✏️ Programma aanpassen? Zoek <code>const PROGRAMMA</code> in de HTML
-    </div>`;
 }
  
-// ── WIEL ─────────────────────────────────────────────────────
-const WIEL_KLEUREN = [
-  '#ffd700','#ffa07a','#f7aeb9','#7d5ba6',
-  '#f12509','#1a1a40','#c8895a','#88c0d0',
-  '#a3be8c','#ebcb8b','#bf616a','#d08770',
-];
- 
-function renderWiel() {
-  const el = document.getElementById('tab-wiel');
- 
-  // Get all names from cached data
-  const namen = [
-    ...(cachedData?.lustrumweek?.scores || []),
-    ...(cachedData?.jachtseizoen?.scores || []),
-  ].map(p => p.name);
-  const uniqueNamen = [...new Set(namen)];
- 
-  // Init selection: all active if first time
-  if (wheelSelected.size === 0) uniqueNamen.forEach(n => wheelSelected.add(n));
- 
-  el.innerHTML = `
-    <div class="wheel-wrap">
-      <div class="wheel-result" id="wheel-result"></div>
-      <div class="wheel-canvas-wrap">
-        <div class="wheel-pointer"></div>
-        <canvas id="wheelCanvas" width="300" height="300"></canvas>
-      </div>
-      <button class="wheel-spin-btn" id="wheel-spin-btn" onclick="spinWiel()">🎰 Draaien!</button>
-      <div class="wheel-members-card">
-        <div class="wheel-members-title">
-          <span>Deelnemers</span>
-          <button class="wheel-toggle-all" onclick="toggleAllWiel()">Alles aan/uit</button>
-        </div>
-        <div class="wheel-members-grid" id="wheel-grid"></div>
-        <div class="wheel-count" id="wheel-count"></div>
-      </div>
-    </div>`;
- 
-  buildWielGrid(uniqueNamen);
-  drawWiel();
+// WIEL
+const WK=['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40','#c8895a','#88c0d0','#a3be8c','#ebcb8b','#bf616a','#d08770'];
+function renderWiel(){
+  const el=document.getElementById('tab-wiel');
+  const namen=[...new Set([...(cachedData?.lustrumweek?.scores||[]),...(cachedData?.jachtseizoen?.scores||[])].map(p=>p.name))];
+  if(wheelSelected.size===0) namen.forEach(n=>wheelSelected.add(n));
+  el.innerHTML=`<div class="wheel-wrap">
+    <div class="wheel-result" id="wheel-result"></div>
+    <div class="wheel-canvas-wrap"><div class="wheel-pointer"></div><canvas id="wheelCanvas" width="300" height="300"></canvas></div>
+    <button class="wheel-spin-btn" id="wheel-spin-btn" onclick="spinWiel()">🌅 Draaien!</button>
+    <div class="wheel-members-card">
+      <div class="wheel-members-title"><span>Deelnemers</span><button class="wheel-toggle-all" onclick="toggleAllWiel()">Alles aan/uit</button></div>
+      <div class="wheel-grid" id="wheel-grid"></div>
+      <div class="wheel-count" id="wheel-count"></div>
+    </div>
+  </div>`;
+  buildWielGrid(namen); drawWiel();
 }
- 
-function buildWielGrid(namen) {
-  const grid = document.getElementById('wheel-grid');
-  if (!grid) return;
-  grid.innerHTML = namen.map(naam => `
-    <div class="wheel-member-chip ${wheelSelected.has(naam) ? 'active' : ''}"
-         onclick="toggleWielLid('${naam}')" data-naam="${naam}">
-      <div class="chip-dot"></div>
-      ${naam.split(' ')[0]}
-    </div>`).join('');
+function buildWielGrid(namen){
+  const g=document.getElementById('wheel-grid');
+  if(!g) return;
+  g.innerHTML=namen.map(n=>`<div class="wheel-chip ${wheelSelected.has(n)?'active':''}" onclick="toggleWielLid('${n}')" data-naam="${n}"><div class="chip-dot"></div>${n.split(' ')[0]}</div>`).join('');
   updateWielCount();
 }
- 
-function toggleWielLid(naam) {
-  if (wheelSelected.has(naam)) {
-    if (wheelSelected.size <= 2) return; // minimum 2
-    wheelSelected.delete(naam);
-  } else {
-    wheelSelected.add(naam);
-  }
-  const chip = document.querySelector(`.wheel-member-chip[data-naam="${naam}"]`);
-  if (chip) chip.classList.toggle('active', wheelSelected.has(naam));
-  updateWielCount();
-  drawWiel();
+function toggleWielLid(naam){
+  if(wheelSelected.has(naam)){if(wheelSelected.size<=2)return;wheelSelected.delete(naam);}
+  else wheelSelected.add(naam);
+  const c=document.querySelector(`.wheel-chip[data-naam="${naam}"]`);
+  if(c) c.classList.toggle('active',wheelSelected.has(naam));
+  updateWielCount(); drawWiel();
 }
- 
-function toggleAllWiel() {
-  const namen = [...document.querySelectorAll('.wheel-member-chip')].map(c => c.dataset.naam);
-  const allActive = namen.every(n => wheelSelected.has(n));
-  namen.forEach(n => allActive ? wheelSelected.delete(n) : wheelSelected.add(n));
-  // Ensure minimum 2
-  if (wheelSelected.size < 2) namen.slice(0,2).forEach(n => wheelSelected.add(n));
-  namen.forEach(naam => {
-    const chip = document.querySelector(`.wheel-member-chip[data-naam="${naam}"]`);
-    if (chip) chip.classList.toggle('active', wheelSelected.has(naam));
+function toggleAllWiel(){
+  const namen=[...document.querySelectorAll('.wheel-chip')].map(c=>c.dataset.naam);
+  const allOn=namen.every(n=>wheelSelected.has(n));
+  namen.forEach(n=>allOn?wheelSelected.delete(n):wheelSelected.add(n));
+  if(wheelSelected.size<2) namen.slice(0,2).forEach(n=>wheelSelected.add(n));
+  namen.forEach(n=>{const c=document.querySelector(`.wheel-chip[data-naam="${n}"]`);if(c)c.classList.toggle('active',wheelSelected.has(n));});
+  updateWielCount(); drawWiel();
+}
+function updateWielCount(){const el=document.getElementById('wheel-count');if(el)el.textContent=`${wheelSelected.size} deelnemers actief`;}
+function drawWiel(hi=-1){
+  const cv=document.getElementById('wheelCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d'),dl=[...wheelSelected],n=dl.length;if(!n)return;
+  const cx=150,cy=150,r=144,sa=(2*Math.PI)/n;
+  ctx.clearRect(0,0,300,300);
+  dl.forEach((naam,i)=>{
+    const s=wheelAngle+i*sa-Math.PI/2,e=s+sa,isH=i===hi;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,isH?r+6:r,s,e);ctx.closePath();
+    ctx.fillStyle=WK[i%WK.length];ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.6)';ctx.lineWidth=2;ctx.stroke();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(s+sa/2);
+    ctx.textAlign='right';ctx.fillStyle='#fff';
+    ctx.font=`bold ${n>16?9:n>10?11:13}px Jost,sans-serif`;
+    ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=3;
+    ctx.fillText(naam.split(' ')[0],r-10,4);ctx.restore();
   });
-  updateWielCount();
-  drawWiel();
+  ctx.beginPath();ctx.arc(cx,cy,28,0,2*Math.PI);ctx.fillStyle='#fff';ctx.fill();
+  ctx.strokeStyle='rgba(26,26,64,.12)';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='#1a1a40';ctx.font='bold 11px Jost,sans-serif';ctx.textAlign='center';
+  ctx.fillText('✦',cx,cy+4);
 }
- 
-function updateWielCount() {
-  const el = document.getElementById('wheel-count');
-  if (el) el.textContent = `${wheelSelected.size} deelnemers actief`;
-}
- 
-function drawWiel(highlightIndex = -1) {
-  const canvas = document.getElementById('wheelCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const deelnemers = [...wheelSelected];
-  const n = deelnemers.length;
-  if (n === 0) return;
- 
-  const cx = 150, cy = 150, r = 144;
-  const sliceAngle = (2 * Math.PI) / n;
- 
-  ctx.clearRect(0, 0, 300, 300);
- 
-  deelnemers.forEach((naam, i) => {
-    const start = wheelAngle + i * sliceAngle - Math.PI / 2;
-    const end   = start + sliceAngle;
-    const isHighlight = i === highlightIndex;
- 
-    // Slice
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.arc(cx, cy, isHighlight ? r + 6 : r, start, end);
-    ctx.closePath();
-    ctx.fillStyle = WIEL_KLEUREN[i % WIEL_KLEUREN.length];
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,.6)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
- 
-    // Label
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(start + sliceAngle / 2);
-    ctx.textAlign = 'right';
-    ctx.fillStyle = '#fff';
-    ctx.font = `bold ${n > 16 ? 9 : n > 10 ? 11 : 13}px Jost, sans-serif`;
-    ctx.shadowColor = 'rgba(0,0,0,.4)';
-    ctx.shadowBlur = 3;
-    ctx.fillText(naam.split(' ')[0], r - 10, 4);
-    ctx.restore();
-  });
- 
-  // Center circle
-  ctx.beginPath();
-  ctx.arc(cx, cy, 28, 0, 2 * Math.PI);
-  ctx.fillStyle = '#fff';
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(26,26,64,.12)';
-  ctx.lineWidth = 2;
-  ctx.stroke();
- 
-  // Center logo
-  ctx.fillStyle = '#1a1a40';
-  ctx.font = 'bold 11px Jost, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('✦', cx, cy + 4);
-}
- 
-function spinWiel() {
-  if (wheelSpinning) return;
-  const deelnemers = [...wheelSelected];
-  if (deelnemers.length < 2) return;
- 
-  wheelSpinning = true;
-  document.getElementById('wheel-result').innerHTML = '';
-  document.getElementById('wheel-spin-btn').disabled = true;
- 
-  const totalRotation = (8 + Math.random() * 8) * Math.PI * 2; // 8-16 rondjes
-  const duration      = 4000 + Math.random() * 1500;
-  const start         = performance.now();
-  const startAngle    = wheelAngle;
- 
-  function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
- 
-  function frame(now) {
-    const elapsed  = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased    = easeOut(progress);
-    wheelAngle = startAngle + totalRotation * eased;
-    drawWiel();
- 
-    if (progress < 1) {
-      requestAnimationFrame(frame);
-    } else {
-      // Find winner: pointer is at top (angle 0 from top = -π/2)
-      // The slice that contains angle 0 (top) wins
-      const n = deelnemers.length;
-      const sliceAngle = (2 * Math.PI) / n;
-      const norm = (((-wheelAngle) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-      const winnerIdx = Math.floor(norm / sliceAngle) % n;
-      const winner = deelnemers[winnerIdx];
- 
-      drawWiel(winnerIdx);
- 
-      document.getElementById('wheel-result').innerHTML =
-        `🎉 <span>${winner}</span>`;
-      document.getElementById('wheel-spin-btn').disabled = false;
-      wheelSpinning = false;
-    }
+function spinWiel(){
+  if(wheelSpinning) return;
+  const dl=[...wheelSelected];if(dl.length<2)return;
+  wheelSpinning=true;
+  document.getElementById('wheel-result').innerHTML='';
+  document.getElementById('wheel-spin-btn').disabled=true;
+  const tot=(8+Math.random()*8)*Math.PI*2,dur=4000+Math.random()*1500;
+  const t0=performance.now(),a0=wheelAngle;
+  const ease=t=>1-Math.pow(1-t,4);
+  function frame(now){
+    const p=Math.min((now-t0)/dur,1);
+    wheelAngle=a0+tot*ease(p); drawWiel();
+    if(p<1){requestAnimationFrame(frame);return;}
+    const sa=(2*Math.PI)/dl.length;
+    const norm=((-wheelAngle%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+    const wi=Math.floor(norm/sa)%dl.length;
+    drawWiel(wi);
+    document.getElementById('wheel-result').innerHTML=`🎉 <span>${dl[wi]}</span>`;
+    document.getElementById('wheel-spin-btn').disabled=false;
+    wheelSpinning=false;
   }
- 
   requestAnimationFrame(frame);
 }
  
-// ── PROFIELFOTO MODAL ─────────────────────────────────────────
-function openPfpModal(naam) {
-  pfpPersoon  = naam;
-  pfpFileData = null;
-  document.getElementById('pfp-modal-name').textContent = naam;
-  document.getElementById('pfp-preview-initials').textContent = initials(naam);
-  document.getElementById('pfp-status').textContent = '';
-  document.getElementById('pfp-file-input').value = '';
- 
-  // Show existing pfp if available
-  const circle = document.getElementById('pfp-preview-circle');
-  const existing = pfpCache[naam];
-  circle.innerHTML = existing
-    ? `<img src="${existing}" alt="${naam}"><span style="display:none">${initials(naam)}</span>`
-    : `<span>${initials(naam)}</span>`;
- 
-  document.getElementById('pfp-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+// UPLOADS
+async function uploadBakVid(naam){
+  const inp=document.getElementById('bak-vid-in'),st=document.getElementById('bak-st'),btn=document.querySelector('.bak-upload-btn');
+  if(!inp?.files[0]){st.textContent='Kies eerst een filmpje.';return;}
+  const f=inp.files[0];if(f.size>100*1024*1024){st.textContent='Max 100 MB.';return;}
+  btn.disabled=true;st.textContent='Uploaden…';
+  try{
+    const b64=await toB64(f);
+    const res=await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({type:'bakvideo',naam,bestandsnaam:f.name,base64data:b64.split(',')[1],mimetype:f.type})});
+    const d=await res.json();
+    if(d.success){st.textContent='✓ Geüpload!';setTimeout(fetchData,1500);}
+    else st.textContent='Fout: '+d.error;
+  }catch(e){st.textContent='Upload mislukt.';}
+  finally{btn.disabled=false;}
 }
+const toB64=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f);});
  
-function closePfpModal() {
-  document.getElementById('pfp-modal').classList.remove('open');
-  document.body.style.overflow = '';
-  pfpPersoon = null; pfpFileData = null;
-}
- 
-function previewPfp(input) {
-  if (!input.files[0]) return;
-  const file = input.files[0];
-  const reader = new FileReader();
-  reader.onload = e => {
-    const circle = document.getElementById('pfp-preview-circle');
-    circle.innerHTML = `<img src="${e.target.result}" alt="preview"><span style="display:none">${initials(pfpPersoon)}</span>`;
-  };
-  reader.readAsDataURL(file);
- 
-  // Store for upload
-  const fr = new FileReader();
-  fr.onload = e => {
-    pfpFileData = { base64full: e.target.result, mimetype: file.type, bestandsnaam: file.name };
-  };
-  fr.readAsDataURL(file);
-}
- 
-async function savePfp() {
-  if (!pfpFileData) { document.getElementById('pfp-status').textContent = 'Kies eerst een foto.'; return; }
-  const btn = document.getElementById('pfp-save-btn');
-  const statusEl = document.getElementById('pfp-status');
-  btn.disabled = true;
-  statusEl.textContent = 'Uploaden…';
- 
-  try {
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({
-        type:         'profielfoto',
-        naam:         pfpPersoon,
-        bestandsnaam: pfpFileData.bestandsnaam,
-        base64data:   pfpFileData.base64full.split(',')[1],
-        mimetype:     pfpFileData.mimetype,
-      })
-    });
-    const data = await res.json();
-    if (data.success) {
-      // Cache the new pfp URL
-      pfpCache[pfpPersoon] = `https://drive.google.com/uc?export=view&id=${data.fileId}`;
-      statusEl.textContent = '✓ Opgeslagen!';
-      // Update all avatars on the page for this person
-      document.querySelectorAll(`[data-naam="${pfpPersoon}"]`).forEach(el => {
-        el.innerHTML = `<img src="${pfpCache[pfpPersoon]}" alt="${pfpPersoon}"><span style="display:none">${initials(pfpPersoon)}</span>`;
-      });
-      setTimeout(closePfpModal, 800);
-    } else {
-      statusEl.textContent = 'Fout: ' + data.error;
-    }
-  } catch(e) {
-    statusEl.textContent = 'Upload mislukt.';
-  } finally {
-    btn.disabled = false;
-  }
-}
- 
-// ── ACTIVITEITEN MODAL ────────────────────────────────────────
-function openModal(naam) {
-  modalPersoon = naam;
-  document.getElementById('modal-name').textContent = naam;
-  document.getElementById('modal-pfp-initials').textContent = initials(naam);
- 
-  // Set pfp in modal header
-  const pfpCircle = document.getElementById('modal-pfp-circle');
-  pfpCircle.dataset.naam = naam;
-  const pfpUrl = pfpCache[naam];
-  pfpCircle.innerHTML = pfpUrl
-    ? `<img src="${pfpUrl}" alt="${naam}"><span style="display:none">${initials(naam)}</span>`
-    : `<span>${initials(naam)}</span>`;
- 
-  const lw = cachedData?.lustrumweek?.scores?.find(s => s.name === naam);
-  const js = cachedData?.jachtseizoen?.scores?.find(s => s.name === naam);
-  document.getElementById('modal-score').textContent =
-    `Lustrumweek: ${lw?.total||0} pts  ·  Jachtseizoen: ${js?.total||0} pts`;
- 
-  const acts = [...(lw?.completedActivities||[]),...(js?.completedActivities||[])];
-  document.getElementById('modal-acts').innerHTML = acts.length
-    ? acts.map(a=>`<div class="act-chip">${a}</div>`).join('')
-    : '<div style="font-size:12px;color:var(--muted)">Nog geen activiteiten</div>';
- 
-  const allActs = [...(cachedData?.lustrumweek?.activities||[]),...(cachedData?.jachtseizoen?.activities||[])];
-  const sel = document.getElementById('upload-act');
-  sel.innerHTML = '<option value="">— Kies activiteit —</option>'
-    + allActs.map(a=>`<option value="${a.name}">${a.name}</option>`).join('');
- 
-  loadFotos(naam);
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
- 
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
-  modalPersoon = null;
-}
- 
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
-document.getElementById('pfp-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('pfp-modal')) closePfpModal();
-});
- 
-// ── FOTO UPLOAD ───────────────────────────────────────────────
-async function uploadFoto() {
-  const activiteit = document.getElementById('upload-act').value;
-  const fileInput  = document.getElementById('upload-file');
-  const statusEl   = document.getElementById('upload-status');
-  const btn        = document.getElementById('upload-btn');
-  if (!activiteit)         { statusEl.textContent = 'Kies eerst een activiteit.'; return; }
-  if (!fileInput.files[0]) { statusEl.textContent = 'Kies een foto.'; return; }
-  const file = fileInput.files[0];
-  btn.disabled = true; statusEl.textContent = 'Uploaden…';
-  try {
-    const base64 = await toBase64(file);
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({ naam:modalPersoon, activiteit, bestandsnaam:file.name, base64data:base64.split(',')[1], mimetype:file.type })
-    });
-    const data = await res.json();
-    if (data.success) { statusEl.textContent = '✓ Foto geüpload!'; fileInput.value=''; loadFotos(modalPersoon); }
-    else statusEl.textContent = 'Fout: ' + data.error;
-  } catch(e) { statusEl.textContent = 'Upload mislukt.'; }
-  finally { btn.disabled = false; }
-}
- 
-// ── BAKTREK VIDEO UPLOAD ──────────────────────────────────────
-async function uploadBakVideo(naam) {
-  const input    = document.getElementById('bak-video-input');
-  const statusEl = document.getElementById('bak-upload-status');
-  const btn      = document.querySelector('.bak-upload-btn');
-  if (!input?.files[0]) { statusEl.textContent = 'Kies eerst een filmpje.'; return; }
-  const file = input.files[0];
-  if (file.size > 100*1024*1024) { statusEl.textContent = 'Bestand mag max 100 MB zijn.'; return; }
-  btn.disabled = true; statusEl.textContent = 'Uploaden… (kan even duren)';
-  try {
-    const base64 = await toBase64(file);
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method:'POST',
-      body: JSON.stringify({ type:'bakvideo', naam, bestandsnaam:file.name, base64data:base64.split(',')[1], mimetype:file.type })
-    });
-    const data = await res.json();
-    if (data.success) { statusEl.textContent = '✓ Filmpje geüpload!'; setTimeout(fetchData, 1500); }
-    else statusEl.textContent = 'Fout: ' + data.error;
-  } catch(e) { statusEl.textContent = 'Upload mislukt.'; }
-  finally { btn.disabled = false; }
-}
- 
-function toBase64(file) {
-  return new Promise((res,rej) => {
-    const r = new FileReader();
-    r.onload = () => res(r.result);
-    r.onerror = rej;
-    r.readAsDataURL(file);
-  });
-}
- 
-async function loadFotos(naam) {
-  const container = document.getElementById('modal-fotos');
-  container.innerHTML = '<div class="foto-empty">Foto\'s laden…</div>';
-  try {
-    const res  = await fetch(`${APPS_SCRIPT_URL}?action=fotos&naam=${encodeURIComponent(naam)}`);
-    const data = await res.json();
-    container.innerHTML = data.fotos?.length
-      ? data.fotos.map(f=>`<img src="${f.url}" alt="${f.activiteit}" title="${f.activiteit}" loading="lazy">`).join('')
-      : '<div class="foto-empty">Nog geen foto\'s.</div>';
-  } catch { container.innerHTML = '<div class="foto-empty">Kan foto\'s niet laden.</div>'; }
-}
- 
-// ── FETCH ────────────────────────────────────────────────────
-async function fetchData() {
-  try {
-    const res = await fetch(APPS_SCRIPT_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const raw = await res.json();
- 
-    if (raw.scores && !raw.lustrumweek) {
-      cachedData = { lastUpdated:raw.lastUpdated, lustrumweek:{scores:raw.scores,activities:raw.activities||[]}, jachtseizoen:{scores:[],activities:[]}, bakrecord:{records:[]}, geschiedenis:[] };
-    } else {
-      cachedData = raw;
-    }
- 
-    // Load profile pictures if not yet cached
+// FETCH
+async function fetchData(){
+  try{
+    const res=await fetch(APPS_SCRIPT_URL);if(!res.ok)throw new Error();
+    const raw=await res.json();
+    cachedData=(raw.scores&&!raw.lustrumweek)
+      ?{lastUpdated:raw.lastUpdated,lustrumweek:{scores:raw.scores,activities:raw.activities||[]},jachtseizoen:{scores:[],activities:[]},bakrecord:{records:[]},geschiedenis:[]}
+      :raw;
     await loadAllPfps();
- 
-    document.getElementById('lastUpdated').textContent = 'Bijgewerkt om ' + fmtTime(cachedData.lastUpdated);
+    document.getElementById('lastUpdated').textContent='Bijgewerkt om '+fmt(cachedData.lastUpdated);
     renderActiveTab();
-  } catch(e) {
-    ['lustrumweek','jachtseizoen','bakrecord','grafiek'].forEach(t => {
-      document.getElementById('tab-'+t).innerHTML = `<div class="state-msg">❌ Kan data niet ophalen.<br><small style="display:block;margin-top:8px">Controleer of de web app correct is gepubliceerd.</small><button class="refresh-btn" style="margin-top:16px" onclick="fetchData()">Probeer opnieuw</button></div>`;
+  }catch(e){
+    ['lustrumweek','jachtseizoen','bakrecord','grafiek','fotomuur'].forEach(t=>{
+      const el=document.getElementById('tab-'+t);
+      if(el)el.innerHTML=`<div class="state-msg">❌ Kan data niet ophalen.<button class="refresh-btn" style="display:block;margin:16px auto 0" onclick="fetchData()">Probeer opnieuw</button></div>`;
     });
   }
 }
- 
-// Load all profile pictures for all known players
-async function loadAllPfps() {
-  const allNames = new Set([
-    ...(cachedData?.lustrumweek?.scores||[]).map(p=>p.name),
-    ...(cachedData?.jachtseizoen?.scores||[]).map(p=>p.name),
-  ]);
-  const toLoad = [...allNames].filter(n => !pfpCache[n]);
-  if (!toLoad.length) return;
- 
-  await Promise.allSettled(toLoad.map(async naam => {
-    try {
-      const res  = await fetch(`${APPS_SCRIPT_URL}?action=profielfoto&naam=${encodeURIComponent(naam)}`);
-      const data = await res.json();
-      if (data.url) pfpCache[naam] = data.url;
-    } catch {}
+async function loadAllPfps(){
+  const namen=new Set([...(cachedData?.lustrumweek?.scores||[]),...(cachedData?.jachtseizoen?.scores||[])].map(p=>p.name));
+  const toLoad=[...namen].filter(n=>!pfpCache[n]);
+  if(!toLoad.length) return;
+  await Promise.allSettled(toLoad.map(async naam=>{
+    try{const res=await fetch(`${APPS_SCRIPT_URL}?action=profielfoto&naam=${encodeURIComponent(naam)}`);const d=await res.json();if(d.url)pfpCache[naam]=d.url;}catch{}
   }));
 }
  
-setInterval(fetchData, 30000);
+setInterval(fetchData,30000);
 fetchData();
+renderProgramma();
 </script>
 </body>
 </html>
+ 
