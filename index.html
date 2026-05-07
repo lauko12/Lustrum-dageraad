@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -15,8 +16,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min-height:100vh;overflow-x:hidden;}
- 
-/* SIDE RAYS */
+
 .side-rays{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .side-rays svg{position:absolute;inset:0;width:100%;height:100%;}
 @keyframes sRay{0%,100%{opacity:var(--op)}50%{opacity:calc(var(--op)*.35)}}
@@ -26,17 +26,15 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .sray:nth-child(5){--op:.025;animation-delay:2.4s}.sray:nth-child(6){--op:.07;animation-delay:.3s}
 .sray:nth-child(7){--op:.055;animation-delay:.9s}.sray:nth-child(8){--op:.045;animation-delay:1.5s}
 .sray:nth-child(9){--op:.035;animation-delay:2.1s}.sray:nth-child(10){--op:.025;animation-delay:2.7s}
- 
+
 .wrap{max-width:700px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
- 
-/* COUNTDOWN */
+
 .countdown-bar{display:flex;justify-content:center;padding:10px 0 0;margin-bottom:4px;}
 .cd-block{text-align:center;padding:10px 18px;border-right:1px solid var(--border);}
 .cd-block:last-child{border-right:none;}
 .cd-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1;display:block;}
 .cd-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:3px;display:block;}
- 
-/* HERO */
+
 .hero{text-align:center;padding-top:28px;}
 .sunrise-wrap{position:relative;height:145px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:-2px;}
 .sunrise-wrap svg{width:440px;max-width:100%;overflow:visible;}
@@ -57,8 +55,7 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .last-updated{font-size:11px;color:var(--muted);margin-bottom:28px;}
 .horizon{height:2px;background:linear-gradient(90deg,transparent,var(--salmon) 20%,var(--gold) 50%,var(--salmon) 80%,transparent);margin-bottom:28px;border-radius:2px;}
- 
-/* TABS */
+
 .tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-bottom:24px;border-bottom:2px solid var(--border);}
 .tabs::-webkit-scrollbar{display:none;}
 .tab-btn{flex-shrink:0;background:none;border:none;padding:11px 14px 13px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;transition:color .25s;white-space:nowrap;}
@@ -66,20 +63,21 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .tab-btn.active{color:var(--navy);}
 .tab-btn.active::after{transform:scaleX(1);}
 .tab-pane{display:none;}.tab-pane.active{display:block;}
- 
+
 /* AVATAR */
 .avatar{border-radius:50%;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;color:#fff;flex-shrink:0;}
 .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;}
 .avatar span{position:relative;z-index:1;}
 .avatar-click{cursor:pointer;transition:transform .2s,box-shadow .2s;border:2px solid transparent;}
 .avatar-click:hover{transform:scale(1.12);box-shadow:0 0 0 3px rgba(255,160,122,.5);border-color:var(--salmon);}
-.avatar-click::before{content:'📷';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-size:13px;background:rgba(26,26,64,.45);border-radius:50%;opacity:0;transition:opacity .2s;}
-.avatar-click:hover::before{opacity:1;}
- 
+
+/* camera overlay on hover */
+.avatar-click::after{content:'📷';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-size:13px;background:rgba(26,26,64,.5);border-radius:50%;opacity:0;transition:opacity .2s;}
+.avatar-click:hover::after{opacity:1;}
+
 /* PODIUM */
 .podium{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-bottom:28px;}
 .pod-col{flex:1;max-width:196px;text-align:center;cursor:pointer;}
-.pod-col:hover .avatar{transform:scale(1.08);}
 .pod-avatar{margin:0 auto 7px;transition:transform .2s;}
 .pod-gold .pod-avatar{width:64px;height:64px;font-size:22px;background:linear-gradient(135deg,var(--gold),var(--salmon));box-shadow:0 6px 24px rgba(255,160,50,.35);}
 .pod-silver .pod-avatar{width:52px;height:52px;font-size:18px;background:linear-gradient(135deg,#bbb,#888);box-shadow:0 4px 14px rgba(0,0,0,.12);}
@@ -91,7 +89,7 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .pod-gold .pod-block{height:72px;background:linear-gradient(180deg,rgba(255,215,0,.18),rgba(255,215,0,.05));border:1px solid rgba(255,215,0,.28);border-bottom:none;}
 .pod-silver .pod-block{height:48px;background:linear-gradient(180deg,rgba(180,180,180,.12),rgba(180,180,180,.03));border:1px solid rgba(180,180,180,.2);border-bottom:none;}
 .pod-bronze .pod-block{height:32px;background:linear-gradient(180deg,rgba(200,137,90,.1),rgba(200,137,90,.02));border:1px solid rgba(200,137,90,.15);border-bottom:none;}
- 
+
 /* LEADERBOARD */
 .section-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;}
@@ -111,15 +109,22 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .p-score{text-align:right;flex-shrink:0;}
 .p-pts{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;line-height:1;color:var(--navy);}
 .p-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-weight:500;}
- 
-/* STATISTIEKEN MODAL */
+
+/* ============================================================
+   PROFIELFOTO MODAL — volledig herbouwd
+   ============================================================ */
 .overlay{position:fixed;inset:0;background:rgba(26,26,64,.7);z-index:150;display:none;align-items:center;justify-content:center;backdrop-filter:blur(5px);}
 .overlay.open{display:flex;}
 .stat-modal{background:var(--cream);border-radius:22px;padding:28px;width:min(520px,94vw);max-height:92vh;overflow-y:auto;position:relative;animation:mIn .3s ease;}
 @keyframes mIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 .modal-x{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
 .stat-header{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
-.stat-big-av{width:72px;height:72px;font-size:24px;background:linear-gradient(135deg,var(--lavender),var(--salmon));border:3px solid var(--gold);box-shadow:0 4px 20px rgba(255,215,0,.25);}
+
+/* grote avatar in modal — klikbaar voor foto upload */
+.stat-big-av{width:80px;height:80px;font-size:26px;background:linear-gradient(135deg,var(--lavender),var(--salmon));border:3px solid var(--gold);box-shadow:0 4px 20px rgba(255,215,0,.25);cursor:pointer;flex-shrink:0;position:relative;}
+.stat-big-av::after{content:'📷';position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(26,26,64,.55);border-radius:50%;opacity:0;transition:opacity .2s;}
+.stat-big-av:hover::after{opacity:1;}
+
 .stat-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px;}
 .stat-sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
@@ -136,20 +141,36 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .act-chip{font-size:11px;padding:4px 10px;border-radius:100px;font-weight:500;}
 .act-chip.done{background:rgba(255,160,122,.12);border:1px solid rgba(255,160,122,.3);color:var(--navy);}
 .act-chip.miss{background:rgba(26,26,64,.04);border:1px solid var(--border);color:var(--muted);text-decoration:line-through;}
-.pfp-section{border-top:1px solid var(--border);padding-top:18px;}
-.pfp-upload-area{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.6);border:1.5px dashed rgba(255,160,122,.4);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s;margin-bottom:10px;}
-.pfp-upload-area:hover{border-color:var(--salmon);background:rgba(255,160,122,.04);}
-.pfp-txt{font-size:13px;font-weight:500;color:var(--navy);}
-.pfp-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-.pfp-save{width:100%;background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:11px;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
-.pfp-save:hover{opacity:.88;}.pfp-save:disabled{opacity:.45;cursor:not-allowed;}
-.pfp-status{font-size:11px;color:var(--muted);text-align:center;margin-top:8px;min-height:16px;}
- 
-/* GRAFIEK */
-.chart-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;}
-.chart-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px;}
-.chart-wrap{position:relative;height:220px;}
- 
+
+/* --- PFP UPLOAD sectie --- */
+.pfp-section{border-top:1px solid var(--border);padding-top:20px;margin-top:4px;}
+.pfp-drop-zone{position:relative;border:2px dashed rgba(255,160,122,.45);border-radius:16px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .25s;background:rgba(255,255,255,.5);}
+.pfp-drop-zone:hover,.pfp-drop-zone.drag-over{border-color:var(--salmon);background:rgba(255,160,122,.06);}
+.pfp-drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pfp-drop-icon{font-size:36px;margin-bottom:8px;display:block;}
+.pfp-drop-txt{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.pfp-drop-sub{font-size:12px;color:var(--muted);}
+
+/* preview staat NAAST de zone als foto gekozen */
+.pfp-preview-row{display:flex;align-items:center;gap:16px;margin-top:14px;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.pfp-preview-thumb{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0;}
+.pfp-preview-info{flex:1;min-width:0;}
+.pfp-preview-name{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pfp-preview-size{font-size:11px;color:var(--muted);margin-top:2px;}
+.pfp-preview-remove{background:none;border:none;font-size:18px;color:var(--muted);cursor:pointer;padding:4px;transition:color .2s;}
+.pfp-preview-remove:hover{color:var(--red);}
+
+.pfp-save-btn{width:100%;margin-top:14px;background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:13px;border-radius:12px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.pfp-save-btn:hover:not(:disabled){opacity:.88;transform:translateY(-1px);}
+.pfp-save-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.pfp-status{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;min-height:18px;font-weight:500;}
+.pfp-status.ok{color:#2e7d32;}
+.pfp-status.err{color:var(--red);}
+
+/* progress bar voor upload */
+.pfp-progress{height:4px;background:rgba(26,26,64,.08);border-radius:4px;overflow:hidden;margin-top:10px;display:none;}
+.pfp-progress-fill{height:100%;background:linear-gradient(90deg,var(--salmon),var(--gold));border-radius:4px;width:0%;transition:width .3s ease;}
+
 /* BAKTREK */
 .bak-list{display:flex;flex-direction:column;gap:5px;}
 .bak-row{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:13px;padding:12px 16px;animation:fadeUp .4s ease both;}
@@ -157,23 +178,53 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .bak-name{flex:1;font-size:15px;font-weight:600;color:var(--navy);}
 .bak-time{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--navy);}
 .bak-badge{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--salmon));color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:100px;margin-left:8px;vertical-align:middle;}
-.bak-video-hero{margin-bottom:24px;}
-.bak-vid-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px;}
-.bak-vid-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000;}
-.bak-vid-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
-.bak-vid-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;height:180px;background:rgba(26,26,64,.04);border:2px dashed var(--border);border-radius:16px;color:var(--muted);font-size:13px;gap:8px;}
-.upload-zone{margin-top:16px;background:rgba(255,255,255,.6);border:1.5px dashed rgba(255,160,122,.4);border-radius:12px;padding:18px 16px;text-align:center;cursor:pointer;transition:all .2s;}
-.upload-zone:hover{border-color:var(--salmon);background:rgba(255,160,122,.04);}
-.upload-zone-icon{font-size:28px;margin-bottom:6px;}
-.upload-zone-txt{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px;}
-.upload-zone-sub{font-size:11px;color:var(--muted);}
-.upload-action-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
-.upload-action-row select{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Jost',sans-serif;font-size:12px;background:rgba(255,255,255,.8);color:var(--navy);outline:none;}
-.upload-btn{background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:9px 18px;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
-.upload-btn:hover{opacity:.85;}.upload-btn:disabled{opacity:.45;cursor:not-allowed;}
-.upload-status{font-size:11px;color:var(--muted);width:100%;text-align:center;margin-top:6px;}
-.upload-preview{max-width:100%;max-height:160px;object-fit:cover;border-radius:10px;margin-top:8px;display:none;}
- 
+
+/* Video hero voor baktrek */
+.bak-video-hero{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.bak-vid-header{padding:16px 20px 12px;display:flex;align-items:center;gap:10px;}
+.bak-vid-header-icon{font-size:24px;}
+.bak-vid-header-info{flex:1;}
+.bak-vid-header-title{font-size:13px;font-weight:600;color:var(--navy);}
+.bak-vid-header-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.bak-vid-container{position:relative;width:100%;background:#0a0a14;}
+.bak-vid-container video{width:100%;display:block;max-height:380px;object-fit:contain;}
+.bak-vid-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;color:var(--muted);gap:8px;}
+.bak-vid-placeholder-icon{font-size:48px;opacity:.4;}
+
+/* Upload zone voor baktrek video */
+.bak-upload-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:20px;}
+.bak-upload-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:14px;}
+.bak-drop-zone{position:relative;border:2px dashed rgba(255,160,122,.4);border-radius:14px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .25s;background:rgba(255,255,255,.4);}
+.bak-drop-zone:hover,.bak-drop-zone.drag-over{border-color:var(--salmon);background:rgba(255,160,122,.05);}
+.bak-drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.bak-drop-icon{font-size:32px;margin-bottom:6px;display:block;}
+.bak-drop-txt{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.bak-drop-sub{font-size:11px;color:var(--muted);}
+.bak-file-preview{display:none;align-items:center;gap:12px;margin-top:12px;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+.bak-file-preview.show{display:flex;}
+.bak-file-icon{font-size:28px;flex-shrink:0;}
+.bak-file-info{flex:1;min-width:0;}
+.bak-file-name{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bak-file-size{font-size:11px;color:var(--muted);margin-top:2px;}
+.bak-file-remove{background:none;border:none;font-size:18px;color:var(--muted);cursor:pointer;transition:color .2s;}
+.bak-file-remove:hover{color:var(--red);}
+.bak-select-row{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.bak-select{flex:1;min-width:140px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;background:rgba(255,255,255,.8);color:var(--navy);outline:none;transition:border-color .2s;}
+.bak-select:focus{border-color:var(--salmon);}
+.bak-upload-btn{background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:10px 20px;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .2s,transform .1s;display:flex;align-items:center;gap:6px;}
+.bak-upload-btn:hover:not(:disabled){opacity:.85;transform:translateY(-1px);}
+.bak-upload-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.bak-progress{height:4px;background:rgba(26,26,64,.08);border-radius:4px;overflow:hidden;margin-top:12px;display:none;}
+.bak-progress-fill{height:100%;background:linear-gradient(90deg,var(--salmon),var(--gold));border-radius:4px;width:0%;transition:width .3s ease;}
+.bak-status{font-size:12px;color:var(--muted);text-align:center;margin-top:8px;min-height:18px;font-weight:500;}
+.bak-status.ok{color:#2e7d32;}
+.bak-status.err{color:var(--red);}
+
+/* GRAFIEK */
+.chart-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;}
+.chart-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px;}
+.chart-wrap{position:relative;height:220px;}
+
 /* FOTOMUUR */
 .foto-upload-card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:20px;}
 .foto-muur-grid{columns:2;gap:8px;}
@@ -185,7 +236,7 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .fmuur-item:hover .fmuur-cap{opacity:1;}
 .fmuur-empty{text-align:center;padding:60px 20px;color:var(--muted);}
 .fmuur-empty-icon{font-size:40px;margin-bottom:12px;}
- 
+
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;background:rgba(10,10,20,.92);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
 .lightbox.open{display:flex;}
@@ -193,7 +244,7 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;opacity:.7;transition:opacity .2s;}
 .lb-close:hover{opacity:1;}
 .lb-cap{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:12px;letter-spacing:1px;white-space:nowrap;}
- 
+
 /* PROGRAMMA */
 .prog-day{margin-bottom:28px;}
 .prog-day-hdr{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
@@ -211,8 +262,8 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .prog-ttl{font-size:14px;font-weight:600;color:var(--navy);}
 .prog-loc{font-size:11px;color:var(--muted);margin-top:2px;}
 .prog-now-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gold);background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.3);padding:2px 8px;border-radius:100px;flex-shrink:0;}
- 
-/* WIEL / dageRAD */
+
+/* WIEL */
 .wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:8px 0;}
 .wheel-canvas-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
 .wheel-pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid var(--navy);z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
@@ -232,16 +283,30 @@ body{background:var(--cream);color:var(--navy);font-family:'Jost',sans-serif;min
 .wheel-chip .chip-dot{width:7px;height:7px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .18s;}
 .wheel-chip.active .chip-dot{background:var(--salmon);}
 .wheel-count{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
- 
+
 /* STATES */
 .state-msg{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px;}
 .spinner{width:30px;height:30px;border:2px solid rgba(26,26,64,.1);border-top-color:var(--salmon);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg)}}
 footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;opacity:.5;}
+
+/* upload-zone herbruikbaar */
+.upload-zone{position:relative;border:2px dashed rgba(255,160,122,.4);border-radius:14px;padding:22px 20px;text-align:center;cursor:pointer;transition:all .25s;background:rgba(255,255,255,.4);}
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--salmon);background:rgba(255,160,122,.05);}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.upload-zone-icon{font-size:30px;margin-bottom:6px;display:block;}
+.upload-zone-txt{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.upload-zone-sub{font-size:11px;color:var(--muted);}
+.upload-action-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.upload-action-row select{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Jost',sans-serif;font-size:12px;background:rgba(255,255,255,.8);color:var(--navy);outline:none;}
+.upload-btn{background:linear-gradient(90deg,var(--salmon),var(--gold));color:#fff;border:none;padding:9px 18px;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
+.upload-btn:hover{opacity:.85;}.upload-btn:disabled{opacity:.45;cursor:not-allowed;}
+.upload-status{font-size:11px;color:var(--muted);width:100%;text-align:center;margin-top:6px;}
+.upload-preview{max-width:100%;max-height:160px;object-fit:cover;border-radius:10px;margin-top:8px;display:none;}
 </style>
 </head>
 <body>
- 
+
 <div class="side-rays">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -264,7 +329,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <polygon class="sray" points="1440,420 1060,210 1060,130" fill="url(#rR2)"/>
   </svg>
 </div>
- 
+
 <div class="wrap">
   <div class="countdown-bar" id="countdown-bar">
     <div class="cd-block"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">dagen</span></div>
@@ -272,7 +337,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">min</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">sec</span></div>
   </div>
- 
+
   <div class="hero">
     <div class="sunrise-wrap">
       <svg viewBox="0 0 440 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -303,9 +368,9 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <div class="live-pill"><div class="live-dot"></div>Live</div>
     <div class="last-updated" id="lastUpdated">Laden…</div>
   </div>
- 
+
   <div class="horizon"></div>
- 
+
   <div class="tabs">
     <button class="tab-btn active" data-tab="lustrumweek">Lustrumweek</button>
     <button class="tab-btn" data-tab="jachtseizoen">Jachtseizoen</button>
@@ -315,7 +380,7 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
     <button class="tab-btn" data-tab="programma">📅 Programma</button>
     <button class="tab-btn" data-tab="wiel">🌅 dageRAD</button>
   </div>
- 
+
   <div class="tab-pane active" id="tab-lustrumweek"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane" id="tab-jachtseizoen"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane" id="tab-bakrecord"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
@@ -323,16 +388,20 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
   <div class="tab-pane" id="tab-fotomuur"><div class="state-msg"><div class="spinner"></div>Laden…</div></div>
   <div class="tab-pane" id="tab-programma"></div>
   <div class="tab-pane" id="tab-wiel"></div>
- 
+
   <footer>✦ Automatisch bijgewerkt elke 30 seconden ✦</footer>
 </div>
- 
-<!-- STATISTIEKEN + PROFIELFOTO MODAL -->
+
+<!-- ============================================================
+     PROFIELFOTO MODAL — herbouwd
+     ============================================================ -->
 <div class="overlay" id="stat-overlay">
   <div class="stat-modal">
     <button class="modal-x" onclick="closeStatModal()">✕</button>
+
     <div class="stat-header">
-      <div class="avatar stat-big-av avatar-click" id="stat-av" data-naam="" onclick="document.getElementById('pfp-input').click()">
+      <!-- Grote avatar — klik om foto te uploaden -->
+      <div class="avatar stat-big-av avatar-click" id="stat-av" onclick="triggerPfpPick()">
         <span id="stat-av-init"></span>
       </div>
       <div>
@@ -340,53 +409,73 @@ footer{text-align:center;margin-top:56px;font-size:10px;color:var(--muted);lette
         <div class="stat-sub" id="stat-sub"></div>
       </div>
     </div>
+
     <div class="stat-cards" id="stat-cards"></div>
+
     <div class="stat-sec" style="margin-bottom:10px">Voortgang naar #1</div>
     <div class="stat-prog-bar"><div class="stat-prog-fill" id="stat-prog" style="width:0%"></div></div>
     <div class="stat-prog-labels"><span id="stat-prog-l"></span><span id="stat-prog-r"></span></div>
+
     <div class="stat-sec">Activiteiten</div>
     <div class="acts-wrap" id="stat-acts"></div>
+
+    <!-- PROFIELFOTO UPLOAD -->
     <div class="pfp-section">
-      <div class="stat-sec" style="margin-bottom:10px">📷 Profielfoto</div>
-      <!-- Hidden file input for pfp -->
-      <input type="file" id="pfp-input" accept="image/*" style="display:none" onchange="previewPfp(this)">
-      <div class="pfp-upload-area" onclick="document.getElementById('pfp-input').click()">
-        <div style="font-size:28px">🖼️</div>
-        <div>
-          <div class="pfp-txt" id="pfp-filename">Klik om foto te kiezen</div>
-          <div class="pfp-sub">Je gezicht vervangt het rondje in de ranglijst</div>
-        </div>
+      <div class="stat-sec" style="margin-bottom:12px">📷 Profielfoto wijzigen</div>
+
+      <div class="pfp-drop-zone" id="pfp-drop-zone">
+        <input type="file" id="pfp-input" accept="image/jpeg,image/png,image/webp,image/gif" onchange="onPfpFileChosen(this)">
+        <span class="pfp-drop-icon">🖼️</span>
+        <div class="pfp-drop-txt">Sleep een foto hierheen of klik</div>
+        <div class="pfp-drop-sub">JPG, PNG of WEBP · max 5 MB</div>
       </div>
-      <img id="pfp-preview" class="upload-preview" alt="preview">
-      <button class="pfp-save" id="pfp-save-btn" onclick="savePfp()" disabled>Opslaan</button>
+
+      <!-- Preview rij (verborgen tot foto gekozen) -->
+      <div class="pfp-preview-row" id="pfp-preview-row" style="display:none">
+        <img id="pfp-thumb" class="pfp-preview-thumb" src="" alt="preview">
+        <div class="pfp-preview-info">
+          <div class="pfp-preview-name" id="pfp-preview-name"></div>
+          <div class="pfp-preview-size" id="pfp-preview-size"></div>
+        </div>
+        <button class="pfp-preview-remove" onclick="clearPfpPick()" title="Verwijder keuze">✕</button>
+      </div>
+
+      <button class="pfp-save-btn" id="pfp-save-btn" onclick="savePfp()" disabled>
+        <span id="pfp-save-icon">💾</span> Foto opslaan
+      </button>
+      <div class="pfp-progress" id="pfp-progress"><div class="pfp-progress-fill" id="pfp-progress-fill"></div></div>
       <div class="pfp-status" id="pfp-status"></div>
     </div>
   </div>
 </div>
- 
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lb-close" onclick="closeLightbox()">✕</button>
   <img id="lb-img" src="" alt="">
   <div class="lb-cap" id="lb-cap"></div>
 </div>
- 
+
 <script>
+// ============================================================
+// CONFIG
+// ============================================================
 const APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxZzJcu01bo0ykZ_uaYnO2z2N7CPffNchGTgtuTyGbgMVfBQwDcnybpKcWd-gRTghH7/exec';
-// ✅ FIX 5: Correct jaar 2026
 const EINDE_LUSTRUMWEEK = new Date('2026-05-30T23:59:59+02:00');
- 
+
 let cachedData    = null;
 let activeTab     = 'lustrumweek';
 let statPersoon   = null;
-let pfpData       = null;
+let pfpFileData   = null;   // { dataUrl, mimetype, bestandsnaam, size }
 let grafiekChart  = null;
 let wheelSpinning = false;
 let wheelSelected = new Set();
 let wheelAngle    = 0;
-const pfpCache    = {};
- 
-// ✅ FIX 5: Countdown naar 30 mei 2026
+const pfpCache    = {};     // naam -> url
+
+// ============================================================
+// COUNTDOWN
+// ============================================================
 function tickCD() {
   const d = EINDE_LUSTRUMWEEK - Date.now();
   if (d <= 0) {
@@ -394,10 +483,10 @@ function tickCD() {
       '<div style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:900;padding:12px 0;text-align:center">🌅 De dageraad is aangebroken!</div>';
     return;
   }
-  const dagen  = Math.floor(d / 864e5);
-  const uren   = Math.floor((d % 864e5) / 36e5);
-  const min    = Math.floor((d % 36e5) / 6e4);
-  const sec    = Math.floor((d % 6e4) / 1e3);
+  const dagen = Math.floor(d / 864e5);
+  const uren  = Math.floor((d % 864e5) / 36e5);
+  const min   = Math.floor((d % 36e5) / 6e4);
+  const sec   = Math.floor((d % 6e4) / 1e3);
   document.getElementById('cd-d').textContent = String(dagen).padStart(2,'0');
   document.getElementById('cd-h').textContent = String(uren).padStart(2,'0');
   document.getElementById('cd-m').textContent = String(min).padStart(2,'0');
@@ -405,12 +494,16 @@ function tickCD() {
 }
 setInterval(tickCD, 1000);
 tickCD();
- 
+
+// ============================================================
 // HELPERS
-const ini  = n => n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+// ============================================================
+const ini  = n => n.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
 const fmt  = iso => iso ? new Date(iso).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
 const meds = {0:'🥇',1:'🥈',2:'🥉'};
- 
+const fmtBytes = b => b < 1024*1024 ? (b/1024).toFixed(0)+' KB' : (b/1024/1024).toFixed(1)+' MB';
+const toB64 = f => new Promise((res, rej) => { const r = new FileReader(); r.onload = ()=>res(r.result); r.onerror=rej; r.readAsDataURL(f); });
+
 function avEl(naam, extraCls='', w=40, fs=14) {
   const url = pfpCache[naam];
   return `<div class="avatar ${extraCls}" data-naam="${naam}" style="width:${w}px;height:${w}px;font-size:${fs}px">
@@ -418,8 +511,10 @@ function avEl(naam, extraCls='', w=40, fs=14) {
     <span${url ? ' style="display:none"' : ''}>${ini(naam)}</span>
   </div>`;
 }
- 
+
+// ============================================================
 // TABS
+// ============================================================
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     activeTab = btn.dataset.tab;
@@ -428,14 +523,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.add('active');
     document.getElementById('tab-' + activeTab).classList.add('active');
     if (activeTab === 'programma') { renderProgramma(); return; }
-    if (activeTab === 'fotomuur')  { renderFotomuur(); return; }
+    if (activeTab === 'fotomuur')  { renderFotomuur();  return; }
     if (activeTab === 'wiel' && cachedData) { renderWiel(); return; }
     if (cachedData) renderActiveTab();
   });
 });
- 
+
 function renderActiveTab() {
-  if (activeTab === 'lustrumweek')  renderStand('lustrumweek', cachedData.lustrumweek);
+  if (activeTab === 'lustrumweek')  renderStand('lustrumweek',  cachedData.lustrumweek);
   if (activeTab === 'jachtseizoen') renderStand('jachtseizoen', cachedData.jachtseizoen);
   if (activeTab === 'bakrecord')    renderBaktrek(cachedData.bakrecord);
   if (activeTab === 'grafiek')      renderGrafiek(cachedData.geschiedenis, cachedData.lustrumweek);
@@ -443,13 +538,16 @@ function renderActiveTab() {
   if (activeTab === 'programma')    renderProgramma();
   if (activeTab === 'wiel')         renderWiel();
 }
- 
-// STAND
+
+// ============================================================
+// STAND / LEADERBOARD
+// ============================================================
 function renderStand(tabId, data) {
   const el = document.getElementById('tab-' + tabId);
   if (!data?.scores?.length) { el.innerHTML = '<div class="state-msg">Geen data.</div>'; return; }
   const scores = data.scores, maxPts = scores[0].total || 1;
   const [g, s, b] = scores;
+
   const pod = (p, cls, w, fs) => !p ? '' :
     `<div class="pod-col ${cls}" onclick="openStatModal('${p.name}')">
       ${avEl(p.name, 'pod-avatar avatar-click', w, fs)}
@@ -457,9 +555,11 @@ function renderStand(tabId, data) {
       <div class="pod-pts">${p.total}</div>
       <div class="pod-block"></div>
     </div>`;
+
   const podHtml = [pod(s,'pod-silver',52,18), pod(g,'pod-gold',64,22), pod(b,'pod-bronze',52,18)].join('');
+
   const rows = scores.map((p, i) => {
-    const pct = (p.total / maxPts * 100).toFixed(1);
+    const pct  = (p.total / maxPts * 100).toFixed(1);
     const acts = p.completedActivities?.length ? p.completedActivities.join(' · ') : 'Nog geen activiteiten';
     return `<div class="player-row" style="animation-delay:${(i*.04).toFixed(2)}s" onclick="openStatModal('${p.name}')">
       <div class="rank">${meds[i] ?? i+1}</div>
@@ -472,39 +572,38 @@ function renderStand(tabId, data) {
       <div class="p-score"><div class="p-pts">${p.total}</div><div class="p-lbl">pts</div></div>
     </div>`;
   }).join('');
+
   el.innerHTML = `<div class="podium">${podHtml}</div>
     <div class="section-bar">
       <div class="section-label">Alle deelnemers</div>
       <button class="refresh-btn" onclick="fetchData()">↻ Vernieuwen</button>
     </div>
     <div class="leaderboard">${rows}</div>`;
+
+  // avatar clicks → open modal direct op pfp sectie
   el.querySelectorAll('.avatar-click').forEach(av => {
     av.addEventListener('click', e => { e.stopPropagation(); openStatModal(av.dataset.naam, true); });
   });
 }
- 
-// ✅ FIX 3: STAT MODAL — profielfoto upload robuust gemaakt
+
+// ============================================================
+// STATISTIEKEN MODAL
+// ============================================================
 function openStatModal(naam, scrollPfp = false) {
   statPersoon = naam;
-  pfpData = null;
-  const pfpInput = document.getElementById('pfp-input');
-  pfpInput.value = '';
-  document.getElementById('pfp-status').textContent = '';
-  document.getElementById('pfp-save-btn').disabled = true;
-  document.getElementById('pfp-filename').textContent = 'Klik om foto te kiezen';
-  const preview = document.getElementById('pfp-preview');
-  preview.style.display = 'none';
-  preview.src = '';
- 
+  clearPfpPick();
+
+  // Grote avatar
   const av = document.getElementById('stat-av');
   av.dataset.naam = naam;
   const pfpUrl = pfpCache[naam];
   av.innerHTML = pfpUrl
     ? `<img src="${pfpUrl}" alt="${naam}"><span style="display:none">${ini(naam)}</span>`
     : `<span>${ini(naam)}</span>`;
+
   document.getElementById('stat-av-init').textContent = ini(naam);
-  document.getElementById('stat-name').textContent = naam;
- 
+  document.getElementById('stat-name').textContent    = naam;
+
   const lw  = cachedData?.lustrumweek?.scores  || [];
   const js  = cachedData?.jachtseizoen?.scores || [];
   const lwP = lw.find(p => p.name === naam) || {total:0, completedActivities:[]};
@@ -513,176 +612,335 @@ function openStatModal(naam, scrollPfp = false) {
   const jsR = js.findIndex(p => p.name === naam) + 1 || '—';
   const lwL = lw[0]?.total || 1;
   const allActs = cachedData?.lustrumweek?.activities || [];
- 
+
   document.getElementById('stat-sub').textContent = `#${lwR} Lustrumweek  ·  #${jsR} Jachtseizoen`;
   document.getElementById('stat-cards').innerHTML = `
     <div class="stat-card hi"><div class="stat-val">${lwP.total}</div><div class="stat-lbl">Lustrumweek pts</div></div>
     <div class="stat-card"><div class="stat-val">${jsP.total}</div><div class="stat-lbl">Jachtseizoen pts</div></div>
     <div class="stat-card"><div class="stat-val">#${lwR}</div><div class="stat-lbl">Positie</div></div>
     <div class="stat-card"><div class="stat-val">${lwP.completedActivities.length}/${allActs.length}</div><div class="stat-lbl">Activiteiten</div></div>`;
- 
+
   const pct = Math.round((lwP.total / lwL) * 100);
   document.getElementById('stat-prog').style.width = pct + '%';
   document.getElementById('stat-prog-l').textContent = lwP.total + ' pts';
   document.getElementById('stat-prog-r').textContent = lwL + ' pts (#1)';
- 
+
   const done = new Set(lwP.completedActivities);
   document.getElementById('stat-acts').innerHTML = allActs.map(a =>
-    `<div class="act-chip ${done.has(a.name) ? 'done' : 'miss'}">${done.has(a.name) ? '✓ ' : ''}${a.name}</div>`
+    `<div class="act-chip ${done.has(a.name)?'done':'miss'}">${done.has(a.name)?'✓ ':''}${a.name}</div>`
   ).join('') || '<span style="font-size:12px;color:var(--muted)">Geen activiteiten</span>';
- 
+
   document.getElementById('stat-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  if (scrollPfp) setTimeout(() => document.querySelector('.pfp-section')?.scrollIntoView({behavior:'smooth', block:'center'}), 350);
+
+  if (scrollPfp) {
+    setTimeout(() => document.querySelector('.pfp-section')?.scrollIntoView({behavior:'smooth', block:'center'}), 350);
+  }
 }
- 
+
 function closeStatModal() {
   document.getElementById('stat-overlay').classList.remove('open');
   document.body.style.overflow = '';
   statPersoon = null;
-  pfpData = null;
+  clearPfpPick();
 }
 document.getElementById('stat-overlay').addEventListener('click', e => {
   if (e.target === document.getElementById('stat-overlay')) closeStatModal();
 });
- 
-// ✅ FIX 3: Profielfoto preview — leest bestand correct
-function previewPfp(input) {
-  if (!input.files[0]) return;
+
+// ============================================================
+// PROFIELFOTO — PICK / PREVIEW / SAVE
+// ============================================================
+function triggerPfpPick() {
+  document.getElementById('pfp-input').click();
+}
+
+function onPfpFileChosen(input) {
   const file = input.files[0];
-  document.getElementById('pfp-filename').textContent = file.name;
- 
+  if (!file) return;
+
+  if (file.size > 5 * 1024 * 1024) {
+    setPfpStatus('Bestand is te groot (max 5 MB).', 'err');
+    return;
+  }
+
   const reader = new FileReader();
   reader.onload = e => {
-    // Update preview image in modal header
+    pfpFileData = { dataUrl: e.target.result, mimetype: file.type, bestandsnaam: file.name, size: file.size };
+
+    // Toon preview
+    document.getElementById('pfp-thumb').src            = e.target.result;
+    document.getElementById('pfp-preview-name').textContent = file.name;
+    document.getElementById('pfp-preview-size').textContent = fmtBytes(file.size);
+    document.getElementById('pfp-preview-row').style.display = 'flex';
+
+    // Update grote avatar in modal header direct
     const av = document.getElementById('stat-av');
     av.innerHTML = `<img src="${e.target.result}" alt="preview"><span style="display:none">${ini(statPersoon)}</span>`;
-    // Show small preview
-    const prev = document.getElementById('pfp-preview');
-    prev.src = e.target.result;
-    prev.style.display = 'block';
-    // Store for upload
-    pfpData = { dataUrl: e.target.result, mimetype: file.type, bestandsnaam: file.name };
+
     document.getElementById('pfp-save-btn').disabled = false;
+    setPfpStatus('');
   };
   reader.readAsDataURL(file);
 }
- 
-// ✅ FIX 3: savePfp — stuur correct JSON naar Apps Script
-async function savePfp() {
-  if (!pfpData) return;
+
+function clearPfpPick() {
+  pfpFileData = null;
+  const inp = document.getElementById('pfp-input');
+  if (inp) inp.value = '';
+  const row = document.getElementById('pfp-preview-row');
+  if (row) row.style.display = 'none';
   const btn = document.getElementById('pfp-save-btn');
-  const st  = document.getElementById('pfp-status');
+  if (btn) btn.disabled = true;
+  const prog = document.getElementById('pfp-progress');
+  if (prog) prog.style.display = 'none';
+  setPfpStatus('');
+}
+
+function setPfpStatus(msg, cls='') {
+  const el = document.getElementById('pfp-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.className   = 'pfp-status' + (cls ? ' '+cls : '');
+}
+
+function setPfpProgress(pct) {
+  const bar  = document.getElementById('pfp-progress');
+  const fill = document.getElementById('pfp-progress-fill');
+  if (!bar || !fill) return;
+  bar.style.display = pct > 0 && pct < 100 ? 'block' : 'none';
+  fill.style.width  = pct + '%';
+}
+
+async function savePfp() {
+  if (!pfpFileData || !statPersoon) return;
+  const btn  = document.getElementById('pfp-save-btn');
+  const icon = document.getElementById('pfp-save-icon');
   btn.disabled = true;
-  st.textContent = 'Uploaden…';
+  icon.textContent = '⏳';
+  setPfpStatus('Uploaden…');
+  setPfpProgress(10);
+
   try {
-    const base64data = pfpData.dataUrl.split(',')[1];
+    const base64data = pfpFileData.dataUrl.split(',')[1];
+    setPfpProgress(30);
+
     const payload = JSON.stringify({
       type: 'profielfoto',
       naam: statPersoon,
-      bestandsnaam: pfpData.bestandsnaam,
+      bestandsnaam: pfpFileData.bestandsnaam,
       base64data,
-      mimetype: pfpData.mimetype
+      mimetype: pfpFileData.mimetype
     });
+
+    setPfpProgress(50);
     const res = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' }, // Apps Script vereist text/plain voor doPost
+      headers: { 'Content-Type': 'text/plain' },
       body: payload
     });
+    setPfpProgress(85);
     const d = await res.json();
+    setPfpProgress(100);
+
     if (d.success) {
-      pfpCache[statPersoon] = `https://drive.google.com/uc?export=view&id=${d.fileId}`;
-      st.textContent = '✓ Foto opgeslagen!';
+      // Sla URL op in cache
+      const url = `https://drive.google.com/uc?export=view&id=${d.fileId}`;
+      pfpCache[statPersoon] = url;
+
+      // Update alle avatars op de pagina
       document.querySelectorAll(`[data-naam="${statPersoon}"]`).forEach(el => {
-        el.innerHTML = `<img src="${pfpCache[statPersoon]}" alt="${statPersoon}"><span style="display:none">${ini(statPersoon)}</span>`;
+        el.innerHTML = `<img src="${url}" alt="${statPersoon}"><span style="display:none">${ini(statPersoon)}</span>`;
       });
-      setTimeout(closeStatModal, 900);
+
+      setPfpStatus('✓ Foto opgeslagen!', 'ok');
+      icon.textContent = '✓';
+      setTimeout(closeStatModal, 1200);
     } else {
-      st.textContent = 'Fout: ' + (d.error || 'onbekend');
-      btn.disabled = false;
+      throw new Error(d.error || 'Onbekende fout');
     }
   } catch(e) {
-    st.textContent = 'Upload mislukt: ' + e.message;
+    setPfpStatus('Upload mislukt: ' + e.message, 'err');
+    icon.textContent = '💾';
     btn.disabled = false;
+    setPfpProgress(0);
   }
 }
- 
-// ✅ FIX 2: BAKTREK — video upload gefixed
+
+// Drag & drop voor pfp zone
+(function(){
+  const zone = document.getElementById('pfp-drop-zone');
+  if (!zone) return;
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if (f) {
+      const inp = document.getElementById('pfp-input');
+      const dt  = new DataTransfer();
+      dt.items.add(f);
+      inp.files = dt.files;
+      onPfpFileChosen(inp);
+    }
+  });
+})();
+
+// ============================================================
+// BAKTREK — video upload + weergave
+// ============================================================
+let bakVidFile = null;
+
 function renderBaktrek(data) {
   const el = document.getElementById('tab-bakrecord');
   const records = data?.records || [];
-  const rec = records[0];
-  const du  = data?.video?.fileId ? `https://drive.google.com/uc?export=download&id=${data.video.fileId}` : null;
- 
-  const vidSection = rec ? `
+  const rec     = records[0];
+  const vidUrl  = data?.video?.fileId
+    ? `https://drive.google.com/file/d/${data.video.fileId}/preview`
+    : null;
+
+  // Video hero bovenaan — altijd zichtbaar (met of zonder video)
+  const vidHero = `
     <div class="bak-video-hero">
-      <div class="bak-vid-lbl">🏆 Huidig record — ${rec.naam} — ${rec.tijd}s</div>
-      ${du
-        ? `<div class="bak-vid-wrap"><video controls playsinline preload="metadata"><source src="${du}"></video></div>`
-        : `<div class="bak-vid-ph"><div style="font-size:32px">🎬</div><span>Nog geen filmpje</span></div>`
-      }
-    </div>` : '';
- 
-  // Upload zone voor nieuw filmpje
-  const uploadSection = `
-    <div class="upload-zone" onclick="document.getElementById('bak-vid-in').click()">
-      <input type="file" id="bak-vid-in" accept="video/*" style="display:none" onchange="bakVidPreview(this)">
-      <div class="upload-zone-icon">🎬</div>
-      <div class="upload-zone-txt">Klik om een filmpje te uploaden</div>
-      <div class="upload-zone-sub">Nieuw baktrek record video (max 100 MB)</div>
-    </div>
-    <img id="bak-vid-thumb" class="upload-preview" alt="thumb">
-    <div class="upload-action-row">
-      <select id="bak-naam-sel">
-        <option value="">— Kies naam —</option>
-        ${[...(cachedData?.lustrumweek?.scores||[])].map(p=>`<option value="${p.name}">${p.name}</option>`).join('')}
-      </select>
-      <button class="upload-btn" id="bak-upload-btn" onclick="uploadBakVid()" disabled>↑ Opslaan</button>
-    </div>
-    <div class="upload-status" id="bak-st"></div>`;
- 
+      <div class="bak-vid-header">
+        <div class="bak-vid-header-icon">🏆</div>
+        <div class="bak-vid-header-info">
+          <div class="bak-vid-header-title">Huidig record${rec ? ' — ' + rec.naam + ' — ' + rec.tijd + 's' : ''}</div>
+          <div class="bak-vid-header-sub">Record baktrek video</div>
+        </div>
+      </div>
+      <div class="bak-vid-container">
+        ${vidUrl
+          ? `<iframe src="${vidUrl}" width="100%" height="380" style="border:none;display:block;" allow="autoplay" allowfullscreen></iframe>`
+          : `<div class="bak-vid-placeholder"><div class="bak-vid-placeholder-icon">🎬</div><span style="font-size:13px">Nog geen video geüpload</span></div>`
+        }
+      </div>
+    </div>`;
+
+  // Upload kaart
+  const namen = (cachedData?.lustrumweek?.scores || []).map(p => p.name);
+  const uploadCard = `
+    <div class="bak-upload-card">
+      <div class="bak-upload-title">📹 Nieuw record uploaden</div>
+      <div class="bak-drop-zone" id="bak-drop-zone">
+        <input type="file" id="bak-vid-in" accept="video/*" onchange="onBakFileChosen(this)">
+        <span class="bak-drop-icon">🎬</span>
+        <div class="bak-drop-txt" id="bak-drop-txt">Sleep een video hierheen of klik</div>
+        <div class="bak-drop-sub">MP4, MOV, AVI · max 100 MB · opgeslagen in Google Drive</div>
+      </div>
+
+      <div class="bak-file-preview" id="bak-file-preview">
+        <div class="bak-file-icon">🎥</div>
+        <div class="bak-file-info">
+          <div class="bak-file-name" id="bak-file-name"></div>
+          <div class="bak-file-size" id="bak-file-size"></div>
+        </div>
+        <button class="bak-file-remove" onclick="clearBakFile()">✕</button>
+      </div>
+
+      <div class="bak-select-row">
+        <select class="bak-select" id="bak-naam-sel" onchange="checkBakReady()">
+          <option value="">— Naam recordhouder —</option>
+          ${namen.map(n => `<option value="${n}">${n}</option>`).join('')}
+        </select>
+        <button class="bak-upload-btn" id="bak-upload-btn" onclick="uploadBakVid()" disabled>
+          ↑ Uploaden
+        </button>
+      </div>
+      <div class="bak-progress" id="bak-progress"><div class="bak-progress-fill" id="bak-progress-fill"></div></div>
+      <div class="bak-status" id="bak-st"></div>
+    </div>`;
+
   const rows = records.length ? records.map((r, i) => `
     <div class="bak-row" style="animation-delay:${(i*.04).toFixed(2)}s">
       <div class="bak-rank">${meds[i] ?? i+1}</div>
-      <div class="bak-name">${r.naam}${i===0 ? '<span class="bak-badge">Record</span>' : ''}</div>
+      <div class="bak-name">${r.naam}${i===0?'<span class="bak-badge">Record</span>':''}</div>
       <div class="bak-time">${r.tijd}s</div>
     </div>`).join('')
     : '<div class="state-msg" style="padding:20px">Nog geen records.</div>';
- 
-  el.innerHTML = `${vidSection}${uploadSection}
-    <div class="section-bar" style="margin-top:20px;margin-bottom:12px">
-      <div class="section-label">Alle tijden</div>
-    </div>
-    <div class="bak-list">${rows}</div>`;
- 
-  // Enable upload button when file + naam selected
-  const sel = document.getElementById('bak-naam-sel');
-  sel.addEventListener('change', checkBakReady);
+
+  el.innerHTML = vidHero + uploadCard +
+    `<div class="section-bar" style="margin-top:4px;margin-bottom:12px">
+       <div class="section-label">Alle tijden</div>
+       <button class="refresh-btn" onclick="fetchData()">↻</button>
+     </div>
+     <div class="bak-list">${rows}</div>`;
+
+  // Drag & drop voor bak zone
+  const zone = document.getElementById('bak-drop-zone');
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if (f) {
+      const inp = document.getElementById('bak-vid-in');
+      const dt  = new DataTransfer();
+      dt.items.add(f);
+      inp.files = dt.files;
+      onBakFileChosen(inp);
+    }
+  });
 }
- 
-let bakVidFile = null;
-function bakVidPreview(input) {
-  if (!input.files[0]) return;
-  bakVidFile = input.files[0];
-  document.querySelector('.upload-zone-txt').textContent = bakVidFile.name;
+
+function onBakFileChosen(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 100 * 1024 * 1024) {
+    document.getElementById('bak-st').textContent = 'Bestand is te groot (max 100 MB).';
+    document.getElementById('bak-st').className = 'bak-status err';
+    return;
+  }
+  bakVidFile = file;
+  document.getElementById('bak-drop-txt').textContent   = file.name;
+  document.getElementById('bak-file-name').textContent  = file.name;
+  document.getElementById('bak-file-size').textContent  = fmtBytes(file.size);
+  document.getElementById('bak-file-preview').classList.add('show');
   checkBakReady();
 }
+
+function clearBakFile() {
+  bakVidFile = null;
+  const inp = document.getElementById('bak-vid-in');
+  if (inp) inp.value = '';
+  const fp = document.getElementById('bak-file-preview');
+  if (fp) fp.classList.remove('show');
+  document.getElementById('bak-drop-txt').textContent = 'Sleep een video hierheen of klik';
+  checkBakReady();
+}
+
 function checkBakReady() {
   const sel = document.getElementById('bak-naam-sel');
   const btn = document.getElementById('bak-upload-btn');
   if (btn) btn.disabled = !(bakVidFile && sel?.value);
 }
- 
+
+function setBakProgress(pct) {
+  const bar  = document.getElementById('bak-progress');
+  const fill = document.getElementById('bak-progress-fill');
+  if (!bar || !fill) return;
+  bar.style.display = pct > 0 && pct < 100 ? 'block' : 'none';
+  fill.style.width  = pct + '%';
+}
+
 async function uploadBakVid() {
   const naam = document.getElementById('bak-naam-sel')?.value;
   const st   = document.getElementById('bak-st');
   const btn  = document.getElementById('bak-upload-btn');
-  if (!bakVidFile || !naam) { if(st) st.textContent = 'Kies een naam en filmpje.'; return; }
-  if (bakVidFile.size > 100 * 1024 * 1024) { if(st) st.textContent = 'Max 100 MB.'; return; }
+  if (!bakVidFile || !naam) return;
+
   btn.disabled = true;
-  st.textContent = 'Uploaden… (kan even duren)';
+  st.textContent = 'Bezig met uploaden… (kan even duren voor grote bestanden)';
+  st.className   = 'bak-status';
+  setBakProgress(10);
+
   try {
+    setBakProgress(20);
     const b64 = await toB64(bakVidFile);
+    setBakProgress(50);
+
     const payload = JSON.stringify({
       type: 'bakvideo',
       naam,
@@ -690,27 +948,36 @@ async function uploadBakVid() {
       base64data: b64.split(',')[1],
       mimetype: bakVidFile.type
     });
+
+    setBakProgress(60);
     const res = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
       body: payload
     });
+    setBakProgress(90);
     const d = await res.json();
+    setBakProgress(100);
+
     if (d.success) {
-      st.textContent = '✓ Geüpload!';
+      st.textContent = '✓ Video opgeslagen in Google Drive!';
+      st.className   = 'bak-status ok';
       bakVidFile = null;
       setTimeout(fetchData, 1500);
     } else {
-      st.textContent = 'Fout: ' + (d.error || 'onbekend');
-      btn.disabled = false;
+      throw new Error(d.error || 'Onbekende fout');
     }
   } catch(e) {
     st.textContent = 'Upload mislukt: ' + e.message;
-    btn.disabled = false;
+    st.className   = 'bak-status err';
+    btn.disabled   = false;
+    setBakProgress(0);
   }
 }
- 
+
+// ============================================================
 // GRAFIEK
+// ============================================================
 function renderGrafiek(gesch, lwData) {
   const el = document.getElementById('tab-grafiek');
   if (!gesch?.length) {
@@ -719,17 +986,17 @@ function renderGrafiek(gesch, lwData) {
   }
   el.innerHTML = `<div class="chart-card"><div class="chart-title">Punten per dag — Lustrumweek</div><div class="chart-wrap"><canvas id="chartCanvas"></canvas></div></div>`;
   const labels   = gesch.map(d => d.datum);
-  const namen    = lwData?.scores?.slice(0, 8).map(p => p.name) || [];
+  const namen    = lwData?.scores?.slice(0,8).map(p => p.name) || [];
   const pal      = ['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40','#c8895a','#aaa'];
-  const datasets = namen.map((n, i) => ({
+  const datasets = namen.map((n,i) => ({
     label: n, data: gesch.map(d => d[n] ?? 0),
     borderColor: pal[i%pal.length], backgroundColor: pal[i%pal.length]+'22',
-    borderWidth: 2, pointRadius: 3, tension: .35, fill: false
+    borderWidth:2, pointRadius:3, tension:.35, fill:false
   }));
   if (grafiekChart) grafiekChart.destroy();
   grafiekChart = new Chart(document.getElementById('chartCanvas'), {
-    type: 'line', data: {labels, datasets},
-    options: {responsive:true, maintainAspectRatio:false,
+    type:'line', data:{labels,datasets},
+    options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{labels:{font:{family:'Jost',size:11},color:'#8a7a6a',boxWidth:12}}},
       scales:{
         x:{ticks:{font:{family:'Jost',size:11},color:'#8a7a6a'},grid:{color:'rgba(26,26,64,.06)'}},
@@ -738,33 +1005,33 @@ function renderGrafiek(gesch, lwData) {
     }
   });
 }
- 
-// ✅ FIX 4: FOTOMUUR — upload direct op het tabblad
+
+// ============================================================
+// FOTOMUUR
+// ============================================================
+let fotoFile = null;
+
 async function renderFotomuur() {
   const el = document.getElementById('tab-fotomuur');
   el.innerHTML = '<div class="state-msg"><div class="spinner"></div>Foto\'s laden…</div>';
- 
-  // Bouw upload-kaart
+
   const namen = [...new Set([
     ...(cachedData?.lustrumweek?.scores  || []),
     ...(cachedData?.jachtseizoen?.scores || [])
   ].map(p => p.name))];
- 
+
   const uploadCard = `
     <div class="foto-upload-card">
       <div class="section-label" style="margin-bottom:14px">📸 Foto uploaden</div>
       <div class="upload-zone" onclick="document.getElementById('foto-file-in').click()">
         <input type="file" id="foto-file-in" accept="image/*" style="display:none" onchange="fotoPreview(this)">
-        <div class="upload-zone-icon">🖼️</div>
+        <span class="upload-zone-icon">🖼️</span>
         <div class="upload-zone-txt" id="foto-zone-txt">Klik om foto te kiezen</div>
         <div class="upload-zone-sub">JPG, PNG, WEBP · max 10 MB</div>
       </div>
       <img id="foto-preview-img" class="upload-preview" alt="preview">
       <div class="upload-action-row" style="margin-top:10px">
-        <select id="foto-naam-sel">
-          <option value="">— Naam —</option>
-          ${namen.map(n=>`<option value="${n}">${n}</option>`).join('')}
-        </select>
+        <select id="foto-naam-sel"><option value="">— Naam —</option>${namen.map(n=>`<option value="${n}">${n}</option>`).join('')}</select>
         <select id="foto-act-sel">
           <option value="">— Activiteit —</option>
           ${(cachedData?.lustrumweek?.activities||[]).map(a=>`<option value="${a.name}">${a.name}</option>`).join('')}
@@ -774,38 +1041,33 @@ async function renderFotomuur() {
       </div>
       <div class="upload-status" id="foto-st"></div>
     </div>`;
- 
-  // Haal foto's op
+
   try {
     const res  = await fetch(`${APPS_SCRIPT_URL}?action=allfotos`);
     const data = await res.json();
- 
     const grid = data.fotos?.length
       ? `<div class="section-bar" style="margin-bottom:12px">
            <div class="section-label">${data.fotos.length} foto's</div>
            <button class="refresh-btn" onclick="renderFotomuur()">↻</button>
          </div>
          <div class="foto-muur-grid">
-           ${data.fotos.map(f => `
+           ${data.fotos.map(f=>`
              <div class="fmuur-item" onclick="openLb('${f.url}','${f.naam} · ${f.activiteit||''}')">
                <img src="${f.url}" alt="${f.naam}" loading="lazy">
-               <div class="fmuur-cap">${f.naam}${f.activiteit ? ' · '+f.activiteit : ''}</div>
+               <div class="fmuur-cap">${f.naam}${f.activiteit?' · '+f.activiteit:''}</div>
              </div>`).join('')}
          </div>`
-      : `<div class="fmuur-empty"><div class="fmuur-empty-icon">📷</div>Nog geen foto's.<br><small style="color:var(--muted)">Upload de eerste hierboven!</small></div>`;
- 
+      : `<div class="fmuur-empty"><div class="fmuur-empty-icon">📷</div>Nog geen foto's.<br><small>Upload de eerste hierboven!</small></div>`;
     el.innerHTML = uploadCard + grid;
   } catch(e) {
     el.innerHTML = uploadCard + '<div class="state-msg">❌ Kan foto\'s niet laden.</div>';
   }
- 
-  // Event listeners voor foto upload enable/disable
-  ['foto-naam-sel','foto-act-sel'].forEach(id => {
-    document.getElementById(id)?.addEventListener('change', checkFotoReady);
-  });
+
+  ['foto-naam-sel','foto-act-sel'].forEach(id =>
+    document.getElementById(id)?.addEventListener('change', checkFotoReady)
+  );
 }
- 
-let fotoFile = null;
+
 function fotoPreview(input) {
   if (!input.files[0]) return;
   fotoFile = input.files[0];
@@ -820,51 +1082,29 @@ function fotoPreview(input) {
   checkFotoReady();
 }
 function checkFotoReady() {
-  const btn = document.getElementById('foto-upload-btn');
+  const btn  = document.getElementById('foto-upload-btn');
   const naam = document.getElementById('foto-naam-sel')?.value;
   const act  = document.getElementById('foto-act-sel')?.value;
   if (btn) btn.disabled = !(fotoFile && naam && act);
 }
- 
 async function uploadFoto() {
   const naam = document.getElementById('foto-naam-sel')?.value;
   const act  = document.getElementById('foto-act-sel')?.value;
   const st   = document.getElementById('foto-st');
   const btn  = document.getElementById('foto-upload-btn');
-  if (!fotoFile || !naam || !act) { if(st) st.textContent = 'Kies naam, activiteit én foto.'; return; }
-  if (fotoFile.size > 10 * 1024 * 1024) { if(st) st.textContent = 'Max 10 MB.'; return; }
-  btn.disabled = true;
-  st.textContent = 'Uploaden…';
+  if (!fotoFile || !naam || !act) { if(st) st.textContent='Kies naam, activiteit én foto.'; return; }
+  if (fotoFile.size > 10*1024*1024) { if(st) st.textContent='Max 10 MB.'; return; }
+  btn.disabled = true; st.textContent = 'Uploaden…';
   try {
     const b64 = await toB64(fotoFile);
-    const payload = JSON.stringify({
-      type: 'foto',
-      naam,
-      activiteit: act,
-      bestandsnaam: fotoFile.name,
-      base64data: b64.split(',')[1],
-      mimetype: fotoFile.type
-    });
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: payload
-    });
+    const payload = JSON.stringify({ type:'foto', naam, activiteit:act, bestandsnaam:fotoFile.name, base64data:b64.split(',')[1], mimetype:fotoFile.type });
+    const res = await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'text/plain'}, body:payload });
     const d = await res.json();
-    if (d.success) {
-      st.textContent = '✓ Foto geüpload!';
-      fotoFile = null;
-      setTimeout(renderFotomuur, 1200);
-    } else {
-      st.textContent = 'Fout: ' + (d.error || 'onbekend');
-      btn.disabled = false;
-    }
-  } catch(e) {
-    st.textContent = 'Upload mislukt: ' + e.message;
-    btn.disabled = false;
-  }
+    if (d.success) { st.textContent='✓ Foto geüpload!'; fotoFile=null; setTimeout(renderFotomuur,1200); }
+    else { st.textContent='Fout: '+(d.error||'onbekend'); btn.disabled=false; }
+  } catch(e) { st.textContent='Upload mislukt: '+e.message; btn.disabled=false; }
 }
- 
+
 function openLb(url, cap) {
   document.getElementById('lb-img').src = url;
   document.getElementById('lb-cap').textContent = cap;
@@ -875,28 +1115,30 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
- 
+
+// ============================================================
 // PROGRAMMA
+// ============================================================
 const PROGRAMMA = [
-  {dag:'Donderdag', datum:'21 mei', items:[{tijd:'',titel:'Lustrum-HV',locatie:''}]},
-  {dag:'Vrijdag',   datum:'22 mei', items:[{tijd:'',titel:'DAGERAAD Borrel',locatie:''}]},
-  {dag:'Zaterdag',  datum:'23 mei', items:[{tijd:'',titel:'PITSTOP',locatie:''}]},
-  {dag:'Maandag',   datum:'25 mei', items:[{tijd:'',titel:'GLOW IN DE DAGERAAD',locatie:''}]},
-  {dag:'Dinsdag',   datum:'26 mei', items:[{tijd:'',titel:'BRALLEN TOT DE ZON OPKOMT',locatie:''}]},
-  {dag:'Woensdag',  datum:'27 mei', items:[{tijd:'',titel:'LUSTRUMRECEPTIE',locatie:''}]},
-  {dag:'Donderdag', datum:'28 mei', items:[{tijd:'',titel:'GLOREND BRALLEN',locatie:''},{tijd:'',titel:'AURORA OPEN AIR',locatie:''}]},
-  {dag:'Vrijdag',   datum:'29 mei', items:[{tijd:'',titel:'LUSTRUMGALA',locatie:''}]},
-  {dag:'Zaterdag',  datum:'30 mei', items:[{tijd:'',titel:'ALS DE MORGEN IS GEKOMEN',locatie:''}]},
+  {dag:'Donderdag',datum:'21 mei',items:[{tijd:'',titel:'Lustrum-HV',locatie:''}]},
+  {dag:'Vrijdag',  datum:'22 mei',items:[{tijd:'',titel:'DAGERAAD Borrel',locatie:''}]},
+  {dag:'Zaterdag', datum:'23 mei',items:[{tijd:'',titel:'PITSTOP',locatie:''}]},
+  {dag:'Maandag',  datum:'25 mei',items:[{tijd:'',titel:'GLOW IN DE DAGERAAD',locatie:''}]},
+  {dag:'Dinsdag',  datum:'26 mei',items:[{tijd:'',titel:'BRALLEN TOT DE ZON OPKOMT',locatie:''}]},
+  {dag:'Woensdag', datum:'27 mei',items:[{tijd:'',titel:'LUSTRUMRECEPTIE',locatie:''}]},
+  {dag:'Donderdag',datum:'28 mei',items:[{tijd:'',titel:'GLOREND BRALLEN',locatie:''},{tijd:'',titel:'AURORA OPEN AIR',locatie:''}]},
+  {dag:'Vrijdag',  datum:'29 mei',items:[{tijd:'',titel:'LUSTRUMGALA',locatie:''}]},
+  {dag:'Zaterdag', datum:'30 mei',items:[{tijd:'',titel:'ALS DE MORGEN IS GEKOMEN',locatie:''}]},
 ];
 function renderProgramma() {
-  const el = document.getElementById('tab-programma');
+  const el  = document.getElementById('tab-programma');
   const now = new Date();
   el.innerHTML = PROGRAMMA.map(dag => {
-    const items = dag.items.map((item, ii) => {
-      const [h=0, m=0] = item.tijd ? item.tijd.split(':').map(Number) : [0,0];
+    const items = dag.items.map((item,ii) => {
+      const [h=0,m=0] = item.tijd ? item.tijd.split(':').map(Number) : [0,0];
       const iM  = h*60+m;
       const ni  = dag.items[ii+1];
-      const nM  = ni ? ni.tijd.split(':').map((v,j) => j===0 ? Number(v)*60 : Number(v)).reduce((a,b)=>a+b,0) : iM+180;
+      const nM  = ni ? ni.tijd.split(':').map((v,j)=>j===0?Number(v)*60:Number(v)).reduce((a,b)=>a+b,0) : iM+180;
       const nM2 = now.getHours()*60+now.getMinutes();
       const isNow = item.tijd && nM2>=iM && nM2<nM;
       return `<div class="prog-item${isNow?' now':''}" style="animation-delay:${(ii*.05).toFixed(2)}s">
@@ -918,9 +1160,12 @@ function renderProgramma() {
     </div>`;
   }).join('');
 }
- 
-// ✅ FIX 1: WIEL — hernoemd naar dageRAD
+
+// ============================================================
+// WIEL — dageRAD
+// ============================================================
 const WK = ['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40','#c8895a','#88c0d0','#a3be8c','#ebcb8b','#bf616a','#d08770'];
+
 function renderWiel() {
   const el = document.getElementById('tab-wiel');
   const namen = [...new Set([
@@ -958,118 +1203,113 @@ function buildWielGrid(namen) {
   updateWielCount();
 }
 function toggleWielLid(naam) {
-  if (wheelSelected.has(naam)) { if (wheelSelected.size <= 2) return; wheelSelected.delete(naam); }
+  if (wheelSelected.has(naam)) { if(wheelSelected.size<=2)return; wheelSelected.delete(naam); }
   else wheelSelected.add(naam);
   const c = document.querySelector(`.wheel-chip[data-naam="${naam}"]`);
   if (c) c.classList.toggle('active', wheelSelected.has(naam));
   updateWielCount(); drawWiel();
 }
 function toggleAllWiel() {
-  const namen = [...document.querySelectorAll('.wheel-chip')].map(c => c.dataset.naam);
-  const allOn = namen.every(n => wheelSelected.has(n));
-  namen.forEach(n => allOn ? wheelSelected.delete(n) : wheelSelected.add(n));
-  if (wheelSelected.size < 2) namen.slice(0,2).forEach(n => wheelSelected.add(n));
-  namen.forEach(n => { const c = document.querySelector(`.wheel-chip[data-naam="${n}"]`); if(c) c.classList.toggle('active', wheelSelected.has(n)); });
+  const namen = [...document.querySelectorAll('.wheel-chip')].map(c=>c.dataset.naam);
+  const allOn = namen.every(n=>wheelSelected.has(n));
+  namen.forEach(n=>allOn?wheelSelected.delete(n):wheelSelected.add(n));
+  if(wheelSelected.size<2)namen.slice(0,2).forEach(n=>wheelSelected.add(n));
+  namen.forEach(n=>{const c=document.querySelector(`.wheel-chip[data-naam="${n}"]`);if(c)c.classList.toggle('active',wheelSelected.has(n));});
   updateWielCount(); drawWiel();
 }
 function updateWielCount() {
   const el = document.getElementById('wheel-count');
   if (el) el.textContent = `${wheelSelected.size} deelnemers actief`;
 }
-function drawWiel(hi = -1) {
-  const cv = document.getElementById('wheelCanvas');
-  if (!cv) return;
-  const ctx = cv.getContext('2d'), dl = [...wheelSelected], n = dl.length;
-  if (!n) return;
-  const cx=150, cy=150, r=144, sa=(2*Math.PI)/n;
-  ctx.clearRect(0, 0, 300, 300);
-  dl.forEach((naam, i) => {
-    const s = wheelAngle+i*sa-Math.PI/2, e = s+sa, isH = i===hi;
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,isH?r+6:r,s,e); ctx.closePath();
-    ctx.fillStyle = WK[i%WK.length]; ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.save(); ctx.translate(cx,cy); ctx.rotate(s+sa/2);
-    ctx.textAlign = 'right'; ctx.fillStyle = '#fff';
-    ctx.font = `bold ${n>16?9:n>10?11:13}px Jost,sans-serif`;
-    ctx.shadowColor = 'rgba(0,0,0,.4)'; ctx.shadowBlur = 3;
-    ctx.fillText(naam.split(' ')[0], r-10, 4); ctx.restore();
+function drawWiel(hi=-1) {
+  const cv=document.getElementById('wheelCanvas');
+  if(!cv)return;
+  const ctx=cv.getContext('2d'),dl=[...wheelSelected],n=dl.length;
+  if(!n)return;
+  const cx=150,cy=150,r=144,sa=(2*Math.PI)/n;
+  ctx.clearRect(0,0,300,300);
+  dl.forEach((naam,i)=>{
+    const s=wheelAngle+i*sa-Math.PI/2,e=s+sa,isH=i===hi;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,isH?r+6:r,s,e);ctx.closePath();
+    ctx.fillStyle=WK[i%WK.length];ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.6)';ctx.lineWidth=2;ctx.stroke();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(s+sa/2);
+    ctx.textAlign='right';ctx.fillStyle='#fff';
+    ctx.font=`bold ${n>16?9:n>10?11:13}px Jost,sans-serif`;
+    ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=3;
+    ctx.fillText(naam.split(' ')[0],r-10,4);ctx.restore();
   });
-  ctx.beginPath(); ctx.arc(cx,cy,28,0,2*Math.PI);
-  ctx.fillStyle = '#fff'; ctx.fill();
-  ctx.strokeStyle = 'rgba(26,26,64,.12)'; ctx.lineWidth = 2; ctx.stroke();
-  ctx.fillStyle = '#1a1a40'; ctx.font = 'bold 11px Jost,sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('✦', cx, cy+4);
+  ctx.beginPath();ctx.arc(cx,cy,28,0,2*Math.PI);
+  ctx.fillStyle='#fff';ctx.fill();
+  ctx.strokeStyle='rgba(26,26,64,.12)';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='#1a1a40';ctx.font='bold 11px Jost,sans-serif';ctx.textAlign='center';
+  ctx.fillText('✦',cx,cy+4);
 }
 function spinWiel() {
-  if (wheelSpinning) return;
-  const dl = [...wheelSelected];
-  if (dl.length < 2) return;
-  wheelSpinning = true;
-  document.getElementById('wheel-result').innerHTML = '';
-  document.getElementById('wheel-spin-btn').disabled = true;
-  const tot = (8+Math.random()*8)*Math.PI*2, dur = 4000+Math.random()*1500;
-  const t0 = performance.now(), a0 = wheelAngle;
-  const ease = t => 1-Math.pow(1-t, 4);
-  function frame(now) {
-    const p = Math.min((now-t0)/dur, 1);
-    wheelAngle = a0+tot*ease(p); drawWiel();
-    if (p < 1) { requestAnimationFrame(frame); return; }
-    const sa = (2*Math.PI)/dl.length;
-    const norm = ((-wheelAngle%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
-    const wi = Math.floor(norm/sa)%dl.length;
+  if(wheelSpinning)return;
+  const dl=[...wheelSelected];
+  if(dl.length<2)return;
+  wheelSpinning=true;
+  document.getElementById('wheel-result').innerHTML='';
+  document.getElementById('wheel-spin-btn').disabled=true;
+  const tot=(8+Math.random()*8)*Math.PI*2,dur=4000+Math.random()*1500;
+  const t0=performance.now(),a0=wheelAngle;
+  const ease=t=>1-Math.pow(1-t,4);
+  function frame(now){
+    const p=Math.min((now-t0)/dur,1);
+    wheelAngle=a0+tot*ease(p);drawWiel();
+    if(p<1){requestAnimationFrame(frame);return;}
+    const sa=(2*Math.PI)/dl.length;
+    const norm=((-wheelAngle%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+    const wi=Math.floor(norm/sa)%dl.length;
     drawWiel(wi);
-    document.getElementById('wheel-result').innerHTML = `🎉 <span>${dl[wi]}</span>`;
-    document.getElementById('wheel-spin-btn').disabled = false;
-    wheelSpinning = false;
+    document.getElementById('wheel-result').innerHTML=`🎉 <span>${dl[wi]}</span>`;
+    document.getElementById('wheel-spin-btn').disabled=false;
+    wheelSpinning=false;
   }
   requestAnimationFrame(frame);
 }
- 
-// HELPERS
-const toB64 = f => new Promise((res, rej) => {
-  const r = new FileReader();
-  r.onload = () => res(r.result);
-  r.onerror = rej;
-  r.readAsDataURL(f);
-});
- 
-// FETCH
+
+// ============================================================
+// DATA FETCH
+// ============================================================
 async function fetchData() {
   try {
     const res = await fetch(APPS_SCRIPT_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if(!res.ok) throw new Error('HTTP '+res.status);
     const raw = await res.json();
     cachedData = (raw.scores && !raw.lustrumweek)
-      ? { lastUpdated:raw.lastUpdated, lustrumweek:{scores:raw.scores, activities:raw.activities||[]}, jachtseizoen:{scores:[], activities:[]}, bakrecord:{records:[]}, geschiedenis:[] }
+      ? {lastUpdated:raw.lastUpdated,lustrumweek:{scores:raw.scores,activities:raw.activities||[]},jachtseizoen:{scores:[],activities:[]},bakrecord:{records:[]},geschiedenis:[]}
       : raw;
     await loadAllPfps();
     document.getElementById('lastUpdated').textContent = 'Bijgewerkt om ' + fmt(cachedData.lastUpdated);
     renderActiveTab();
   } catch(e) {
-    ['lustrumweek','jachtseizoen','bakrecord','grafiek'].forEach(t => {
-      const el = document.getElementById('tab-' + t);
-      if (el) el.innerHTML = `<div class="state-msg">❌ Kan data niet ophalen.
+    ['lustrumweek','jachtseizoen','bakrecord','grafiek'].forEach(t=>{
+      const el=document.getElementById('tab-'+t);
+      if(el)el.innerHTML=`<div class="state-msg">❌ Kan data niet ophalen.
         <button class="refresh-btn" style="display:block;margin:16px auto 0" onclick="fetchData()">Probeer opnieuw</button>
       </div>`;
     });
   }
 }
+
 async function loadAllPfps() {
   const namen = new Set([
     ...(cachedData?.lustrumweek?.scores  || []),
     ...(cachedData?.jachtseizoen?.scores || [])
-  ].map(p => p.name));
-  const toLoad = [...namen].filter(n => !pfpCache[n]);
-  if (!toLoad.length) return;
-  await Promise.allSettled(toLoad.map(async naam => {
+  ].map(p=>p.name));
+  const toLoad = [...namen].filter(n=>!pfpCache[n]);
+  if(!toLoad.length)return;
+  await Promise.allSettled(toLoad.map(async naam=>{
     try {
       const res = await fetch(`${APPS_SCRIPT_URL}?action=profielfoto&naam=${encodeURIComponent(naam)}`);
       const d   = await res.json();
-      if (d.url) pfpCache[naam] = d.url;
-    } catch {}
+      if(d.url) pfpCache[naam]=d.url;
+    } catch{}
   }));
 }
- 
+
 setInterval(fetchData, 30000);
 fetchData();
 renderProgramma();
