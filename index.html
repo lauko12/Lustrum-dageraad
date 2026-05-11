@@ -549,7 +549,7 @@ function renderStand(tabId, data) {
 
   const pod = (p, cls, w, fs) => !p ? '' :
     `<div class="pod-col ${cls}" onclick="openStatModal('${p.name}')">
-      ${avEl(p.name, 'pod-avatar avatar-click', w, fs)}
+      ${avEl(p.name, 'pod-avatar', w, fs)}
       <div class="pod-name">${p.name.split(' ')[0]}</div>
       <div class="pod-pts">${p.total}</div>
       <div class="pod-block"></div>
@@ -579,11 +579,6 @@ function renderStand(tabId, data) {
     </div>
     <div class="leaderboard">${rows}</div>`;
 
-  // avatar clicks → open modal direct op pfp sectie
-  el.querySelectorAll('.avatar-click').forEach(av => {
-    av.addEventListener('click', e => { e.stopPropagation(); openStatModal(av.dataset.naam, true); });
-  });
-}
 
 // ============================================================
 // STATISTIEKEN MODAL
