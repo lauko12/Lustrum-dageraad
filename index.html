@@ -1023,7 +1023,7 @@ async function renderFotomuur() {
     <div class="foto-upload-card">
       <div class="section-label" style="margin-bottom:14px">📸 Foto uploaden</div>
       <div class="upload-zone" onclick="document.getElementById('foto-file-in').click()">
-        <input type="file" id="foto-file-in" accept="image/*" style="display:none" onchange="fotoPreview(this)">
+        <input type="file" id="foto-file-in" accept="image/*,video/*" style="display:none" onchange="fotoPreview(this)">
         <span class="upload-zone-icon">🖼️</span>
         <div class="upload-zone-txt" id="foto-zone-txt">Klik om foto te kiezen</div>
         <div class="upload-zone-sub">JPG, PNG, WEBP · max 10 MB</div>
@@ -1092,7 +1092,7 @@ async function uploadFoto() {
   const st   = document.getElementById('foto-st');
   const btn  = document.getElementById('foto-upload-btn');
   if (!fotoFile || !naam || !act) { if(st) st.textContent='Kies naam, activiteit én foto.'; return; }
-  if (fotoFile.size > 10*1024*1024) { if(st) st.textContent='Max 10 MB.'; return; }
+  if (fotoFile.size > 100*1024*1024) { if(st) st.textContent='Max 10 MB.'; return; }
   btn.disabled = true; st.textContent = 'Uploaden…';
   try {
     const b64 = await toB64(fotoFile);
