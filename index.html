@@ -744,7 +744,7 @@ async function savePfp() {
 
     if (d.success) {
       // Sla URL op in cache
-      const url = `https://drive.google.com/uc?export=view&id=${d.fileId}`;
+      const url = `https://lh3.googleusercontent.com/d/${d.fileId}`;
       pfpCache[statPersoon] = url;
 
       // Update alle avatars op de pagina
