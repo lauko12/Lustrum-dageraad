@@ -595,7 +595,6 @@ function openStatModal(naam, scrollPfp = false) {
     ? `<img src="${pfpUrl}" alt="${naam}"><span style="display:none">${ini(naam)}</span>`
     : `<span>${ini(naam)}</span>`;
 
-  document.getElementById('stat-av-init').textContent = ini(naam);
   document.getElementById('stat-name').textContent    = naam;
 
   const lw  = cachedData?.lustrumweek?.scores  || [];
