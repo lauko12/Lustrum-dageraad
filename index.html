@@ -1309,6 +1309,7 @@ fetchData();
 renderProgramma();
 
 // ============================================================
+// ============================================================
 // CONFETTI
 // ============================================================
 function launchConfetti() {
@@ -1318,30 +1319,33 @@ function launchConfetti() {
     const el = document.createElement('div');
     const size = Math.random() * 10 + 5;
     el.style.cssText = `
-      position:fixed;
-      top:-20px;
-      left:${Math.random() * 100}vw;
+      position:fixed;top:-20px;
+      left:${Math.random()*100}vw;
       width:${size}px;
-      height:${size * (Math.random() > 0.5 ? 1 : 2.5)}px;
-      background:${colors[Math.floor(Math.random() * colors.length)]};
-      border-radius:${Math.random() > 0.5 ? '50%' : '2px'};
-      opacity:${Math.random() * 0.8 + 0.2};
-      z-index:9999;
-      pointer-events:none;
-      animation:confettiFall ${Math.random() * 2 + 2}s ease-in forwards;
-      animation-delay:${Math.random() * 1}s;
-      transform:rotate(${Math.random() * 360}deg);
+      height:${size*(Math.random()>.5?1:2.5)}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      border-radius:${Math.random()>.5?'50%':'2px'};
+      opacity:${Math.random()*.8+.2};
+      z-index:9999;pointer-events:none;
+      animation:confettiFall ${Math.random()*2+2}s ease-in forwards;
+      animation-delay:${Math.random()}s;
+      transform:rotate(${Math.random()*360}deg);
     `;
     document.body.appendChild(el);
     el.addEventListener('animationend', () => el.remove());
   }
 }
 
-// Voeg de keyframe animatie toe aan de pagina
 const confettiStyle = document.createElement('style');
 confettiStyle.textContent = `
-  @key
-  
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0deg);    opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+  }
+`;
+document.head.appendChild(confettiStyle);
+
+window.addEventListener('load', () => setTimeout(launchConfetti, 600));
 </script>
 </body>
 </html>
