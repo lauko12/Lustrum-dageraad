@@ -1307,6 +1307,41 @@ async function loadAllPfps() {
 setInterval(fetchData, 30000);
 fetchData();
 renderProgramma();
+
+// ============================================================
+// CONFETTI
+// ============================================================
+function launchConfetti() {
+  const colors = ['#ffd700','#ffa07a','#f7aeb9','#7d5ba6','#f12509','#1a1a40'];
+  const count  = 120;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    const size = Math.random() * 10 + 5;
+    el.style.cssText = `
+      position:fixed;
+      top:-20px;
+      left:${Math.random() * 100}vw;
+      width:${size}px;
+      height:${size * (Math.random() > 0.5 ? 1 : 2.5)}px;
+      background:${colors[Math.floor(Math.random() * colors.length)]};
+      border-radius:${Math.random() > 0.5 ? '50%' : '2px'};
+      opacity:${Math.random() * 0.8 + 0.2};
+      z-index:9999;
+      pointer-events:none;
+      animation:confettiFall ${Math.random() * 2 + 2}s ease-in forwards;
+      animation-delay:${Math.random() * 1}s;
+      transform:rotate(${Math.random() * 360}deg);
+    `;
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
+// Voeg de keyframe animatie toe aan de pagina
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `
+  @key
+  
 </script>
 </body>
 </html>
